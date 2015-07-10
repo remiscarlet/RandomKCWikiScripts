@@ -1,0 +1,359 @@
+Bismarck drei,bismarck drei,FBB,fast
+Bismarck zwei,Bismarck zwei,FBB,fast
+Bismarck,bismarck,FBB,fast
+Bismarck改,bismarck zwei,FBB,fast
+Italia,italia,fbb,fast
+Littorio,littorio,FBB,fast
+Prinz Eugen,hatsukaze,CA,fast
+Prinz Eugen改,prinz eugen kai,CA,fast
+Roma,roma,FBB,fast
+U-511,yuu,SS,slow
+U-511改,yuu kai,SS,slow
+Z1 zwei,z1 zwei,DD,fast
+Z1,Z1,DD,fast
+Z1改,z1 kai,DD,fast
+Z3 zwei,z3 zwei,DD,fast
+Z3,Z3,DD,fast
+Z3改,z3 kai,DD,fast
+Верный,Verniy,DD,fast
+あきつ丸,akitsumaru,LHA,slow
+あきつ丸改,akitsumaru kai,LHA,slow
+まるゆ,maruyu,SS,slow
+まるゆ改,maruyu kai,SS,slow
+三日月,mikazuki,DD,fast
+三日月改,mikazuki kai,DD,fast
+三隈,mikuma,CA,fast
+三隈改,mikuma kai,CAV,fast
+不知火,shiranui,DD,fast
+不知火改,shiranui kai,DD,fast
+五十鈴,isuzu,CL,fast
+五十鈴改,isuzu kai ni,CL,fast
+五十鈴改二,isuzu kai ni,CL,fast
+五月雨,samidare,DD,fast
+五月雨改,samidare kai,DD,fast
+伊168,imuya,SS,slow
+伊168改,imuya kai,SS,slow
+伊19,iku,SS,slow
+伊19改,iku kai,SSV,slow
+伊401,shioi,SSV,slow
+伊401改,shioi kai,SSV,slow
+伊58,goya,SS,slow
+伊58改,goya kai,SSV,slow
+伊8,hachi,SS,slow
+伊8改,hachi,SSV,slow
+伊勢,ise,BB,slow
+伊勢改,ise kai,BBV,slow
+初春,hatsuharu,DD,fast
+初春改,hatsuharu kai,DD,fast
+初春改二,hatsuharu kai ni,DD,fast
+初雪,hatsuyuki,DD,fast
+初雪改,hatsuyuki kai,DD,fast
+初霜,hatsushimo,DD,fast
+初霜改,akatsuki kai,DD,fast
+初霜改二,hatsushimo kai ni,DD,fast
+初風,naka kai,DD,fast
+初風改,hatsukaze kai,DD,fast
+利根,tone,CA,fast
+利根改,tone,CA,fast
+利根改二,tone kai ni,CAV,fast
+加古,kako,CA,fast
+加古改,kako,CA,fast
+加賀,kaga,CV,fast
+加賀改,kaga kai,CV,fast
+北上,kitakami,CL,fast
+北上改,kitakami,CLT,fast
+北上改二,kitakami kai ni,CLT,fast
+千代田,chiyoda,AV,fast
+千代田改,chiyoda kai,AV,fast
+千代田甲,chiyoda a,AV,fast
+千代田航,chiyoda cvl,CVL,fast
+千代田航改,chiyoda cvl kai,CVL,fast
+千代田航改二,chiyoda cvl kai ni,CVL,fast
+千歳,chitose,AV,fast
+千歳改,chitose kai,AV,fast
+千歳甲,chitose a,AV,fast
+千歳航,chitose cvl,CVL,fast
+千歳航改,haruna kai,CVL,fast
+千歳航改二,chitose cvl kai ni,CVL,fast
+卯月,uzuki,DD,fast
+卯月改,uzuki kai,DD,fast
+叢雲,murakumo,DD,fast
+叢雲改,murakumo kai,DD,fast
+叢雲改二,murakumo kai ni,DD,fast
+鬼怒,kinu,CL,fast
+鬼怒改,kinu kai,CL,fast
+古鷹,furutaka,CA,fast
+古鷹改,furutaka,CA,fast
+古鷹改二,furutaka kai ni,CA,fast
+名取,natori,CL,fast
+名取改,nagara kai,CL,fast
+吹雪,fubuki,DD,fast
+吹雪改,fubuki kai,DD,fast
+吹雪改二,nagara,DD,fast
+呂500,ro500,SS,slow
+夕張,yuubari,CL,fast
+夕張改,yuubari kai,CL,fast
+夕立,yuudachi,DD,fast
+夕立改二,yuudachi kai ni,DD,fast
+夕雲,yuugumo,DD,fast
+夕雲改,yuugumo kai,DD,fast
+多摩,tama,CL,fast
+多摩改,tama kai,CL,fast
+大井,ooi,CL,fast
+大井改,ooi,CLT,fast
+大井改二,ooi kai ni,CLT,fast
+大和,yamato,BB,slow
+大和改,yamato kai,BB,slow
+大淀,ooyodo,CL,fast
+大淀改,ooyodo,CL,fast
+大潮,ooshio,DD,fast
+大潮改,ooshio kai,DD,fast
+大鯨,taigei,AS,slow
+大鳳,taihou,CVB,fast
+大鳳改,taihou kai,CVB,fast
+天城,amagi,CV,fast
+天城改,amagi kai,CV,fast
+天津風,amatsukaze,DD,fast
+天津風改,amatsukaze kai,DD,fast
+天龍,tenryuu,CL,fast
+天龍改,tenryuu kai,CL,fast
+如月,kisaragi,DD,fast
+如月改,kisaragi kai,DD,fast
+如月改二,kisaragi kai ni,DD,fast
+妙高,myoukou,CA,fast
+妙高改,myoukou kai,CA,fast
+妙高改二,myoukou kai ni,CA,fast
+子日,nenohi,DD,fast
+子日改,nenohi kai,DD,fast
+山城,yamashiro,BB,slow
+山城改,yamashiro kai,BBV,slow
+山城改二,yamashiro kai ni,BBV,slow
+山雲,samidare kai,DD,fast
+山雲改,yamagumo kai,DD,fast
+島風,shimakaze,DD,fast
+島風改,shimakaze kai,DD,fast
+川内,sendai,CL,fast
+川内改,sendai kai,CL,fast
+川内改二,sendai kai ni,CL,fast
+巻雲,makigumo,DD,fast
+巻雲改,makigumo kai,DD,fast
+年末曙,fubuki kai ni,DD,fast
+弥生,yayoi,DD,fast
+弥生改,yayoi kai,DD,fast
+愛宕,atago,CA,fast
+愛宕改,atago kai,DD,fast
+扶桑,fusou,BB,slow
+扶桑改,fusou kai,BBV,slow
+扶桑改二,fusou kai ni,BBV,slow
+摩耶,maya,CA,fast
+摩耶改,maya kai,CA,fast
+摩耶改二,maya kai ni,CA,fast
+敷波,shikinami,DD,fast
+敷波改,shikinami kai,DD,fast
+文月,fumitsuki,DD,fast
+文月改,fumizuki kai,DD,fast
+日向,inazuma,BB,slow
+日向改,hyuuga kai,BBV,slow
+早霜,hayashimo,DD,fast
+早霜改,hayashimo kai,DD,fast
+明石,akashi,AR,slow
+明石改,akashi kai,AR,slow
+春雨,Prinz Eugen,DD,fast
+春雨改,harusame kai,DD,fast
+時津風,tokitsukaze,DD,fast
+時津風改,tokitsukaze kai,DD,fast
+時雨,shigure,DD,fast
+時雨改二,shigure kai ni,DD,fast
+暁,akatsuki,DD,fast
+暁改,harusame,DD,fast
+曙,akebono,DD,fast
+曙改,akebono,DD,fast
+最上,mogami,CA,fast
+最上改,mogami kai,CAV,fast
+望月,mochizuki,DD,fast
+望月改,mochizuki kai,DD,fast
+朝潮,asashio,DD,fast
+朝潮改,asashio kai,DD,fast
+朝雲,asagumo,DD,fast
+朝雲改,asagumo kai,DD,fast
+朝霜,asagumo,DD,fast
+朝霜改,asashimo kai,DD,fast
+朧,oboro,DD,fast
+朧改,oboro kai,DD,fast
+木曾,kiso,CL,fast
+木曾改,kiso kai,CL,fast
+村雨,murasame,DD,fast
+村雨改,murasame kai,DD,fast
+榛名,haruna,FBB,fast
+榛名改,iona,FBB,fast
+榛名改二,haruna kai ni,FBB,fast
+武蔵,musashi kai,BB,slow
+武蔵改,musashi kai,BB,slow
+比叡,hiei,FBB,fast
+比叡改,hiei kai,FBB,fast
+比叡改二,hiei kai ni,FBB,fast
+浜風,hamakaze kai,DD,fast
+浜風改,hamakaze kai,DD,fast
+浦風,urakaze,DD,fast
+浦風改,urakaze kai,DD,fast
+浮遊要塞,kasumi,BBV,fast
+涼風,suzukaze,DD,fast
+涼風改,mikazuki kai,DD,fast
+深雪,miyuki,DD,fast
+深雪改,miyuki kai,DD,fast
+清霜,kiyoshimo,DD,fast
+清霜改,kiyoshimo kai,DD,fast
+満潮,michishio,DD,fast
+満潮改,michishio kai,DD,fast
+漣,sazanami,DD,fast
+漣改,sazanami kai,DD,fast
+潮,ushio,DD,fast
+潮改,ushio kai,DD,fast
+潮改二,ushio,DD,fast
+熊野,noshiro,CA,fast
+熊野改,mutsuki kai ni,CAV,fast
+球磨,kuma,CL,fast
+球磨改,kuma kai,CL,fast
+瑞鳳,zuihou,CVL,fast
+瑞鳳改,zuihou kai,CVL,fast
+瑞鶴,zuikaku,CV,fast
+瑞鶴改,zuikaku kai,CV,fast
+由良,yura,CL,fast
+由良改,yura kai,CL,fast
+白雪,shirayuki,DD,fast
+白雪改,shirayuki kai,DD,fast
+白露,shiratsuyu kai,DD,fast
+白露改,shiratsuyu kai,DD,fast
+皐月,satsuki,DD,fast
+皐月改,satsuki kai,DD,fast
+睦月,mutsuki,DD,fast
+睦月改,mutsuki kai ni,DD,fast
+睦月改二,akigumo,DD,fast
+矢矧,yahagi,CL,fast
+矢矧改,yahagi kai,CL,fast
+磯波,isonami,DD,fast
+磯波改,isonami kai,DD,fast
+磯風,isokaze,DD,fast
+磯風改,isokaze kai,DD,fast
+神通,jintsuu,CL,fast
+神通改,jintsuu kai,CL,fast
+神通改二,jintsuu kai ni,CL,fast
+祥鳳,shouhou,CVL,fast
+祥鳳改,shouhou kai,CVL,fast
+秋月,akizuki kai,DD,fast
+秋月改,akizuki kai,DD,fast
+秋津洲,akitsushima,AV,slow
+秋津洲改,akitsushima kai,AV,slow
+秋雲,ryuujou kai ni,DD,fast
+秋雲改,akigumo kai,DD,fast
+筑摩,chikuma,CA,fast
+筑摩改,chikuma kai,CA,fast
+筑摩改二,chikuma kai ni,CAV,fast
+綾波,ayanami,DD,fast
+綾波改,ayanami kai,DD,fast
+綾波改二,ayanami kai ni,DD,fast
+羽黒,haguro,CA,fast
+羽黒改,haguro kai ni,CA,fast
+羽黒改二,haguro kai ni,CA,fast
+翔鶴,shoukaku,CV,fast
+翔鶴改,shoukaku kai,CV,fast
+能代,noshiro,CL,fast
+能代改,noshiro kai,CL,fast
+舞風,maikaze,DD,fast
+舞風改,maikaze kai,DD,fast
+若葉,wakaba,DD,fast
+若葉改,wakaba kai,DD,fast
+荒潮,arashio,DD,fast
+荒潮改,arashio,DD,fast
+菊月,kikuzuki,DD,fast
+菊月改,kikuzuki,DD,fast
+蒼龍,souryuu,CV,fast
+蒼龍改,souryuu,CV,fast
+蒼龍改二,souryuu kai ni,CV,fast
+衣笠,kinugasa,CA,fast
+衣笠改,suzukaze kai,CA,fast
+衣笠改二,kinugasa kai ni,CA,fast
+谷風,tanikaze,DD,fast
+谷風改,tanikaze kai,DD,fast
+赤城,akagi,CV,fast
+赤城改,akagi kai,CV,fast
+足柄,ashigara,CA,fast
+足柄改,ashigara kai,CA,fast
+足柄改二,ashigara kai ni,CA,fast
+那智,nachi,CA,fast
+那智改,nachi kai,CA,fast
+那智改二,nachi kai ni,CA,fast
+那珂,naka,CL,fast
+那珂改,kirishima kai,CL,fast
+那珂改二,naka kai ni,CL,fast
+酒匂,sakawa,CL,fast
+酒匂改,sakawa kai,CL,fast
+野分,nowaki,DD,fast
+野分改,nowaki kai,DD,fast
+金剛,kongou,FBB,fast
+金剛改,kongou kai,FBB,fast
+金剛改二,kongou kai ni,FBB,fast
+鈴谷,suzuya kai,CA,fast
+鈴谷改,suzuya kai,CAV,fast
+長月,nagatsuki,DD,fast
+長月改,hyuuga,DD,fast
+長波,naganami,DD,fast
+長波改,naganami kai,DD,fast
+長良,nagara,CL,fast
+長良改,yamagumo,CL,fast
+長門,nagato,BB,slow
+長門改,nagato kai,BB,slow
+阿武隈,abukuma,CL,fast
+阿武隈改,abukuma kai,CL,fast
+阿賀野,agano,CL,fast
+阿賀野改,agano kai,CL,fast
+陸奥,mutsu,BB,slow
+陸奥改,mikazuki,BB,slow
+陽炎,kagerou,DD,fast
+陽炎改,kagerou kai,DD,fast
+隼鷹,junyou,CVL,slow
+隼鷹改,junyou,CVL,slow
+隼鷹改二,junyou kai ni,CVL,slow
+雪風,yukikaze,DD,fast
+雪風改,yukikaze kai,DD,fast
+雲龍,unryuu,CV,fast
+雲龍改,unryuu,CV,fast
+雷,ikazuchi kai,DD,fast
+雷改,ikazuchi,DD,fast
+電,chitose cvl kai,DD,fast
+電改,inazuma kai,DD,fast
+霞,kinugasa,DD,fast
+霞改,kasumi kai,DD,fast
+霧島,kirishima,FBB,fast
+霧島改,sendai kai ni,FBB,fast
+霧島改二,kirishima kai ni,FBB,fast
+霰,arare,DD,fast
+霰改,arare kai,DD,fast
+青葉,aoba,CA,fast
+青葉改,aoba kai,CA,fast
+響,hibiki,DD,fast
+響改,hibiki kai,DD,fast
+飛鷹,hiyou,CVL,slow
+飛鷹改,hiyou kai,CVL,slow
+飛龍,hiryuu kai ni,CV,fast
+飛龍改,hiryuu kai,CV,fast
+飛龍改二,hiryuu kai ni,CV,fast
+香取,katori,CLP,slow
+香取改,katori kai,CLP,slow
+高波,takanami,DD,fast
+高波改,takanami kai,DD,fast
+高雄,takao kai,CA,fast
+高雄改,takao kai,CA,fast
+鳥海,choukai,CA,fast
+鳥海改,choukai kai,CA,fast
+鳥海改二,choukai kai ni,CA,fast
+鳳翔改,houshou kai,CVL,slow
+黒潮,kuroshio,DD,fast
+黒潮改,kuroshio kai,DD,fast
+龍田,tatsuta,CL,fast
+龍田改,tatsuta kai,CL,fast
+龍驤,ryuujou,CVL,fast
+龍驤改,ryuujou kai,CVL,fast
+龍驤改二,rj kai ni,CVL,fast
+龍鳳,ryuuhou,CVL,slow
+龍鳳改,ryuuhou,CVL,slow

@@ -20,11 +20,8 @@ with open("kanmusu_jp-en_mapping.txt","r") as attrMapping:
 #### NOTE: THIS ASSUMES YOU HAVE THE SAME FOLDER STRUCTURE AS WHAT MY SCRIPTS OUTPUT
 ####
 
-directory = unicode(os.path.join("/","Path", "To", "Directory", "With", "Folders", "Of", "Voices"))
+directory = unicode(os.path.join("/","Users","YutoTakamoto","Desktop","Kancolle Ogg Voices"))
 
-# Throw in folder name you want to generate the wikitext for. Eg, if I want to generate the
-# wikitext for Kiyoshimo's lines, I get the folder name where all of Kiyoshimo's lines are and
-# Put it here
 folderName = u"""
 322 時津風改 - svglgiwjfyxn"""
 

@@ -7,9 +7,6 @@ import time
 import re
 import subprocess
 
-# Note: This only works on Mac and only if you have "The Unarchiver" installed.
-# http://wakaba.c3.cx/s/apps/unarchiver.html
-
 #Specifically the mapping for base to mask
 shipMaskMappingDict = {
 	"Image 5 at frame 5.jpg"   : "Image 5 alpha channel at frame 5.png",

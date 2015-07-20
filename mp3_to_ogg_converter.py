@@ -10,13 +10,11 @@ import threading
 
 
 
+command = [u"ffmpeg",u"-i",u"INPUT", u"-ac", u"1", u"-ar",u"16000", u"OUTPUT", u"-y", ]
 command = [u"ffmpeg",u"-i",u"INPUT",u"-c:a",u"libvorbis",u"-qscale:a",u"9",u"OUTPUT"]
-# Directory where mp3 files are
 baseDir = unicode(os.path.join("/","Users","YutoTakamoto","Desktop","Kancolle Mp3 Voices", "Sounds"))
-# Directory where you want the ogg files to go
+#baseDir = unicode(os.path.join("/","Users","YutoTakamoto","Documents","Captions", "core", "en-US","iOS Adjustment Audio","Cleaned Audio"))
 destDir = unicode(os.path.join("/","Users","YutoTakamoto","Desktop","Kancolle Ogg Voices"))
-
-# GO TO BOTTOM OF FILE BEFORE RUNNING
 __ACCEPTEDFILETYPE__ = ["mp3","ogg"]
 __RENAME_TO_WIKI_FORMAT = True
 
@@ -61,8 +59,10 @@ def moveFile(fileName,srcDir,fileType):
 				kai_strip = kai_strip.decode("utf-8")
 				name = name.decode("utf-8")
 				hasKai = True if name.find(u"改")>-1 else False
+				hasKaiNi = True if name.find(u"改二")>-1 else False
 				name = english
-				if hasKai: name += "Kai"
+				if hasKaiNi: name += "KaiNi"
+				elif hasKai: name += "Kai"
 			else:
 				print u"Name not found! - "+kai_strip
 			newFileName = name
@@ -94,19 +94,9 @@ def recurseDir(directory=baseDir):
 					fileNameBase.append(u".ogg")
 					output = u"".join(fileNameBase)
 					if split[-1] in fileType:
-						#
-						#
-						#
-						# # # # # # # # # # # # # # # # # # # # # # # # # # # # 
-						# UNCOMMENT THESE IN ORDER AND RUN THEM ONE AT A TIME # (Remove the # sign)
-						# # # # # # # # # # # # # # # # # # # # # # # # # # # # 
-						#
-						#
-						#
-						# FIRST ONE HERE v
+						# UNCOMMENT THESE IN ORDER AND RUN THEM ONE AT A TIME
 						#t = threading.Thread(target=convert, args=(directory, thing, output,split[-1]))
-						# SECOND ONE HERE v
-						#t = threading.Thread(target=moveFile, args=(thing,directory,split[-1]))
+						t = threading.Thread(target=moveFile, args=(thing,directory,split[-1]))
 						t.start()
 						pass
 		

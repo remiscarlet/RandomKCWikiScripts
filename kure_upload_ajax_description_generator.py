@@ -1,8 +1,5 @@
-##
-## Literally just put the description you want on everything below.
-## Run by opening up javascript console on your web browser and pasting the printed text in.
-## On chrome it's under "More Tools", "Javascript Console"
-##
+thing = '$("[name=description1]").val("asdf")'
+
 description = """
 
 Kiyoshimo Hourly Lines

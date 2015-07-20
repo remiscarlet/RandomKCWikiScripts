@@ -6,10 +6,6 @@ import os
 import re
 import cfscrape
 
-########################
-# Requires cfscrape to be installed
-########################
-
 scraper = cfscrape.create_scraper()
 scraper2 = cfscrape.create_scraper()
 

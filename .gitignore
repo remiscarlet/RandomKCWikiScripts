@@ -1,0 +1,7 @@
+.DS_Store
+*.pyc
+legacy - git ignore
+phantomjs
+settings.py
+*.sqlite3
+

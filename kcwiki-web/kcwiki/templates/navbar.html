@@ -1,0 +1,24 @@
+	<div class="bs-example">
+    <nav id="myNavbar" class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="container">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                   <li><a href="/index">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Tools and Scripts <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        	{% for item in functionList %}
+                        	<li><a href="/{{item}}">{{item}}</a></li>
+                            {% empty %}
+                            <li><a href="#">No functions exist. Yell at Remi to fix this.</a></li>
+                        	{% endfor %}
+                        </ul>
+                    </li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div>
+    </nav>
+	</div>

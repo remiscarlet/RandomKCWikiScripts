@@ -1,0 +1,39 @@
+
+function p.returnShipDrop(frame)
+    local dropList = {}
+    local Sendai = {
+        ["World1"] = { 
+            ["1"] = "O",
+            ["2"] = "O",
+            ["3"] = "O",
+            ["4"] = "X",
+            ["5"] = ""
+        }, ["World2"] = {
+            ["1"] = "O",
+            ["2"] = "O",
+            ["3"] = "O",
+            ["4"] = "O",
+            ["5"] = "O"
+        }, ["World3"] = {
+            ["1"] = "O",
+            ["2"] = "O",
+            ["3"] = "O",
+            ["4"] = "O",
+            ["5"] = ""
+        }, ["World4"] = {
+            ["1"] = "O",
+            ["2"] = "O",
+            ["3"] = "O",
+            ["4"] = "O"
+        }, ["World5"] = {
+            ["1"] = "X",
+            ["2"] = "X",
+            ["3"] = "X",
+            ["4"] = "O",
+            ["5"] = ""
+        }
+    }
+    dropList["Sendai"] = Sendai
+    local shipName = frame.args[1]
+    return "aaaa" 
+end

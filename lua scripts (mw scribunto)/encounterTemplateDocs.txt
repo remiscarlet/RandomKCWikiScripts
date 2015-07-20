@@ -1,0 +1,11 @@
+A=encounter fleet name
+A1_xp=encounter 1 in node A's xp earned
+A1_lv=level information such as cutoffs of this formation appearing
+A1_main_info=info, so vessels, maestrom text, resource gains, etc
+A1_form=line ahead, line abreast, etc
+A1_air_parity=AS needed to get air parity
+A1_air_superiority=AS needed to get aerial superiority
+
+B=encounter fleet name
+
+etc etc

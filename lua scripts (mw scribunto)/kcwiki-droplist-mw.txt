@@ -1,0 +1,5420 @@
+|001
+| style="background-color:#FF55FF;" |7
+|[[Nagato]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+|
+|
+|
+|
+| style="background-color: #7df83a;" |X
+|
+|
+| style="background-color: #ecea4c;" |X
+|
+|
+|
+|
+|X
+|
+|
+|
+|-
+|002
+| style="background-color:#FF55FF;" |7
+|[[Mutsu]]
+|
+|
+|
+|
+|
+|
+|
+|
+| style="background-color: #7df83a;" |X
+|
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+|
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+|
+|
+| style="background-color: #7df83a;" |X
+|
+|X
+|
+|
+|O
+|
+|
+|
+|-
+|003
+| style="background-color:#fc0;" |5
+|[[Ise]]
+|
+|
+|
+|
+|
+| style="background-color: #ecea4c;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+|
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+|
+| style="background-color: #7df83a;" |X
+| style="background-color: #ecea4c;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #ecea4c;" |X
+|
+| style="background-color: #ecea4c;" |X
+| style="background-color: #ecea4c;" |X
+| style="background-color: #ecea4c;" |O
+|
+|
+|
+|
+|
+|
+|
+|-
+|004
+| style="background-color:#fc0;" |5
+|[[Hyuuga]]
+|
+|
+|
+|
+|
+| style="background-color: #ecea4c;" |O
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+| style="background-color: #ecea4c;" |O
+|
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #ecea4c;" |O
+| style="background-color: #ecea4c;" |O
+|
+| style="background-color: #ecea4c;" |O
+| style="background-color: #ecea4c;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #ecea4c;" |X
+|
+| style="background-color: #ecea4c;" |X
+| style="background-color: #ecea4c;" |X
+| style="background-color: #ecea4c;" |O
+|
+|
+|
+|
+|
+|
+|
+|-
+|005
+| style="background-color:#FFaaFF;" |6
+|[[Yukikaze]]
+|
+|
+|
+|X
+|
+|
+|
+|
+| style="background-color: #7df83a;" |X
+|
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+|
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+|
+| style="background-color: #ecea4c;" |X
+|
+|
+| style="background-color: #7df83a;" |X
+|
+| style="background-color: #7df83a;" |X
+|
+|
+|
+|
+|
+|
+|-
+|006
+| style="background-color:#FFaaFF;" |6
+|[[Akagi]]
+|
+|
+|
+| style="background-color: #ecea4c;" |O
+|
+| style="background-color: #7df83a;" |O
+|
+| style="background-color: #7df83a;" |O
+|X
+|
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+|
+|
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+|
+|
+| style="background-color: #7df83a;" |X
+| style="background-color: #ecea4c;" |X
+|
+|
+|
+|
+|
+|
+|''Quest ''
+|-
+|007
+| style="background-color:#fc0;" |5
+|[[Kaga]]
+|
+|
+|
+|
+|
+| style="background-color: #ecea4c;" |O
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+| style="background-color: #ecea4c;" |X
+|X
+| style="background-color: #7df83a;" |O
+| style="background-color: #ecea4c;" |X
+| style="background-color: #ecea4c;" |X
+| style="background-color: #7df83a;" |O
+|
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |X
+| style="background-color: #ecea4c;" |X
+|
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+| style="background-color: #ecea4c;" |X
+|
+|
+|
+|
+|
+|
+|
+|-
+|008
+| style="background-color:#fc0;" |5
+|[[Souryuu]]
+|
+|
+|
+| style="background-color: #ecea4c;" |X
+|O
+| style="background-color: #ecea4c;" |O
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |O
+| style="background-color: #ecea4c;" |O
+|X
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #ecea4c;" |X
+| style="background-color: #7df83a;" |O
+|
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+|
+|
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+| style="background-color: #ecea4c;" |X
+|
+|
+|
+|
+|
+|
+|
+|-
+|009
+| style="background-color:#FFaaFF;" |6
+|[[Hiryuu]]
+|
+|
+|
+| style="background-color: #ecea4c;" |X
+|
+|
+|
+| style="background-color: #7df83a;" |X
+|
+|X
+| style="background-color: #7df83a;" |X
+|
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |O
+|
+| style="background-color: #7df83a;" |X
+|
+|
+|
+|
+|
+| style="background-color: #7df83a;" |X
+| style="background-color: #ecea4c;" |X
+|
+|
+|
+|
+|
+|
+|
+|-
+|010
+| style="background-color:#FFaaFF;" |6
+|[[Shimakaze]]
+|
+|
+|
+|
+|
+|
+|
+| style="background-color: #ecea4c;" |X
+| style="background-color: #7df83a;" |O
+|X
+|
+| style="background-color: #ecea4c;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+|
+| style="background-color: #7df83a;" |X
+| style="background-color: #ecea4c;" |X
+| style="background-color: #ecea4c;" |O
+|
+|
+| style="background-color: #7df83a;" |X
+|
+|
+|
+|
+|
+|X
+|
+|
+|
+|-
+|011
+| style="background-color:#0ff;" |3
+|[[Fubuki]]
+|X
+|
+|X
+|O
+|
+|X
+|O
+|
+|O
+|
+|O
+|
+|
+|
+|
+|O
+|O
+|
+|
+|
+|
+|
+|O
+|O
+|
+|
+|
+|
+|
+|
+|-
+|012
+| style="background-color:#ace;" |2
+|[[Shirayuki]]
+|O
+|O
+|O
+|O
+|X
+|O
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|013
+| style="background-color:#8ac;" |1
+|[[Hatsuyuki]]
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|
+|O
+|O
+|O
+|
+|
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|-
+|014
+| style="background-color:#ace;" |2
+|[[Miyuki]]
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|
+|O
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|015
+| style="background-color:#ace;" |2
+|[[Murakumo]]
+|O
+|X
+|X
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|
+|
+|
+|
+|O
+|O
+|
+|O
+|
+|
+|
+|
+|
+|
+|-
+|016
+| style="background-color:#8ac;" |1
+|[[Isonami]]
+|O
+|O
+|O
+|O
+|X
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|017
+| style="background-color:#0ff;" |3
+|[[Ayanami]]
+|O
+|O
+|O
+|O
+|X
+|
+|
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|
+|O
+|
+|O
+|
+|
+|
+|
+|O
+|O
+|
+|
+|
+|
+|
+|
+|-
+|018
+| style="background-color:#ace;" |2
+|[[Shikinami]]
+|O
+|O
+|O
+|O
+|X
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|
+|O
+|O
+|
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|019
+| style="background-color:#fc0;" |5
+|[[Ooi]]
+|
+|
+|
+|
+|
+|
+| style="background-color: #ecea4c;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+|O
+| style="background-color: #ecea4c;" |O
+|
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+|
+| style="background-color: #ecea4c;" |O
+| style="background-color: #7df83a;" |X
+| style="background-color: #ecea4c;" |X
+| style="background-color: #ecea4c;" |X
+|
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #ecea4c;" |X
+|
+|
+|
+|
+|
+|
+|
+|-
+|020
+| style="background-color:#bbb;" |4
+|[[Kitakami]]
+|X
+|X
+|X
+|
+|O
+|X
+|O
+|X
+|O
+|X
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|X
+|X
+|
+|
+|
+|
+|
+|
+|
+|-
+! colspan="1" rowspan="2" | No.
+! colspan="1" rowspan="2" | Rarity
+! colspan="1" rowspan="2" | Ship Name
+! colspan="5" rowspan="1" | [[World 1: 鎮守府海域|World 1]]
+! colspan="5" rowspan="1" | [[World 2: 南西諸島海域|World 2]]
+! colspan="5" rowspan="1" | [[World 3: 北方海域|World 3]]
+! colspan="5" rowspan="1" | [[World 4: 西方海域|World 4]]
+! colspan="5" rowspan="1" | [[World 5: 南方海域|World 5]]
+! colspan="4" rowspan="1" | [[World 6: 中部海域|World 6]]
+! colspan="1" rowspan="2" | Remarks
+|-
+![[World 1: 鎮守府海域#Drops|1]]
+![[World 1: 鎮守府海域#Drops_2|2]]
+![[World 1: 鎮守府海域#Drops_3|3]]
+![[World 1: 鎮守府海域#Drops_4|4]]
+![[World 1: 鎮守府海域#Drops_5|5]]
+![[World 2: 南西諸島海域#Drops|1]]
+![[World 2: 南西諸島海域#Drops_2|2]]
+![[World 2: 南西諸島海域#Drops_3|3]]
+![[World 2: 南西諸島海域#Drops_4|4]]
+![[World 2: 南西諸島海域#Drops_5|5]]
+![[World 3: 北方海域#Drops|1]]
+![[World 3: 北方海域#Drops_2|2]]
+![[World 3: 北方海域#Drops_3|3]]
+![[World 3: 北方海域#Drops_4|4]]
+![[World 3: 北方海域#Drops_5|5]]
+![[World 4: 西方海域#Drops|1]]
+![[World 4: 西方海域#Drops_2|2]]
+![[World 4: 西方海域#Drops_3|3]]
+![[World 4: 西方海域#Drops_4|4]]
+! -
+![[World 5: 南方海域#Drops|1]]
+![[World 5: 南方海域#Drops_2|2]]
+![[World 5: 南方海域#Drops_3|3]]
+![[World 5: 南方海域#Drops_4|4]]
+![[World 5: 南方海域#Drops_5|5]]
+![[World 6: 中部海域#Drops|1]]
+![[World 6: 中部海域#Drops_2|2]]
+! -
+! -
+|-
+|021
+| style="background-color:#fc0;" |5
+|[[Kongou]]
+|
+|
+|
+|
+|
+| style="background-color: #ecea4c;" |X
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |X
+|X
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #ecea4c;" |O
+| style="background-color: #7df83a;" |O
+|
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+|
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #ecea4c;" |X
+| style="background-color: #7df83a;" |X
+|
+|
+|X
+|
+|
+|
+|-
+|022
+| style="background-color:#fc0;" |5
+|[[Hiei]]
+|
+|
+|
+|
+|
+| style="background-color: #ecea4c;" |X
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |O
+|X
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |O
+|
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+|
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #ecea4c;" |O
+| style="background-color: #7df83a;" |O
+|
+|
+|
+|
+|
+|
+|-
+|023
+| style="background-color:#fc0;" |5
+|[[Haruna]]
+|
+|
+|
+|
+|
+| style="background-color: #7df83a;" |O
+| style="background-color: #ecea4c;" |X
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+|X
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+|
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+|
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #ecea4c;" |X
+| style="background-color: #7df83a;" |O
+|
+|
+|
+|
+|
+|
+|-
+|024
+| style="background-color:#fc0;" |5
+|[[Kirishima]]
+|
+|
+|
+|
+|
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+|X
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |O
+|
+| style="background-color: #ecea4c;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+|
+| style="background-color: #7df83a;" |O
+| style="background-color: #7df83a;" |O
+| style="background-color: #ecea4c;" |O
+| style="background-color: #ecea4c;" |O
+|
+|
+|X
+|
+|
+|
+|-
+|025
+| style="background-color:#0ff;" |3
+|[[Houshou]]
+|
+|
+|O
+|O
+|O
+|O
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|X
+|X
+|O
+|O
+|
+|X
+|X
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|026
+| style="background-color:#bbb;" |4
+|[[Fusou]]
+|
+|
+|
+|
+|
+|O
+|O
+|O
+|O
+|X
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|
+|
+|
+|X
+|
+|
+|
+|-
+|027
+| style="background-color:#bbb;" |4
+|[[Yamashiro]]
+|
+|
+|
+|
+|
+|O
+|O
+|O
+|O
+|X
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|
+|
+|
+|X
+|
+|
+|
+|-
+|028
+| style="background-color:#0ff;" |3
+|[[Tenryuu]]
+|O
+|O
+|X
+|O
+|
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|X
+|O
+|
+|O
+|
+|
+|
+|
+|
+|
+|-
+|029
+| style="background-color:#0ff;" |3
+|[[Tatsuta]]
+|O
+|O
+|X
+|O
+|
+|X
+|O
+|X
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|X
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|030
+| style="background-color:#bbb;" |4
+|[[Ryuujou]]
+|
+|
+|
+|O
+|
+|O
+|O
+|O
+|O
+|O
+|O
+|X
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|
+|O
+|
+|
+|
+|
+|
+|
+|-
+|031
+| style="background-color:#0ff;" |3
+|[[Mutsuki]]
+|O
+|O
+|O
+|O
+|
+|X
+|
+|O
+|
+|O
+|
+|
+|
+|
+|
+|
+|O
+|
+|O
+|
+|O
+|
+|O
+|O
+|
+|
+|
+|
+|
+|
+|-
+|032
+| style="background-color:#ace;" |2
+|[[Kisaragi]]
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|O
+|
+|O
+|
+|O
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|033
+| style="background-color:#ace;" |2
+|[[Satsuki]]
+|O
+|
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|O
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|-
+|034
+| style="background-color:#ace;" |2
+|[[Fumizuki]]
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|O
+|
+|
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|035
+| style="background-color:#ace;" |2
+|[[Nagatsuki]]
+|O
+|X
+|O
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|036
+| style="background-color:#8ac;" |1
+|[[Kikuzuki]]
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|037
+| style="background-color:#8ac;" |1
+|[[Mikazuki]]
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|O
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|-
+|038
+| style="background-color:#8ac;" |1
+|[[Mochizuki]]
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|039
+| style="background-color:#bbb;" |4
+|[[Kuma]]
+|O
+|X
+|X
+|O
+|X
+|O
+|X
+|X
+|
+|O
+|
+|
+|O
+|
+|
+|
+|
+|X
+|O
+|
+|
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|040
+| style="background-color:#ace;" |2
+|[[Tama]]
+|O
+|O
+|O
+|O
+|X
+|O
+|X
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+! colspan="1" rowspan="2" | No.
+! colspan="1" rowspan="2" | Rarity
+! colspan="1" rowspan="2" | Ship Name
+! colspan="5" rowspan="1" | [[World 1: 鎮守府海域|World 1]]
+! colspan="5" rowspan="1" | [[World 2: 南西諸島海域|World 2]]
+! colspan="5" rowspan="1" | [[World 3: 北方海域|World 3]]
+! colspan="5" rowspan="1" | [[World 4: 西方海域|World 4]]
+! colspan="5" rowspan="1" | [[World 5: 南方海域|World 5]]
+! colspan="4" rowspan="1" | [[World 6: 中部海域|World 6]]
+! colspan="1" rowspan="2" | Remarks
+|-
+![[World 1: 鎮守府海域#Drops|1]]
+![[World 1: 鎮守府海域#Drops_2|2]]
+![[World 1: 鎮守府海域#Drops_3|3]]
+![[World 1: 鎮守府海域#Drops_4|4]]
+![[World 1: 鎮守府海域#Drops_5|5]]
+![[World 2: 南西諸島海域#Drops|1]]
+![[World 2: 南西諸島海域#Drops_2|2]]
+![[World 2: 南西諸島海域#Drops_3|3]]
+![[World 2: 南西諸島海域#Drops_4|4]]
+![[World 2: 南西諸島海域#Drops_5|5]]
+![[World 3: 北方海域#Drops|1]]
+![[World 3: 北方海域#Drops_2|2]]
+![[World 3: 北方海域#Drops_3|3]]
+![[World 3: 北方海域#Drops_4|4]]
+![[World 3: 北方海域#Drops_5|5]]
+![[World 4: 西方海域#Drops|1]]
+![[World 4: 西方海域#Drops_2|2]]
+![[World 4: 西方海域#Drops_3|3]]
+![[World 4: 西方海域#Drops_4|4]]
+! -
+![[World 5: 南方海域#Drops|1]]
+![[World 5: 南方海域#Drops_2|2]]
+![[World 5: 南方海域#Drops_3|3]]
+![[World 5: 南方海域#Drops_4|4]]
+![[World 5: 南方海域#Drops_5|5]]
+![[World 6: 中部海域#Drops|1]]
+![[World 6: 中部海域#Drops_2|2]]
+! -
+! -
+|-
+|041
+| style="background-color:#8ac;" |1
+|[[Kiso]]
+|O
+|O
+|O
+|O
+|O
+|O
+|X
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|042
+| style="background-color:#bbb;" |4
+|[[Nagara]]
+|O
+|X
+|O
+|O
+|
+|O
+|O
+|X
+|
+|O
+|
+|O
+|
+|
+|
+|
+|
+|X
+|X
+|
+|
+|X
+|X
+|O
+|
+|
+|
+|
+|
+|
+|-
+|043
+| style="background-color:#ace;" |2
+|[[Isuzu]]
+|
+|O
+|O
+|O
+|X
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|044
+| style="background-color:#ace;" |2
+|[[Natori]]
+|
+|O
+|O
+|O
+|X
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|045
+| style="background-color:#8ac;" |1
+|[[Yura]]
+|
+|O
+|O
+|O
+|X
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|-
+|046
+| style="background-color:#bbb;" |4
+|[[Sendai]]
+|O
+|O
+|O
+|X
+|
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|X
+|X
+|X
+|O
+|
+|
+|
+|
+|
+|
+|-
+|047
+| style="background-color:#8ac;" |1
+|[[Jintsuu]]
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|-
+|048
+| style="background-color:#ace;" |2
+|[[Naka]]
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|049
+| style="background-color:#ace;" |2
+|[[Chitose]]
+|
+|
+|O
+|O
+|O
+|O
+|X
+|X
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|050
+| style="background-color:#8ac;" |1
+|[[Chiyoda]]
+|
+|
+|O
+|O
+|O
+|O
+|X
+|X
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|051
+| style="background-color:#bbb;" |4
+|[[Mogami]]
+|
+|
+|
+|
+|
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|052
+| style="background-color:#0ff;" |3
+|[[Furutaka]]
+|
+|
+|X
+|O
+|X
+|O
+|O
+|X
+|
+|O
+|
+|
+|
+|
+|
+|
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|-
+|053
+| style="background-color:#8ac;" |1
+|[[Kako]]
+|X
+|
+|X
+|O
+|X
+|O
+|O
+|X
+|O
+|O
+|O
+|
+|
+|
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|054
+| style="background-color:#0ff;" |3
+|[[Aoba]]
+|
+|
+|X
+|O
+|X
+|O
+|O
+|X
+|
+|O
+|
+|
+|
+|
+|
+|
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|-
+|055
+| style="background-color:#bbb;" |4
+|[[Myoukou]]
+|
+|
+|
+|O
+|
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|056
+| style="background-color:#8ac;" |1
+|[[Nachi]]
+|X
+|
+|
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|057
+| style="background-color:#ace;" |2
+|[[Ashigara]]
+|X
+|
+|
+|O
+|
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|058
+| style="background-color:#8ac;" |1
+|[[Haguro]]
+|
+|
+|
+|O
+|
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|-
+|059
+| style="background-color:#bbb;" |4
+|[[Takao]]
+|
+|
+|
+|
+|
+|X
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|-
+|060
+| style="background-color:#bbb;" |4
+|[[Atago]]
+|
+|
+|
+|
+|
+|X
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|-
+! colspan="1" rowspan="2" | No.
+! colspan="1" rowspan="2" | Rarity
+! colspan="1" rowspan="2" | Ship Name
+! colspan="5" rowspan="1" | [[World 1: 鎮守府海域|World 1]]
+! colspan="5" rowspan="1" | [[World 2: 南西諸島海域|World 2]]
+! colspan="5" rowspan="1" | [[World 3: 北方海域|World 3]]
+! colspan="5" rowspan="1" | [[World 4: 西方海域|World 4]]
+! colspan="5" rowspan="1" | [[World 5: 南方海域|World 5]]
+! colspan="4" rowspan="1" | [[World 6: 中部海域|World 6]]
+! colspan="1" rowspan="2" | Remarks
+|-
+![[World 1: 鎮守府海域#Drops|1]]
+![[World 1: 鎮守府海域#Drops_2|2]]
+![[World 1: 鎮守府海域#Drops_3|3]]
+![[World 1: 鎮守府海域#Drops_4|4]]
+![[World 1: 鎮守府海域#Drops_5|5]]
+![[World 2: 南西諸島海域#Drops|1]]
+![[World 2: 南西諸島海域#Drops_2|2]]
+![[World 2: 南西諸島海域#Drops_3|3]]
+![[World 2: 南西諸島海域#Drops_4|4]]
+![[World 2: 南西諸島海域#Drops_5|5]]
+![[World 3: 北方海域#Drops|1]]
+![[World 3: 北方海域#Drops_2|2]]
+![[World 3: 北方海域#Drops_3|3]]
+![[World 3: 北方海域#Drops_4|4]]
+![[World 3: 北方海域#Drops_5|5]]
+![[World 4: 西方海域#Drops|1]]
+![[World 4: 西方海域#Drops_2|2]]
+![[World 4: 西方海域#Drops_3|3]]
+![[World 4: 西方海域#Drops_4|4]]
+! -
+![[World 5: 南方海域#Drops|1]]
+![[World 5: 南方海域#Drops_2|2]]
+![[World 5: 南方海域#Drops_3|3]]
+![[World 5: 南方海域#Drops_4|4]]
+![[World 5: 南方海域#Drops_5|5]]
+![[World 6: 中部海域#Drops|1]]
+![[World 6: 中部海域#Drops_2|2]]
+! -
+! -
+|-
+|061
+| style="background-color:#8ac;" |1
+|[[Maya]]
+|
+|
+|
+|X
+|
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|-
+|062
+| style="background-color:#8ac;" |1
+|[[Choukai]]
+|
+|
+|
+|O
+|
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|063
+| style="background-color:#bbb;" |4
+|[[Tone]]
+|
+|
+|
+|
+|
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|-
+|064
+| style="background-color:#bbb;" |4
+|[[Chikuma]]
+|
+|
+|
+|
+|
+|X
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|-
+|065
+| style="background-color:#bbb;" |4
+|[[Hiyou]]
+|
+|
+|
+|
+|
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|066
+| style="background-color:#bbb;" |4
+|[[Jun'you]]
+|
+|
+|
+|
+|
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|-
+|067
+| style="background-color:#8ac;" |1
+|[[Oboro]]
+|O
+|O
+|O
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|068
+| style="background-color:#8ac;" |1
+|[[Akebono]]
+|O
+|O
+|O
+|
+|O
+|
+|
+|
+|
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|069
+| style="background-color:#ace;" |2
+|[[Sazanami]]
+|O
+|O
+|X
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|070
+| style="background-color:#8ac;" |1
+|[[Ushio]]
+|O
+|O
+|O
+|
+|O
+|
+|
+|
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|071
+| style="background-color:#0ff;" |3
+|[[Akatsuki]]
+|O
+|O
+|O
+|O
+|
+|X
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|O
+|O
+|O
+|
+|
+|O
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|-
+|072
+| style="background-color:#ace;" |2
+|[[Hibiki]]
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|O
+|
+|O
+|
+|
+|O
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|-
+|073
+| style="background-color:#8ac;" |1
+|[[Ikazuchi]]
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|O
+|
+|O
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|074
+| style="background-color:#8ac;" |1
+|[[Inazuma]]
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|O
+|
+|O
+|
+|
+|O
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|-
+|075
+| style="background-color:#0ff;" |3
+|[[Hatsuharu]]
+|O
+|O
+|O
+|O
+|
+|X
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|O
+|X
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|076
+| style="background-color:#8ac;" |1
+|[[Nenohi]]
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|077
+| style="background-color:#ace;" |2
+|[[Wakaba]]
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|078
+| style="background-color:#ace;" |2
+|[[Hatsushimo]]
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|079
+| style="background-color:#0ff;" |3
+|[[Shiratsuyu]]
+|X
+|O
+|O
+|O
+|
+|X
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|O
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|080
+| style="background-color:#ace;" |2
+|[[Shigure]]
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|O
+|
+|O
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+! colspan="1" rowspan="2" | No.
+! colspan="1" rowspan="2" | Rarity
+! colspan="1" rowspan="2" | Ship Name
+! colspan="5" rowspan="1" | [[World 1: 鎮守府海域|World 1]]
+! colspan="5" rowspan="1" | [[World 2: 南西諸島海域|World 2]]
+! colspan="5" rowspan="1" | [[World 3: 北方海域|World 3]]
+! colspan="5" rowspan="1" | [[World 4: 西方海域|World 4]]
+! colspan="5" rowspan="1" | [[World 5: 南方海域|World 5]]
+! colspan="4" rowspan="1" | [[World 6: 中部海域|World 6]]
+! colspan="1" rowspan="2" | Remarks
+|-
+![[World 1: 鎮守府海域#Drops|1]]
+![[World 1: 鎮守府海域#Drops_2|2]]
+![[World 1: 鎮守府海域#Drops_3|3]]
+![[World 1: 鎮守府海域#Drops_4|4]]
+![[World 1: 鎮守府海域#Drops_5|5]]
+![[World 2: 南西諸島海域#Drops|1]]
+![[World 2: 南西諸島海域#Drops_2|2]]
+![[World 2: 南西諸島海域#Drops_3|3]]
+![[World 2: 南西諸島海域#Drops_4|4]]
+![[World 2: 南西諸島海域#Drops_5|5]]
+![[World 3: 北方海域#Drops|1]]
+![[World 3: 北方海域#Drops_2|2]]
+![[World 3: 北方海域#Drops_3|3]]
+![[World 3: 北方海域#Drops_4|4]]
+![[World 3: 北方海域#Drops_5|5]]
+![[World 4: 西方海域#Drops|1]]
+![[World 4: 西方海域#Drops_2|2]]
+![[World 4: 西方海域#Drops_3|3]]
+![[World 4: 西方海域#Drops_4|4]]
+! -
+![[World 5: 南方海域#Drops|1]]
+![[World 5: 南方海域#Drops_2|2]]
+![[World 5: 南方海域#Drops_3|3]]
+![[World 5: 南方海域#Drops_4|4]]
+![[World 5: 南方海域#Drops_5|5]]
+![[World 6: 中部海域#Drops|1]]
+![[World 6: 中部海域#Drops_2|2]]
+! -
+! -
+|-
+|081
+| style="background-color:#ace;" |2
+|[[Murasame]]
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|O
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|082
+| style="background-color:#ace;" |2
+|[[Yuudachi]]
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|O
+|
+|
+|O
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|083
+| style="background-color:#ace;" |2
+|[[Samidare]]
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|
+|O
+|
+|
+|
+|
+|
+|O
+|
+|O
+|
+|
+|O
+|
+|O
+|
+|
+|
+|
+|
+|
+|-
+|084
+| style="background-color:#0ff;" |3
+|[[Suzukaze]]
+|O
+|O
+|O
+|O
+|X
+|X
+|
+|O
+|
+|O
+|
+|O
+|
+|
+|
+|
+|O
+|
+|O
+|
+|
+|O
+|
+|O
+|
+|
+|
+|
+|
+|
+|-
+|085
+| style="background-color:#0ff;" |3
+|[[Asashio]]
+|X
+|O
+|
+|O
+|X
+|X
+|
+|
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|
+|
+|O
+|
+|
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|086
+| style="background-color:#8ac;" |1
+|[[Ooshio]]
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|087
+| style="background-color:#8ac;" |1
+|[[Michishio]]
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|O
+|
+|
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|088
+| style="background-color:#8ac;" |1
+|[[Arashio]]
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|O
+|
+|
+|O
+|
+|
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|089
+| style="background-color:#8ac;" |1
+|[[Arare]]
+|O
+|X
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|090
+| style="background-color:#ace;" |2
+|[[Kasumi]]
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|091
+| style="background-color:#0ff;" |3
+|[[Kagerou]]
+|X
+|X
+|
+|O
+|X
+|X
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|
+|
+|O
+|O
+|O
+|
+|
+|
+|O
+|
+|O
+|
+|
+|
+|
+|
+|
+|-
+|092
+| style="background-color:#ace;" |2
+|[[Shiranui]]
+|X
+|X
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|
+|
+|O
+|O
+|O
+|O
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|093
+| style="background-color:#8ac;" |1
+|[[Kuroshio]]
+|X
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|
+|
+|O
+|O
+|O
+|O
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|094
+| style="background-color:#bbb;" |4
+|[[Shouhou]]
+|
+|
+|
+|O
+|
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|O
+|
+|
+|O
+|O
+|O
+|O
+|
+|O
+|O
+|O
+|
+|
+|
+|
+|
+|
+|
+|-
+|106
+| style="background-color:#fc0;" |5
+|[[Shoukaku]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+| style="background-color: #ecea4c;" |X
+|
+| style="background-color: #7df83a;" |X
+|
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+|
+|
+|X
+|
+|
+|
+|-
+|107
+| style="background-color:#FFaaFF;" |6
+|[[Zuikaku]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+| style="background-color: #ecea4c;" |X
+|
+|
+| style="background-color: #7df83a;" |X
+| style="background-color: #ecea4c;" |X
+| style="background-color: #7df83a;" |X
+|
+|
+|X
+|
+|
+|
+|-
+|109
+| style="background-color:#bbb;" |4
+|[[Kinu]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|X
+|X
+|
+|
+|
+|
+|O
+|X
+|X
+|X
+|
+|X
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|110
+| style="background-color:#fc0;" |5
+|[[Abukuma]]
+|
+|
+|
+|
+|
+|
+|
+| style="background-color: #ecea4c;" |O
+|
+|X
+| style="background-color: #ecea4c;" |O
+|
+|
+|
+|
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+| style="background-color: #ecea4c;" |X
+| style="background-color: #ecea4c;" |X
+|
+| style="background-color: #ecea4c;" |X
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|111
+| style="background-color:#fc0;" |5
+|[[Yuubari]]
+|
+| style="background-color: #ecea4c;" |X
+| style="background-color: #ecea4c;" |X
+| style="background-color: #ecea4c;" |O
+|
+|
+|
+| style="background-color: #ecea4c;" |O
+| style="background-color: #ecea4c;" |O
+|
+|
+|
+|
+|
+|
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+|
+|
+|
+| style="background-color: #7df83a;" |X
+| style="background-color: #ecea4c;" |O
+| style="background-color: #ecea4c;" |X
+|
+|
+|
+|
+|
+|
+|-
+|112
+| style="background-color:#fc0;" |5
+|[[Zuihou]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|X
+|
+|
+|
+|
+|
+|
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+|
+| style="background-color: #ecea4c;" |X
+| style="background-color: #ecea4c;" |X
+|
+| style="background-color: #7df83a;" |X
+|
+|
+|X
+|
+|
+|
+|-
+! colspan="1" rowspan="2" | No.
+! colspan="1" rowspan="2" | Rarity
+! colspan="1" rowspan="2" | Ship Name
+! colspan="5" rowspan="1" | [[World 1: 鎮守府海域|World 1]]
+! colspan="5" rowspan="1" | [[World 2: 南西諸島海域|World 2]]
+! colspan="5" rowspan="1" | [[World 3: 北方海域|World 3]]
+! colspan="5" rowspan="1" | [[World 4: 西方海域|World 4]]
+! colspan="5" rowspan="1" | [[World 5: 南方海域|World 5]]
+! colspan="4" rowspan="1" | [[World 6: 中部海域|World 6]]
+! colspan="1" rowspan="2" | Remarks
+|-
+![[World 1: 鎮守府海域#Drops|1]]
+![[World 1: 鎮守府海域#Drops_2|2]]
+![[World 1: 鎮守府海域#Drops_3|3]]
+![[World 1: 鎮守府海域#Drops_4|4]]
+![[World 1: 鎮守府海域#Drops_5|5]]
+![[World 2: 南西諸島海域#Drops|1]]
+![[World 2: 南西諸島海域#Drops_2|2]]
+![[World 2: 南西諸島海域#Drops_3|3]]
+![[World 2: 南西諸島海域#Drops_4|4]]
+![[World 2: 南西諸島海域#Drops_5|5]]
+![[World 3: 北方海域#Drops|1]]
+![[World 3: 北方海域#Drops_2|2]]
+![[World 3: 北方海域#Drops_3|3]]
+![[World 3: 北方海域#Drops_4|4]]
+![[World 3: 北方海域#Drops_5|5]]
+![[World 4: 西方海域#Drops|1]]
+![[World 4: 西方海域#Drops_2|2]]
+![[World 4: 西方海域#Drops_3|3]]
+![[World 4: 西方海域#Drops_4|4]]
+! -
+![[World 5: 南方海域#Drops|1]]
+![[World 5: 南方海域#Drops_2|2]]
+![[World 5: 南方海域#Drops_3|3]]
+![[World 5: 南方海域#Drops_4|4]]
+![[World 5: 南方海域#Drops_5|5]]
+![[World 6: 中部海域#Drops|1]]
+![[World 6: 中部海域#Drops_2|2]]
+! -
+! -
+|-
+|116
+| style="background-color:#fc0;" |5
+|[[Mikuma]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+| style="background-color: #7df83a;" |X
+|
+|
+|
+| style="background-color: #ecea4c;" |X
+|
+|
+|
+|
+|
+|
+|
+|LSC Crafting
+|-
+|118
+| style="background-color:#bbb;" |4
+|[[Hatsukaze]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|X
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|119
+| style="background-color:#bbb;" |4
+|[[Maikaze]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|X
+|
+|
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|120
+| style="background-color:#bbb;" |4
+|[[Kinugasa]]
+|
+|
+|X
+|X
+|X
+|
+|
+|
+|
+|O
+|
+|
+|X
+|X
+|
+|
+|
+|X
+|X
+|
+|X
+|X
+|O
+|O
+|
+|
+|
+|
+|
+|
+|-
+|123
+| style="background-color:#bbb;" |4
+|[[I-19]]
+|
+|
+|
+|
+| style="background-color: #ecea4c;" |O
+|
+|
+|
+|
+|X
+|
+|
+|
+|X
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|X
+|
+|
+|X
+|
+|
+|'''''Unbuildable'''''
+|-
+|124
+| style="background-color:#bbb;" |4
+|[[Suzuya]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|X
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|X
+|X
+|
+|
+|
+|
+|
+|
+|-
+|125
+| style="background-color:#bbb;" |4
+|[[Kumano]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|X
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|X
+|X
+|
+|
+|X
+|
+|
+|
+|-
+|126
+| style="background-color:#0ff;" |3
+|[[I-168]]
+|
+|
+|
+|X
+|O
+|
+|
+| style="background-color:rgb(125,248,58);" |X
+|X
+|X
+|
+|X
+|O
+|
+|
+|X
+|
+|
+|
+|
+|
+|
+|X
+|
+|
+|O
+|
+|
+|
+|
+|-
+|127
+| style="background-color:#bbb;" |4
+|[[I-58]]
+|
+|
+|
+|
+|O
+|
+|
+|
+|
+|X
+|
+|
+|X
+|X
+|
+|
+|X
+|
+|
+|
+|X
+|X
+|X
+|X
+|
+|
+|
+|
+|
+|
+|-
+|128
+| style="background-color:#fc0;" |5
+|[[I-8]]
+|
+|
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|131
+| style="background-color:#aa00aa; color:#fff;" |8
+|[[Yamato]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|LSC Crafting
+|-
+|132
+| style="background-color:#bbb;" |4
+|[[Akigumo]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|X
+|O
+|X
+|X
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|133
+| style="background-color:#bbb;" |4
+|[[Yuugumo]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|X
+|
+|
+|
+|
+|
+|
+|X
+|
+|
+|
+|X
+|X
+|X
+|X
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|134
+| style="background-color:#bbb;" |4
+|[[Makigumo]]
+|
+|
+|
+|X
+|
+|
+|
+|X
+|
+|X
+|
+|
+|
+|
+|
+|
+|
+|X
+|
+|
+|
+|X
+|
+|O
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|135
+| style="background-color:#bbb;" |4
+|[[Naganami]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|X
+|
+|
+|
+|
+|
+|
+|X
+|
+|X
+|
+|X
+|O
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|137
+| style="background-color:#fc0;" |5
+|[[Agano]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+| style="background-color: #7df83a;" |X
+|
+|
+|
+|
+|
+|LSC Crafting
+|-
+|138
+| style="background-color:#fc0;" |5
+|[[Noshiro]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|LSC Crafting
+|-
+|139
+| style="background-color:#FFaaFF;" |6
+|[[Yahagi]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|X
+|
+|
+|LSC Crafting
+|-
+|140
+| style="background-color:#fc0;" |5
+|[[Sakawa]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|X
+|
+|
+|'''''Unbuildable'''''
+|-
+|143
+| style="background-color:rgb(170,0,170);" |<span style="color:rgb(255,255,255);">8</span>
+|[[Musashi]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|LSC Crafting
+|-
+! colspan="1" rowspan="2" | No.
+! colspan="1" rowspan="2" | Rarity
+! colspan="1" rowspan="2" | Ship Name
+! colspan="5" rowspan="1" | [[World 1: 鎮守府海域|World 1]]
+! colspan="5" rowspan="1" | [[World 2: 南西諸島海域|World 2]]
+! colspan="5" rowspan="1" | [[World 3: 北方海域|World 3]]
+! colspan="5" rowspan="1" | [[World 4: 西方海域|World 4]]
+! colspan="5" rowspan="1" | [[World 5: 南方海域|World 5]]
+! colspan="4" rowspan="1" | [[World 6: 中部海域|World 6]]
+! colspan="1" rowspan="2" | Remarks
+|-
+![[World 1: 鎮守府海域#Drops|1]]
+![[World 1: 鎮守府海域#Drops_2|2]]
+![[World 1: 鎮守府海域#Drops_3|3]]
+![[World 1: 鎮守府海域#Drops_4|4]]
+![[World 1: 鎮守府海域#Drops_5|5]]
+![[World 2: 南西諸島海域#Drops|1]]
+![[World 2: 南西諸島海域#Drops_2|2]]
+![[World 2: 南西諸島海域#Drops_3|3]]
+![[World 2: 南西諸島海域#Drops_4|4]]
+![[World 2: 南西諸島海域#Drops_5|5]]
+![[World 3: 北方海域#Drops|1]]
+![[World 3: 北方海域#Drops_2|2]]
+![[World 3: 北方海域#Drops_3|3]]
+![[World 3: 北方海域#Drops_4|4]]
+![[World 3: 北方海域#Drops_5|5]]
+![[World 4: 西方海域#Drops|1]]
+![[World 4: 西方海域#Drops_2|2]]
+![[World 4: 西方海域#Drops_3|3]]
+![[World 4: 西方海域#Drops_4|4]]
+! -
+![[World 5: 南方海域#Drops|1]]
+![[World 5: 南方海域#Drops_2|2]]
+![[World 5: 南方海域#Drops_3|3]]
+![[World 5: 南方海域#Drops_4|4]]
+![[World 5: 南方海域#Drops_5|5]]
+![[World 6: 中部海域#Drops|1]]
+![[World 6: 中部海域#Drops_2|2]]
+! -
+! -
+|-
+|153
+| style="background-color:#FF55FF;" |7
+|[[Taihou]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|LSC Crafting
+|-
+|154
+| style="background-color:#bbb;" |4
+|[[Katori]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|155
+| style="background-color:#FFaaFF;" |6
+|[[I-401]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|O
+|
+|
+|
+|LSC Crafting
+|-
+|161
+| style="background-color:#fc0;" |5
+|[[Akitsu Maru]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|LSC Crafting
+|-
+|163
+| style="background-color:#fc0;" |5
+|[[Maruyu]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|X
+|
+|
+|
+|LSC Crafting
+|-
+|164
+| style="background-color:#bbb;" |4
+|[[Yayoi]]
+|
+|
+|
+|
+|
+|
+| style="background-color: yellow;" |X
+| style="background-color: yellow;" |X
+| style="background-color: yellow;" |X
+|X
+|
+| style="background-color: yellow;" |X
+| style="background-color: yellow;" |X
+|
+|
+| style="background-color: yellow;" |X
+| style="background-color: yellow;" |X
+| style="background-color: yellow;" |X
+| style="background-color: yellow;" |X
+|
+|
+|
+|
+| O
+|
+|
+|
+|
+|
+|
+|-
+|165
+| style="background-color:#bbb;" |4
+|[[Uzuki]]
+|
+|
+|
+|
+|
+|
+|
+|
+|X
+|X
+|
+|
+|X
+| style="background-color: #7df83a;" |X
+|
+|
+|
+|
+| style="background-color: #7df83a;" |X
+|
+| style="background-color: #7df83a;" |X
+|
+| style="background-color: #7df83a;" |X
+| style="background-color: #7df83a;" |X
+|X
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|167
+| style="background-color:#fc0;" |5
+|[[Isokaze]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|168
+| style="background-color:#bbb;" |4
+|[[Urakaze]]
+|
+|
+|
+|
+|
+|
+|
+|X
+|X
+|O
+|
+|
+|
+|
+|
+|
+|X
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|169
+| style="background-color:#bbb;" |4
+|[[Tanikaze]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|X
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|170
+| style="background-color:#bbb;" |4
+|[[Hamakaze]]
+|
+|
+|
+|
+|
+|
+|X
+|
+|
+|O
+|
+|
+|X
+|
+|
+|
+|
+|
+|X
+|
+|
+|X
+|
+|X
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|171
+| style="background-color:#FF55FF;" |7
+|[[Bismarck]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|LSC Crafting
+|-
+|174
+| style="background-color:#fc0;" |5
+|[[Z1]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|''Quest''
+|-
+|175
+| style="background-color:#fc0;" |5
+|[[Z3]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+|176
+| style="background-color:#FFaaFF;" |6
+|[[Prinz Eugen]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|181
+| style="background-color:#FFaaFF;" |6
+|[[Amatsukaze]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|X
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|182
+| style="background-color:#FFaaFF;" |6
+|[[Akashi]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|X<ref>Can be found if you don't have Akashi yet.</ref>
+|
+|
+|
+|
+|O
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|O
+|
+|
+|'''''Unbuildable'''''
+|-
+|183
+| style="background-color:#FFaaFF;" |6
+|[[Ooyodo]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|184
+| style="background-color:#bbb;" |4
+|[[Taigei]]
+|
+|
+|
+|
+|
+|
+|
+|
+|X
+| style="background-color: #7df83a;" |X
+|
+|
+|
+|X
+|
+|
+|
+|
+| style="background-color: #7df83a;" |X
+|
+|
+| style="background-color: #7df83a;" |X
+|
+|
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+! colspan="1" rowspan="2" | No.
+! colspan="1" rowspan="2" | Rarity
+! colspan="1" rowspan="2" | Ship Name
+! colspan="5" rowspan="1" | [[World 1: 鎮守府海域|World 1]]
+! colspan="5" rowspan="1" | [[World 2: 南西諸島海域|World 2]]
+! colspan="5" rowspan="1" | [[World 3: 北方海域|World 3]]
+! colspan="5" rowspan="1" | [[World 4: 西方海域|World 4]]
+! colspan="5" rowspan="1" | [[World 5: 南方海域|World 5]]
+! colspan="4" rowspan="1" | [[World 6: 中部海域|World 6]]
+! colspan="1" rowspan="2" | Remarks
+|-
+![[World 1: 鎮守府海域#Drops|1]]
+![[World 1: 鎮守府海域#Drops_2|2]]
+![[World 1: 鎮守府海域#Drops_3|3]]
+![[World 1: 鎮守府海域#Drops_4|4]]
+![[World 1: 鎮守府海域#Drops_5|5]]
+![[World 2: 南西諸島海域#Drops|1]]
+![[World 2: 南西諸島海域#Drops_2|2]]
+![[World 2: 南西諸島海域#Drops_3|3]]
+![[World 2: 南西諸島海域#Drops_4|4]]
+![[World 2: 南西諸島海域#Drops_5|5]]
+![[World 3: 北方海域#Drops|1]]
+![[World 3: 北方海域#Drops_2|2]]
+![[World 3: 北方海域#Drops_3|3]]
+![[World 3: 北方海域#Drops_4|4]]
+![[World 3: 北方海域#Drops_5|5]]
+![[World 4: 西方海域#Drops|1]]
+![[World 4: 西方海域#Drops_2|2]]
+![[World 4: 西方海域#Drops_3|3]]
+![[World 4: 西方海域#Drops_4|4]]
+! -
+![[World 5: 南方海域#Drops|1]]
+![[World 5: 南方海域#Drops_2|2]]
+![[World 5: 南方海域#Drops_3|3]]
+![[World 5: 南方海域#Drops_4|4]]
+![[World 5: 南方海域#Drops_5|5]]
+![[World 6: 中部海域#Drops|1]]
+![[World 6: 中部海域#Drops_2|2]]
+! -
+! -
+|-
+|186
+| style="background-color:#fc0;" |5
+|[[Tokitsukaze]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|201
+| style="background-color:#FFaaFF;" |6
+|[[Unryuu]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|202
+| style="background-color:#FFaaFF;" |6
+|[[Amagi]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|205
+| style="background-color:#bbb;" |4
+|[[Harusame]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|209
+| style="background-color:#bbb;" |4
+|[[Hayashimo]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|210
+| style="background-color:#bbb;" |4
+|[[Kiyoshimo]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|213
+| style="background-color:#bbb;" |4
+|[[Asagumo]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|214
+| style="background-color:#bbb;" |4
+|[[Yamagumo]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|X
+|
+|X
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|215
+| style="background-color:#bbb;" |4
+|[[Nowaki]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|221
+| style="background-color:#FFaaFF;" |6
+|[[Akizuki]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|225
+| style="background-color:#bbb;" |4
+|[[Asashimo]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''
+|-
+|231
+| style="background-color:#fc0;" |5
+|[[U-511]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|'''''Unbuildable'''''

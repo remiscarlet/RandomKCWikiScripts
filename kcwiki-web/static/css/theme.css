@@ -1,0 +1,67 @@
+body {
+  padding-top: 70px;
+  padding-left: 70px;
+  padding-right: 70px;
+  padding-bottom: 30px;
+}
+
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+  width: auto;
+}
+
+.error-main{
+  color: red;
+  font-weight: bold;
+}
+
+.error-sub{
+  color:red;
+}
+
+.notice-main{
+  color: green;
+  font-weight: bold;
+}
+
+.notice-sub{
+	color:green;
+}
+
+td#setSize{
+  background-color: #A0A0A0;
+}
+
+td#presence{
+  background-color: #AEAEAE;
+}
+
+td#feature{
+  background-color: #BBBBBB;
+}
+
+td#conjunction{
+  background-color: #E2E2E2;
+}
+
+tr#high{
+  background-color: #C4C4C4;
+}
+
+tr#low{
+  background-color: #E2E2E2;
+}
+
+
+
+
+

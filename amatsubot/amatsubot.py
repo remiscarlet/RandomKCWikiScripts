@@ -1,0 +1,869 @@
+import xchat
+import random
+import time
+import io
+import re
+import math
+import urllib
+import urllib2
+import sqlite3
+import threading
+import requests
+import HTMLParser
+import json
+from py_expression_eval import Parser
+import sys
+sys.path.insert(0,'G:\\Dropbox\\YutoProgramming\\RandomKCWikiScripts\\amatsubot')
+from chatterbotapi import ChatterBotFactory, ChatterBotType
+from tweepy import Stream
+from tweepy import OAuthHandler
+from tweepy.streaming import StreamListener
+import Amatsubot_Settings as settings
+
+__module_name__ = "Amatsukaze" 
+__module_version__ = "v0.1.8.3 You mean Remi's not dead?"
+__module_description__ = "The Amatsukaze Bot" 
+__latest_addition__ = "This wasn't even supposed to be used outside my company's IRC services \ o /"
+__full_info__ = '''
+This is the first iteration of the AmatsukazeBot. Random new features will be added on at random 
+intervals. Feel free to suggest strange functionalities to Remi/w0lf/Yuto and he'll probably 
+add it on when he's bored.
+'''
+
+DESTINATION = None
+KEEPLISTENING = True
+
+factory = ChatterBotFactory()
+
+bot = factory.create(ChatterBotType.CLEVERBOT)
+
+sessions = list()
+
+conn = sqlite3.connect(settings.AMATSUDB_PATH)
+c = conn.cursor()
+
+def isYuto(xChatNick):
+	return xChatNick.lower() == "remi_scarlet" or xChatNick.lower() == "remiw0lf" or xChatNick.lower() == "amatsukaze"
+
+def say(destination,msg):
+	if type(msg) == unicode:
+		thing = (u"say \00307"+msg).replace(u"\/",u"/").encode('utf-8')
+	else:
+		thing = ("say \00307"+msg).replace("\/","/")
+	destination.command(thing)
+
+def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
+	weatherAPI = settings.weatherAPI
+	xChatNick = word[0].split("|")[0]
+	xChatMessage = word[1].strip()
+	xChatNickFull = word[0]
+	xChatMessageSplitUnsanitized = xChatMessage.split(" ")
+	xChatMessageSplit = list()
+	isCaptions = (xchat.get_info("network") == "Slack")
+	channel = destination.get_info("channel").lower()
+	for word in xChatMessageSplitUnsanitized:
+		xChatMessageSplit.append(word.lower())
+	if xChatMessage[0] != "!":
+		#is url
+		for piece in xChatMessage.split(" "):
+			if piece.find("http") >-1:
+				def getURLTitle(url,destination):
+					r = requests.head(url)
+					encoding = re.search("<meta.*?content=\".*?charset=(.*?)\"",r.text,re.DOTALL)
+					print encoding
+					print "AAAA" 
+					encode = "utf8"
+					if encoding != None:
+						encode = encoding.group(1)
+					title = re.search("<title.*?>(.*?)</title>",r.text.encode("utf8"), re.DOTALL)
+					if title != None and title.group(1) != "":
+						say(destination,title.group(1).strip())
+					elif r.status_code != 404:
+						url = urllib2.unquote(url).decode(encode)
+						split = url.split("/")
+						thing = split[:3]
+						thing = ["/".join(thing)]
+						thing.append(split[-1])
+						say(destination," - ".join(thing))
+					else:
+						print "invalid url"
+						print piece
+				t = threading.Thread(target=getURLTitle, args=(piece.strip(), destination))
+				t.start()
+
+	if xChatMessage[0] == "!":
+		firstWord = xChatMessageSplit[0]
+		userList = xchat.get_list("users")
+		opped = False
+		for user in userList:
+			if user.nick.split("|")[0].lower() == xChatNick.lower():
+				if "@" in user.prefix:
+					opped = True
+		########################
+		### OP ACCESS REQUIRED COMMANDS
+		########################
+		if firstWord == "!starttwit" and isYuto(xChatNick):
+			global LISTEN
+			global KEEPLISTENING
+			if not KEEPLISTENING:
+				LISTEN.start()
+				KEEPLISTENING = True
+				say(destination,"Starting twitter listener")
+		if firstWord in ["!endtwit","!stoptwit","!twitend"] and isYuto(xChatNick):
+			global LISTEN
+			global KEEPLISTENING
+			if KEEPLISTENING:
+				KEEPLISTENING = False
+				DESTINATION = xchat.get_context()
+				say(destination,"Flagged twitter listener to stop ASAP")
+		if firstWord == "!op":
+			if opped:
+				toOp = xChatMessageSplit[1]
+				channel = xchat.get_info("channel")
+				destination.command("cs flags "+channel+" "+toOp+" AOP")
+				say(destination,"User "+toOp+" has been added to the Auto-Op list!")
+			else:
+				say(destination,"You need to be opped to use that!")
+		#
+		#
+		if firstWord == "!deop":
+			if opped:
+				toDeop = xChatMessageSplit[1]
+				channel = xchat.get_info("channel")
+				destination.command("cs flags "+channel+" "+toDeop+" -O")
+				say(destination,"User "+toDeop+" has been removed from the Auto-Op list!")
+			else:
+				say(destination,"You need to be opped to use that!")
+		#
+		#
+		if firstWord == "!voice":
+			if opped:
+				chanUsers = xchat.get_list(users)
+				print chanUsers
+				toOp = xChatMessageSplit[1]
+				channel = xchat.get_info("channel")
+				destination.command("cs flags "+channel+" "+toOp+" +V")
+				print "cs flags "+channel+" "+toOp+" +V"
+				say(destination,"User "+toOp+" has been added to the Auto-Voice list!")
+			else:
+				say(destination,"You need to be opped to use that!")
+		#
+		#
+		if firstWord == "!devoice":
+			if opped:
+				chanUsers = xchat.get_list(users)
+				print chanUsers
+				toDeop = xChatMessageSplit[1]
+				channel = xchat.get_info("channel")
+				destination.command("cs flags "+channel+" "+toDeop+" -V")
+				say(destination,"User "+toDeop+" has been removed from the Auto-Voice list!")
+			else:
+				say(destination,"You need to be opped to use that!")
+		#
+		#
+		if firstWord == "!topic" or firstWord == "!settopic":
+			if opped:
+				xChatMessageSplitUnsanitized.pop(0)
+				string = ""
+				for word in xChatMessageSplitUnsanitized:
+					string += " "+word
+				string.strip()
+				channel = xchat.get_info("channel")
+				destination.command("cs topic "+channel+" "+string)
+			elif destination.get_info("network") == "Slack":
+				say(destination,"There are no topics in Slack!")
+			else:
+				say(destination,"You need to be opped to use that!")
+		#
+		#
+		if firstWord == "!herald":
+			if len(xChatMessage.split(" "))>1:
+				secondWord = xChatMessage.split(" ")[1]
+				target = xChatMessage.split(" ")[2].lower()
+				if secondWord == "add":
+					if len(xChatMessage.split(" "))>2:
+						message = xChatMessage.split(" ")[3:]
+						if opped or isYuto(xChatNick):
+							c.execute('SELECT * FROM heralds WHERE Nick = ?', (target,))#check
+							result = c.fetchone()
+							if result == None:
+								c.execute('INSERT INTO heralds VALUES (?,?)', (target, " ".join(message)))
+							else:
+								c.execute('UPDATE heralds SET Herald=? WHERE Nick=?', (" ".join(message),target))
+							conn.commit()
+							say(destination, "Got it! I'll say that from now on <3")
+						else:
+							pass
+							#say(destination,"You need to be opped to use that!")
+				if secondWord == "remove":
+					if opped or isYuto(xChatNick):
+						c.execute('SELECT * FROM heralds WHERE Nick = ?', (target,))#check
+						result = c.fetchone()
+						if result != None:
+							c.execute('DELETE FROM heralds WHERE Nick = ?', (target,))
+							say(destination, "Okay, I won't say anything when "+xChatMessage.split(" ")[2]+" joins anymore!")
+						else:
+							say(destination, "I don't say anything when that user joins right now!")
+						conn.commit()
+			else:
+				say(destination,"You didn't provide enough arguments! \00307!herald <add|remove> <nick> [message]")
+		########################
+		# OP ACCESS NOT REQUIRED
+		########################
+		if firstWord == "!ver":
+			say(destination,"Amatsukaze is currently on version \00304"+__module_version__)
+			say(destination,"The Version summary is: \00304"+__latest_addition__)
+			say(destination,"Type \00304!info\00307 to get the full version info.")
+		#
+		#
+		if firstWord == "!info":
+			say(destination,__full_info__.replace("\n",""))
+		#
+		#
+		if firstWord == "!ping":
+			say(destination,"Pong!")
+		if firstWord == "!quote" or firstWord == "!quotes":
+			channel = xchat.get_info("channel")
+			if len(xChatMessage.split(" "))>2:
+				secondWord = xChatMessage.split(" ")[1]
+				#
+				if secondWord in ["add","+"]:
+					message = " ".join(xChatMessage.split(" ")[2:])
+					timestamp = str(time.time())
+					print timestamp
+					print type(timestamp)
+					c.execute("SELECT Id FROM Quotes ORDER BY Id DESC")
+					currId = c.fetchone()
+					currId = currId[0]+1 if currId != None else 1
+					print currId
+					nick = xChatNick.split("|")[0]
+					c.execute("INSERT INTO Quotes VALUES (?,?,?,?,?)", (currId,timestamp,channel,nick,message))
+					conn.commit()
+					say(destination,"Got it! I've saved that quote as number #"+str(currId)+" <3")
+				#
+				if secondWord in ["delete","remove","del","rem","rm"] and isYuto(xChatNick):
+					quoteId = xChatMessage.split(" ")[2]
+					quoteId.replace("#","")
+					# Removing "#" incase people put in "#134" for id instead of "134"
+					if quoteId.isdigit():
+						c.execute("SELECT * FROM Quotes WHERE Id=?",(quoteId,))
+						if c.fetchone() != None:
+							c.execute("DELETE FROM Quotes WHERE Id=?",(quoteId,))
+					else:
+						say(destination, "That quote id isn't even a number :(")
+				#
+				if secondWord in ["show", "tell", "see", "read"]:
+					quoteId = xChatMessage.split(" ")[2]
+					quoteId.replace("#","")
+					if quoteId.isdigit():
+						c.execute("SELECT * FROM Quotes WHERE Id=? AND channel=?",(quoteId,channel))
+						result = c.fetchone()
+						if result == None:
+							say(destination,"I couldn't find a quote by that id or it doesn't belong to this channel!")
+						else:
+							timestamp = time.gmtime(float(result[1]))
+							nick = result[3]
+							message = '"'+result[4]+'"'
+							days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+							timeStr = (str(timestamp[3]).zfill(2)+":"+str(timestamp[4]).zfill(2)+":"+str(timestamp[5]).zfill(2)+" GMT 0:00 on "
+									  +str(timestamp[1])+"/"+str(timestamp[2])+"/"+str(timestamp[0]))
+							say(destination,"Quote #"+quoteId+" was saved at "+timeStr+" by "+nick)
+							say(destination,message)
+				if secondWord in ["search","find","lookup"]:
+					searchTerms = xChatMessage.split(" ")[2:]
+					hits = list()
+					for term in searchTerms:
+						c.execute("SELECT Id FROM Quotes WHERE Message LIKE ? OR Nick LIKE ?",("%"+term+"%","%"+term+"%"))
+						results = c.fetchall()
+						for result in results:
+							if result[0] not in hits:
+								hits.append(result[0])
+					hits.sort()
+					if len(hits)>0:
+						quoteMessage = ""
+						for quoteId in hits:
+							# [0] because they're returned as tuples, eg (1,), (2,), (3,)
+							quoteMessage +="#"+str(quoteId)+", "
+						quoteMessage = quoteMessage[:-2]
+						say(destination,"Based on your search terms, these are the quotes I've found that match!")
+						say(destination,quoteMessage)
+					else:
+						say(destination,"I'm sorry, but I couldn't find any quotes that contained those terms :(")
+
+			#
+			if len(xChatMessage.split(" "))>1:
+				secondWord = xChatMessage.split(" ")[1]
+				#
+				if secondWord in ["list","all"]:
+					c.execute("SELECT Id FROM Quotes WHERE Channel=? ORDER BY Id DESC LIMIT 40",(channel,))
+					results = c.fetchall()
+					print results
+					if results != []:
+						quoteMessage = ""
+						for quoteId in reversed(results):
+							# [0] because they're returned as tuples, eg (1,), (2,), (3,)
+							quoteMessage +="#"+str(quoteId[0])+", "
+						quoteMessage = quoteMessage[:-2]
+						say(destination, "These are id's of the last 40 quotes I have for "+channel+"! You can search for quotes with !quotes find <search>")
+						say(destination, quoteMessage)
+					else:
+						say(destination,"You don't have any quotes for this channel :(")
+				if secondWord in ["random","shuffle","rand"]:
+					c.execute("SELECT Id FROM Quotes WHERE Channel=?",(channel,))
+					results = c.fetchall()
+					print results
+					quoteId = random.choice(results)[0]
+					c.execute("SELECT * FROM Quotes WHERE Id=?",(quoteId,))
+					result = c.fetchone()
+					timestamp = time.gmtime(float(result[1]))
+					nick = result[3]
+					message = '"'+result[4]+'"'
+					timeStr = (str(timestamp[3]).zfill(2)+":"+str(timestamp[4]).zfill(2)+":"+str(timestamp[5]).zfill(2)+" GMT 0:00 on "
+							  +str(timestamp[1])+"/"+str(timestamp[2])+"/"+str(timestamp[0]))
+					say(destination,"Quote #"+str(quoteId)+" was saved at "+timeStr+" by "+nick)
+					say(destination,message)
+			if len(xChatMessage.split(" ")) == 1:
+				say(destination,"!quotes <add|list|search|show> [message/searchterms/quote id]")
+		#
+		#
+		if firstWord == "!dice":
+			if len(xChatMessageSplit) > 1:
+				numSides = xChatMessageSplit[1]
+				if numSides == "2":
+					face = "Heads" if random.randint(0,1) == 0 else "Tails"
+					say(destination,"Randomly flipping a coin: \00304"+face )
+				elif numSides.isdigit():
+					numSides = xChatMessageSplit[1]
+
+					if int(numSides) <=20:
+						say(destination,"Randomly rolling a "+numSides+"-sided dice: \00304"+str(random.randint(1,int(numSides))))
+					else:
+						say(destination,"Randomly rolling a "+format(int(numSides),",")+"-sided dice:\00304"+format(random.randint(1,int(numSides)),",")+". \0037That's more like a sphere than a dice at that point, btw.")
+				elif xChatMessageSplit[1] == "help":
+					say(destination,"Usage: \00304!dice [number of sides]\00307. Argument optional. Will default to 6 sides.")
+				else:
+					say(destination,"Sorry, the argument wasn't an integer.")
+			else:
+				say(destination,"Randomly rolling a 6-sided dice: \00304"+str(random.randint(1,6)))
+		if firstWord == "!flip" or firstWord == "!coin":
+			flippingWhat = xChatMessage.split(" ")
+			if len(flippingWhat) == 1:
+				flippingWhat = "coin"
+			elif len(flippingWhat)>1:
+				flippingWhat = " ".join(flippingWhat[1:])
+			face = "Heads" if random.randint(0,1) == 0 else "Tails"
+			say(destination,"Randomly flipping a "+flippingWhat+": \00304"+face )
+		#
+		#
+		if firstWord == "!mecab" and isCaptions:
+			say(destination,"\0034java.lang.UnsatisfiedLinkError\0037 ETA Until Completion: "+str(random.randint(10,100))+" hours")
+		#
+		if firstWord in ["!wolfram", "!wa", "!wolframalpha", "!alpha"]:
+			def getWolframAndSend(destination,url):
+				r = requests.get(url)
+				p = re.compile("<pod title=[\'\"](?!Input).*?[\'\"].*?<plaintext>(.*?)<\/plaintext>", re.DOTALL)
+				results = p.search(r.content)
+				if results == None:
+					say(destination,"Oops, something went wrong! Wolfram didn't understand your input!")
+				else:
+					say(destination,results.group(1))
+			query = "+".join([urllib.quote(string) for string in xChatMessage.split(" ")[1:]])
+			appid = settings.appid
+			url = "http://api.wolframalpha.com/v2/query?input="
+			url += query
+			url += "&"
+			url += appid
+			t = threading.Thread(target=getWolframAndSend,args=(destination,url))
+			t.start()
+		#
+		if firstWord == "!g":
+			url = "http://www.google.com/search?q="
+			if xChatMessage.find(" ")>-1:
+				words = xChatMessage.split(" ")[1:]
+				for i in xrange(len(words)):
+					url+=words[i]
+					if i != len(words)-1:
+						url+="&"
+				url+="&btnI"
+				print "URL: "+url
+				resp = urllib2.urlopen(url)
+				print resp
+		#
+		#
+		if firstWord in ["!c", "!calc", "!calculator"]:
+			class customFuncParse(object):
+				def __init__(self, expr, variables):
+					self.expr = expr
+					self.vars = variables
+					self.functions = {"fact":self.fact, 
+									  "factorial":self.fact,
+									  "rand":self.rand,
+									  "random":self.rand,
+									  "randint":self.randint,
+									  "choose":self.choose}
+				def fact(self,n):
+					return math.factorial(n)
+				def rand(self):
+					return random.random()
+				def randint(self,x,y):
+					return random.randint(x,y)
+				def choose(self,x,y):
+					return fact(x)/(fact(x-y)*fact(y))
+				def findClosingParen(self,startIndex):
+					stack = []
+					expr = self.expr
+					for i in xrange(len(expr[startIndex:])):
+						c = expr[i+startIndex]
+						if c == "(":
+							stack.append("(")
+						elif c == ")":
+							prev = stack.pop(len(stack)-1)
+							if prev != "(":
+								raise Exception("Malformed expression")
+						if len(stack) == 0:
+							return i+startIndex
+					raise Exception("Malformed expression")
+				def parse2(self, expression = None):
+					expr = expression
+					if expr == None:
+						expr = self.expr
+					for funcName,funcCall in self.functions.items():
+						if expr.find(funcName)>-1:
+							index = expr.find(funcName)
+							nextIndex = index+len(funcName)
+							#endIndex = expr.find(")",nextIndex)
+							endIndex = self.findClosingParen(nextIndex)
+							print nextIndex, endIndex
+							arg = expr[nextIndex+1:endIndex]
+							print "ARG: "+str(arg)
+							if funcName in ["fact", "factorial"] and expr[nextIndex] == "(":
+								if arg.isdigit():
+									expr = expr.replace(funcName+"("+arg+")",str(funcCall(int(arg))))
+								elif arg in self.vars:
+									if arg in self.vars:
+										var = self.vars[arg]
+										expr = expr.replace(funcName+"("+arg+")",str(funcCall(int(var))))
+							if funcName in ["rand","random"]:
+								if endIndex-nextIndex == 1:
+									expr = expr.replace(funcName+"("+arg+")",str(funcCall()))
+							if funcName in ["randint", "choose"]:
+								stringArgs = arg.split(",")
+								numArgs = [0,0]
+								if len(stringArgs) == 2:
+									for i in xrange(len(stringArgs)):
+										if stringArgs[i].isdigit():
+											numArgs[i] = int(stringArgs[i])
+										elif stringArgs[i] in self.vars:
+											numArgs[i] = int(self.vars[stringArgs[i]])
+										else:
+											raise Exception("Invalid input for randint")
+								if funcName == "randint":
+									x = min(numArgs)
+									y = max(numArgs)
+									expr = expr.replace(funcName+"("+arg+")",str(funcCall(x,y)))
+								if funcName == "choose":
+									x = numArgs[0]
+									y = numArgs[1]
+									fact = math.factorial
+									expr = expr.replace(funcName+"("+arg+")",str(fact(x)/(fact(x-y)*fact(y))))
+					if expression == None:
+						self.expr = expr
+					return expr
+
+				def parse2(self, expression=None):
+					expr = expression
+					if expr == None:
+						expr = self.expr
+					for funcName,funcCall in self.functions.items():
+						if expr.find(funcName)>-1:
+							index = expr.find(funcName)
+							nextIndex = index+len(funcName)
+							#endIndex = expr.find(")",nextIndex)
+							endIndex = self.findClosingParen(nextIndex)
+							print nextIndex, endIndex
+							arg = expr[nextIndex+1:endIndex]
+							print "ARG: "+str(arg)
+							if funcName in ["fact", "factorial"] and expr[nextIndex] == "(":
+								if arg.isdigit():
+									expr = expr.replace(funcName+"("+arg+")",str(funcCall(int(arg))))
+								elif arg in self.vars:
+									if arg in self.vars:
+										var = self.vars[arg]
+										expr = expr.replace(funcName+"("+arg+")",str(funcCall(int(var))))
+							if funcName in ["rand","random"]:
+								if endIndex-nextIndex == 1:
+									expr = expr.replace(funcName+"("+arg+")",str(funcCall()))
+							if funcName in ["randint", "choose"]:
+								stringArgs = arg.split(",")
+								numArgs = [0,0]
+								if len(stringArgs) == 2:
+									for i in xrange(len(stringArgs)):
+										if stringArgs[i].isdigit():
+											numArgs[i] = int(stringArgs[i])
+										elif stringArgs[i] in self.vars:
+											numArgs[i] = int(self.vars[stringArgs[i]])
+										else:
+											raise Exception("Invalid input for randint")
+								if funcName == "randint":
+									x = min(numArgs)
+									y = max(numArgs)
+									expr = expr.replace(funcName+"("+arg+")",str(funcCall(x,y)))
+								if funcName == "choose":
+									x = numArgs[0]
+									y = numArgs[1]
+									fact = math.factorial
+									expr = expr.replace(funcName+"("+arg+")",str(fact(x)/(fact(x-y)*fact(y))))
+					if expression == None:
+						self.expr = expr
+					return expr
+			def choose(x,y):
+				fact = math.factorial
+				return fact(x)/fact(x-y)/fact(y)
+			def random1(asdf):
+				return random.random()
+			def randint(x):
+				return int(round(x*random1(0)))
+			expression = " ".join(xChatMessage.split(" ")[1:])
+			var = expression.split("where")
+			varsToEval = dict()
+
+			if len(var)>1:
+				var = var[1].strip()
+				for delimiter in [";","|"," ","&",",","and"]:
+					temp = var.split(delimiter)
+					for variable in temp:
+						for delimiter in ["=","is","is equal to", "is = to", "equal to", "equal"]:
+							split = variable.split(delimiter)
+							print split
+							if len(split)==2:
+								varName = split[0].strip()
+								val = split[1].strip()
+								for varType in ["float","int"]:
+									try:
+										eval(varType+"(val)")
+										val = eval(varType+"(val)")
+									except:
+										pass
+								varsToEval[varName] = val
+			try:
+				print "XXXX"
+				print expression
+				#expression = customFuncParse(expression,varsToEval).parse()
+				expression = expression.split("where")[0].strip()
+				parser = Parser()
+				parser.ops1["factorial"] = math.factorial
+				parser.ops1["fact"] = math.factorial
+				parser.ops1["random"] = random1
+				parser.ops1["randint"] = randint
+				val = parser.parse(expression)
+				#print val.toString()
+				#print varsToEval
+				val = val.evaluate(varsToEval)
+				#parser.parse2(expression)
+				if len(str(val))>426:
+					say(destination,"The output was too long!")
+				elif type(val) == float and val.is_integer():
+					say(destination,str(int(val)))
+				else:
+					say(destination,str(val))
+			except:
+				say(destination,"That probably wasn't a valid expression :(")
+
+
+		#
+		#
+		if firstWord == "!weather":
+			xChatMessageSplit.pop(0)
+			info = dict()
+			if len(xChatMessageSplit) == 0:
+					url = "http://api.wunderground.com/api/"+weatherAPI+"/geolookup/conditions/q/15213.json"
+					jsonResponse = json.loads(urllib2.urlopen(url).read())
+			if len(xChatMessageSplit) == 1:
+				if xChatMessageSplit[0].isdigit() and len(xChatMessageSplit[0]) == 5:
+					url = "http://api.wunderground.com/api/"+weatherAPI+"/geolookup/conditions/q/"+str(xChatMessageSplit[0])+".json"
+					jsonResponse = json.loads(urllib2.urlopen(url).read())
+				if xChatMessageSplit[0] == "help":
+					say(destination,"Usage: \00304!weather [zipcode]\00307. At the moment, only zipcodes are supported. If no zipcode is provided, it will default to weather for \00304Pittsburgh, PA\0037.")
+			else:
+				pass
+			info = jsonResponse["current_observation"]
+			location = info["display_location"]["full"]
+			weather = info["weather"]
+			temp = info["temperature_string"]
+			feelsLike = info["feelslike_string"]
+			humidity = info["relative_humidity"]
+			windStrength =info["wind_string"]
+			windDir = info["wind_dir"]
+			visibility = info["visibility_mi"]+"mi ("+info["visibility_km"]+"km)"
+			lastUpdated = info["observation_time"]
+			printString = "The weather in \00304"+location+"\0037 is currently \00304"+weather+"\0037 at \00304"+temp+"\0037 which feels like \00304"+feelsLike+"\0037. "
+			printString += "Humidity is at \00304"+humidity+". "
+			printString += "Wind strength is expected to be \00304"+windStrength+"\0037 with visibility ranges of \00304"+visibility+"\0037. "
+			printString += "This information was \00304"+lastUpdated+"\0037."
+			say(destination,printString)
+		#
+		#
+		if firstWord == "!compass":
+			listOfDirs = ["North", "South", "East", "West", 
+						  "NE", "NW", "SE", "SW", 
+						  "NEE", "NNE", "NNW", "NWW",
+						  "SEE", "SSE", "SSW", "SWW",
+						  "Up", "Down", "Left", "Right"]
+			direc = ""
+			if random.randint(1,100)>80:
+				direc = random.choice(listOfDirs)
+				say(destination,"Go "+direc)
+			else:
+				angle = random.randint(0,360)
+				subAngle = random.random()
+				angleStr = str(angle+subAngle)
+				direc = random.choice(["diagonally", "forward", "diagonally forward", 
+									   "reversed", "inversed", "upside down", "over your shoulder and to the right",
+									   "inside out", "tuturuu"])
+				end = random.choice(["hit a bus", "die", "end up back where you started", "find an elephant",
+									 "get to the voidzone", "sink", "get burned by love", "walk off a building",
+									 "tear a hole in spacetime and end up playing cards with Mecha Hitler",
+									 "happen across an ancient samurai sword of lost tradition and commit sudoku"])
+				string = "Go "+angleStr+" degrees "+direc+" until you "+end+"."
+				say(destination,string)
+		#
+		#
+		if firstWord == "!help":
+			if len(xChatMessage.split(" ")) == 1:
+				say(destination, "Just add the name of the command after \00304!help\00307 to get more info")
+			if len(xChatMessage.split(" ")) >1:
+				secondWord = xChatMessage.split(" ")[1].strip("!")
+				if secondWord in ["c", "calculator", "calc"]:
+					say(destination,"This is a smart calculator! It supports most major functions like trig, rounding(floor/round/ceil), logs, exponents, etc. You can also use variable names. Use the word 'where' in your equation to separate your eq from variables. Try typing in natural language as I account for multiple interpretations!")
+					say(destination,"Eg, \00304!c (x+y-5)/t where x is 5 and y=2 and t is equal to 20")
+				elif secondWord in ["dice"]:
+					say(destination,"Usage: \00304!dice [number of sides]\00307. Argument optional. Will default to 6 sides.")
+				elif secondWord in ["todo"]:
+					say(destination,"Usage: \00304!todo <add|rem|show> <message|id>\00307 Alternatively, you can just type \00304!todo\00307 to show.")
+				elif secondWord in ["wa","wolfram"]:
+					say(destination,"Usage: \00304!"+secondWord+" <query>\00307 where <query> can be anything you would type into wolfram's actual site.")
+				else:
+					say(destination,"Remi's a lazy bum so he hasn't added a help to that yet :( Or it wasn't a valid command. You can get a commandlist with \00304!commands")
+		#
+		#
+
+		if firstWord == "!lsc":
+			secondWord = xChatMessage.split(" ")[1]
+			delimiters = ["|","/",".","-"]
+			for delimiter in delimiters: 
+				if secondWord.find(delimiter)>0:
+					recipe = secondWord.strip().split(delimiter)
+					valid = True
+					for val in recipe:
+						if not val.isdigit():
+							valid = False
+					if valid:
+						if len(recipe) == 4:
+							fuel = recipe[0]
+							ammo = recipe[1]
+							steel = recipe[2]
+							baux = recipe[3]
+							say(destination,"Not quite implemented yet Teehee")
+						else:
+							pass#say(destination,"You can't make a recipe without all four resources!")
+					else:
+						pass#say(destination,"One of the arguments wasn't even a number :(")
+		if firstWord == "!todo":
+			def showTodos(destination,nick,page):
+				if type(page) == int or page.isdigit():
+					page = int(page)
+					c.execute("SELECT Message,Date_Added FROM Todo WHERE Nick=? ORDER BY Date_Added ASC",(nick,))
+					results = c.fetchall()
+					if results != []:
+						if len(results)>5:
+							if page == 1:
+								say(destination,"\00312Here are your first 5 Todos with Ids! Type \00304!todo show <pagenum>\00307 to view more!")
+								results = results[:5]
+							else:
+								say(destination,"\00312Here are your Todos on the page you specified!")
+								results = results[(page-1)*5:page*5]
+						else:
+							say(destination,"\00312Here are your current Todos with Ids!")
+						for i in xrange(len(results)):
+							msg ="\00304"+str(i+1+(page-1)*5)+"\00307 - "+results[i][0]
+							say(destination,msg)
+					else:
+						say(destination,"You don't seem to have any Todos under your current nick!")
+
+			####
+			nick = xChatNick.split("|")[0]
+			split = xChatMessage.split(" ")
+			if len(split)>1:
+				secondWord = split[1]
+				if secondWord == "add":
+					if len(split)>2:
+						message = " ".join(split[2:])
+						# c.execute("INSERT INTO Quotes VALUES (?,?,?,?,?)", (currId,timestamp,channel,nick,message))
+						c.execute("INSERT INTO Todo VALUES (?,?,?)", (str(time.time()),nick,message))
+						say(destination,"Okay! I've added that to your todo list!")
+						conn.commit()
+					else:
+						say(destination,"You need to tell me what to add as your todo!")
+				if secondWord in ["show","list"]:
+					if len(split)>2:
+						page = split[2]
+						if page.isdigit():
+							showTodos(destination,nick,int(page))
+						else:
+							say(destination,"Oops, that page number wasn't a valid number!")
+					else:
+						showTodos(destination,nick,1)
+				if secondWord in ["delete","remove","rem","del"]:
+					if len(split)>2:
+						deleteId = split[2]
+						if deleteId.isdigit():
+							deleteId = int(deleteId)
+							c.execute("SELECT Date_Added from Todo WHERE Nick=? ORDER BY Date_Added ASC", (nick,))
+							results = c.fetchall()
+							if deleteId>0 and deleteId<=len(results):
+								timeToDelete = results[deleteId-1][0]
+								c.execute("DELETE FROM Todo WHERE Date_Added=? AND Nick=?",(timeToDelete,nick))
+								conn.commit()
+								say(destination,"Okay, I've deleted your todo with that Id!")
+							else:
+								say(destination,"The provided id isn't valid!")
+
+						else:
+							say(destination,"The provided id wasn't a valid number!")
+					else:
+						say(destination,"You need to tell me which todo to delete!")
+			else:
+				showTodos(destination,nick,1)
+
+
+		if firstWord in ["!commands", "!command"]:
+			commands = ["ver", "settopic\0037 or \0034!topic","flip","compass","calc\0037 (or just \0034!c\0037)","help","info","dice","weather", "herald","quotes","todo","ping","wolfram\0037 (or \0034!wa\0037)"]
+			if isCaptions: commands.extend(["mecab", "quack"])
+			commands.sort()
+			fullString = ""
+			isFirst = True
+			for command in commands:
+				if not isFirst:
+					fullString += "\0037, "
+				fullString += "\0034!"+command
+				isFirst = False
+			say(destination,"The following are our commands: "+fullString)
+			say(destination,"You can also prepend % to a message to talk to Amatsukaze! A conversation will last for 60 seconds from the last message before a new one is started. Try it out! Type \"%Hi!\"")
+	#
+	#	
+	if xChatMessage[0] == "%":
+		if channel not in ["#kancollewiki", "#kancolle"]:
+			def thinker (destination, sessionToUse, xChatMessage):
+				message = sessionToUse["session"].think(xChatMessage[1:])
+				say(destination,sessionToUse["name"]+": "+message)
+				sessionToUse["lastSpoke"] = time.time()
+			def thinkerNew (destination, data, xChatMessage, sessions):
+				data["session"] = bot.create_session()
+				message = data["session"].think(xChatMessage[1:])
+				say(destination,data["name"]+": "+message)
+				sessions.append(data)
+			data = {"name":xChatNick, "lastSpoke":time.time(),"session": None}
+			sessionToUse = None
+			toBotTL = {"amatsukaze":"cleverbot","ama-chan":"cleverbot","amatsu":"cleverbot"}
+			for word,tl in toBotTL.items():
+				xChatMessage = xChatMessage.lower().replace(word,tl)
+			xChatMessage.capitalize()
+			for session in sessions:
+				if session["name"] == xChatNick:
+					sessionToUse = session
+					break
+			if sessionToUse != None:
+				if time.time() - sessionToUse["lastSpoke"] >60:
+					t = threading.Thread(target=thinker, args=(destination, sessionToUse, xChatMessage))
+					t.start()
+				else:
+					sessionToUse = None
+			if sessionToUse == None:
+				t = threading.Thread(target=thinkerNew, args=(destination, data, xChatMessage, sessions))
+				t.start()
+		else:
+			say(destination,"If you want to talk to me, you'll have to come over to \00304#amatsukaze\00307! Just remember that I'm married to Remi.")
+
+
+
+
+				
+def on_trigger_PM(word, word_eol, userdata) :
+	xChatNick = word[0]
+	destination = xchat.get_context()
+	testForStatus = xChatNick.split("|")
+	xChatNick = testForStatus[0]
+	xChatMessage = word[1]
+	xChatMessageSplit = xChatMessage.split(" ")
+	xChatNickFull = word[0]
+	pass
+
+def on_trigger(word,word_eol,userdata):
+	destination = xchat.get_context()
+	activeChannels = ["#captions", "#kancollewiki", "#asdf","#kancolle", "#amatsukaze"]
+	activeNetworks = ["Slack", "EsperNet", "EsperNet (Bot)"]
+	blacklistChannels = []
+	activeNicks = ["captionsbot","amatsukaze"]
+	bypass = (xchat.get_info("network") == "Slack")
+	channel = destination.get_info("channel").lower()
+	if xchat.get_info("network") in activeNetworks or bypass:
+		if channel in activeChannels or (bypass and channel not in blacklistChannels):
+			if destination.get_info("nick").lower() in activeNicks:
+
+				###### WARNING ######
+				# JUST MODIFY THE
+				# ON_TRIGGER_CONTENT FUNCTION
+				#######################
+				on_trigger_content(word, word_eol, userdata, destination)
+
+def on_invite(word, word_eol, userdata):
+	pass
+
+
+def on_join_content(word, word_eol, userdata, destination):
+	xChatNick = word[0].split("|")[0].lower()
+	xChatMessage = word[1]
+	xChatNickFull = word[0]
+	conn = sqlite3.connect('G:\\Dropbox\\YutoProgramming\\python\\xchat scripts\\AmatsukazeBot.db')
+	c = conn.cursor()
+	c.execute('SELECT * FROM heralds WHERE Nick = ?', (xChatNick,))#check
+	result = c.fetchone()
+	if result != None:
+		say(destination, result[1])
+
+def on_nick_join(word, word_eol, userdata):
+	destination = xchat.get_context()
+	activeChannels = ["#captions", "#kancollewiki", "#asdf","#kancolle", "#amatsukaze"]
+	activeNetworks = ["Slack", "EsperNet", "EsperNet (Bot)"]
+	blacklistChannels = []
+	activeNicks = ["captionsbot","amatsukaze"]
+	bypass = (xchat.get_info("network") == "Slack")
+	channel = destination.get_info("channel").lower()
+	if xchat.get_info("network") in activeNetworks or bypass:
+		if channel in activeChannels or (bypass and channel not in blacklistChannels):
+			if destination.get_info("nick").lower() in activeNicks:
+
+				###### WARNING ######
+				# JUST MODIFY THE
+				# ON_TRIGGER_CONTENT FUNCTION
+				#######################
+				on_join_content(word, word_eol, userdata, destination)
+
+xchat.hook_print("Channel Message", on_trigger); #non-highlight words CONTAINING "loli"
+xchat.hook_print("Channel Msg Hilight", on_trigger); #highlight words that contain "loli" (in other words, loli and lolis
+xchat.hook_print("Private Message to Dialog", on_trigger_PM);
+xchat.hook_print("Invited", on_invite);
+xchat.hook_print("Join", on_nick_join);
+
+def checkForBotNick():
+	while 1:
+		nick = xchat.get_info("nick")
+		if "amatsukaze" in nick.lower():
+			if nick.lower() != "amatsukaze":
+				xchat.get_context().command("nick Amatsukaze")
+		time.sleep(60)
+nameCheck = threading.Thread(target=checkForBotNick)
+nameCheck.start()
+
+print "\0034",__module_name__, __module_version__,"has been loaded\003"
+

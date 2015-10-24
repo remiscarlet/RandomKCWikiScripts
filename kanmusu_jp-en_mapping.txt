@@ -7,6 +7,7 @@ Littorio,littorio,FBB,fast
 Prinz Eugen,prinz eugen,CA,fast
 Prinz Eugen改,prinz eugen kai,CA,fast
 Roma,roma,FBB,fast
+Roma改,roma kai,FBB,fast
 U-511,yuu,SS,slow
 U-511改,yuu kai,SS,slow
 Z1 zwei,z1 zwei,DD,fast

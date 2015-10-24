@@ -1,9 +1,11 @@
 local p = {}
-
+local remiLib = require("Module:RemiLib")
 -- Module for enemy encounter tables written by
 -- Remi_Scarlet
 -- I fucking hate lua.
-
+ 
+-- 10/24/15 Added colorful blue button as per Wsewo's request.
+ 
 -- checks if data is in the array as a key
 function valid(data, array)
     local valid = {}
@@ -18,7 +20,7 @@ function valid(data, array)
         end
     end
 end
-
+ 
 -- returns a string representation of a table.
 -- cannot do recursive tables. Eg, only single dimensional tables will work
 -- should a multi-dimensional table be given, it will simply put "table" as the value
@@ -42,12 +44,12 @@ function table.dictConcat(dict,sep)
     end
     return final
 end
-
+ 
 -- takes a string and returns string with first letter capitalized
 function capitalize(str)
     return (str:gsub("^%l", string.upper))
 end
-
+ 
 -- "info" should be higher level table of information with eg 
 -- {["A"] = {["1"] = {["xp"]="120", ["main_info"] = "ta-class etc"}
 --           ["2"] = {["xp"]="150", etc}
@@ -69,19 +71,37 @@ function p.renderEncounterTable(info,headers, bossNode, collapsed)
         end
         return size
     end
-
-
+ 
+ 
     local numCols = 0
     for _,bool in pairs(headers) do
         if bool then numCols = numCols + 1 end
     end
-    local body = mw.html.create("table")
-    body
-        :addClass("wikitable")
+ 
+    -- Will be used to uniquely identify each table with the "button" and the "table content". Normally
+    -- this would be done with like mw-customtoggle-1-1-enemy or whatnot, but since I can't
+    -- actually discern what "map" it's being used on, I'm just using a hash function on the time of
+    -- rendering to replace the map identifier.
+    local uniqueID = remiLib.timeHash()
+ 
+    local classString = "mw-customtoggle-" .. tostring(uniqueID)
+    local idString = "mw-customcollapsible-" .. tostring(uniqueID)
+ 
+    local button = mw.html.create('div')
+    button
+        :addClass(classString)
+        :addClass("globalbutton")
+        :wikitext("Show/Hide Nodes and Enemy Encounters")
+ 
+    local encounterTable = mw.html.create("table")
+    encounterTable
         :addClass("mw-collapsible")
-    if collapsed then
-        body:addClass("mw-collapsed")
-    end
+        :addClass("wikitable")
+        :addClass("mw-collapsed")
+        :attr("id",idString)
+    -- if collapsed then
+    --     encounterTable:addClass("mw-collapsed")
+    -- end
     local titleRow = mw.html.create("tr")
     local th = mw.html.create("th")
     th
@@ -89,7 +109,7 @@ function p.renderEncounterTable(info,headers, bossNode, collapsed)
         :wikitext("Nodes and Enemy Encounters")
         :css("font-weight","bold")
     titleRow:node(th)
-    body:node(titleRow)
+    encounterTable:node(titleRow)
     local headerRow = mw.html.create("tr")
     th = mw.html.create("th")
     th:wikitext("Node")
@@ -113,12 +133,12 @@ function p.renderEncounterTable(info,headers, bossNode, collapsed)
         end
     end
     -- Air superiority is a bit different so account for it
-    if headers["Air Superiority"] or headers["Air Supremacy"] then
+    if headers["Enemy Air Power"] then
         th = mw.html.create("th")
         th:wikitext("Air")
         headerRow:node(th)
     end
-    body:node(headerRow)
+    encounterTable:node(headerRow)
     local letterOrder = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"}
     for _,nodeLetter in pairs(letterOrder) do
         local values = info[nodeLetter]
@@ -129,7 +149,7 @@ function p.renderEncounterTable(info,headers, bossNode, collapsed)
             if values["label"] ~= nil then
                 nodeName = nodeName .. "<br>" .. values["label"]
             end
-
+ 
             firstCol
                     :wikitext(nodeName)
                     :css("text-align","center")
@@ -144,8 +164,11 @@ function p.renderEncounterTable(info,headers, bossNode, collapsed)
             if values[1]["isFinalForm"] ~= nil then 
                 text = "<span style='color:red'>" .. text .."<br>" .. "Final Form</span>"
             end
+            if values[1]["isPostFinalForm"] ~= nil then 
+                text = "<span style='color:blue'>" .. text .."<br>" .. "Post-Clear Only Form</span>"
+            end
             firstRow:node(mw.html.create("td"):wikitext(text)):css("text-align","center")
-            
+ 
             -- since first row with rowspan is handled differently, just
             -- do it separately
             if type(values[1]) == "table" then
@@ -167,27 +190,30 @@ function p.renderEncounterTable(info,headers, bossNode, collapsed)
                         firstRow:node(col)
                     end
                 end
-                if headers["Air Superiority"] == true or headers["Air Supremacy"] == true then
+                if headers["Enemy Air Power"] == true then
                     td = mw.html.create("td")
                     td:css("font-weight","bold")
                     td:css("text-align","center")
-                    if values[1]["Air Superiority"] ~= "" then
+                    if values[1]["Enemy Air Power"] == "0" then
+                        td
+                            :wikitext("AS/AS+")
+                            :wikitext("<br>")
+                            :wikitext("Automatic")
+                    end
+                    if values[1]["Enemy Air Power"] ~= "" and values[1]["Enemy Air Power"] ~= "0" then
                         td
                             :wikitext("AS")
                             :wikitext("<br>")
-                            :wikitext(values[1]["Air Superiority"])
-                    end
-                    if values[1]["Air Supremacy"] ~= "" then
-                        if values[1]["Air Superiority"] ~= "" then td:wikitext("<br>") end
-                        td
+                            :wikitext(math.ceil(1.5 * values[1]["Enemy Air Power"]))
+                            :wikitext("<br>")
                             :wikitext("AS+")
                             :wikitext("<br>")
-                            :wikitext(values[1]["Air Supremacy"])
+                            :wikitext(3 * values[1]["Enemy Air Power"])
                     end
                     firstRow:node(td)
                 end
             end
-            body:node(firstRow)
+            encounterTable:node(firstRow)
             -- Keep note that values is the table of node A
             -- Eg, {["1"]={
             --              ["xp"] = "",
@@ -203,6 +229,9 @@ function p.renderEncounterTable(info,headers, bossNode, collapsed)
                     local text = "Pattern " .. i
                     if values[i]["isFinalForm"] ~= nil then
                         text = "<span style='color:red'>" .. text .."<br>" .. "Final Form</span>"
+                    end
+                    if values[i]["isPostFinalForm"] ~= nil then
+                        text = "<span style='color:blue'>" .. text .."<br>" .. "Post-Clear Only Form</span>"
                     end
                     row:node(mw.html.create("td"):wikitext(text)):css("text-align","center")
                     for _,param in pairs(paramOrder) do
@@ -223,36 +252,37 @@ function p.renderEncounterTable(info,headers, bossNode, collapsed)
                             row:node(col)
                         end
                     end
-                    if headers["Air Superiority"] == true or headers["Air Supremacy"] == true then
+                    if headers["Enemy Air Power"] == true then
                         td = mw.html.create("td")
                         td:css("font-weight","bold")
                         td:css("text-align","center")
-                        if values[i]["Air Superiority"] ~= "" then
+                        if values[i]["Enemy Air Power"] == "0" then
+                            td
+                                :wikitext("AS/AS+")
+                                :wikitext("<br>")
+                                :wikitext("Automatic")
+                        end
+                        if values[i]["Enemy Air Power"] ~= "" and values[i]["Enemy Air Power"] ~= "0" then
                             td
                                 :wikitext("AS")
                                 :wikitext("<br>")
-                                :wikitext(values[i]["Air Superiority"])
-                        end
-                        if values[i]["Air Supremacy"] ~= "" then
-                            if values[i]["Air Superiority"] ~= "" then td:wikitext("<br>") end
-                            td
+                                :wikitext(math.ceil(1.5 * values[i]["Enemy Air Power"]))
+                                :wikitext("<br>")
                                 :wikitext("AS+")
                                 :wikitext("<br>")
-                                :wikitext(values[i]["Air Supremacy"])
+                                :wikitext(3 * values[i]["Enemy Air Power"])
                         end
                         row:node(td)
                     end
-
-                    body:node(row)
+ 
+                    encounterTable:node(row)
                 end
             end
-        else
-            break
         end
     end
-    return tostring(body)
+    return tostring(button) .. "\n" .. tostring(encounterTable)
 end
-
+ 
 function p.encounterTemplate(frame)
     local bossNode = ""
     local mapEncounterTable = {}
@@ -262,8 +292,7 @@ function p.encounterTemplate(frame)
                         ["Lv"] = false,
                         ["Node Info"] = false,
                         ["Form"] = false,
-                        ["Air Supremacy"] = false,
-                        ["Air Superiority"] =false}
+                        ["Enemy Air Power"] = false}
     local validNodeLetters = {["A"]=true,
                               ["B"]=true,
                               ["C"]=true,
@@ -292,7 +321,7 @@ function p.encounterTemplate(frame)
                               ["Z"]=true}
     -- map all the nodes we'll be using into mapEncounterTable -> {"A":true,"B"=true} etc
     for k,v in pairs(frame.args) do
-        if string.lower(k) ~= "boss_node" and string.lower(k) ~= "final_form" then
+        if string.lower(k) ~= "boss_node" and string.lower(k) ~= "final_form" and string.lower(k) ~= "post_final_form" then
             local letter = mw.text.split(k,"")[1]
             local num = mw.text.split(k,"")[2]
             if validNodeLetters[letter] and tonumber(num) ~= nil then
@@ -303,10 +332,10 @@ function p.encounterTemplate(frame)
             end
         end
     end
-    if frame.args["boss"]~=nil and bossNode ~= frame.args["boss"] then
-        bossNode = frame.args["boss"]
+    if frame.args["boss_node"]~=nil and bossNode ~= frame.args["boss_node"] then
+        bossNode = frame.args["boss_node"]
     end
-
+ 
     --Whether table should be collapsed by default or not
     local collapsed = true
     if frame.args["collapsed"] ~= nil then
@@ -314,26 +343,26 @@ function p.encounterTemplate(frame)
             collapsed = false
         end
     end
-
-
-
+ 
+ 
+ 
     -- mapping node information to 
     -- nodePattern should be like A1_xp, B3_lv, C1_form or something
     for nodePattern,patternInfo in pairs(frame.args) do
         local letter = mw.text.split(nodePattern,"")[1]
-        if mapEncounterTable[letter] ~= nil and nodePattern ~= "final_form" then
+        if mapEncounterTable[letter] ~= nil and nodePattern ~= "final_form" and nodePattern ~= "post_final_form" then
             if mw.text.split(nodePattern,"")[2] ~= "_" then
                 local patternNum = mw.text.split(mw.text.split(nodePattern,"_")[1],"")[2]
-
+ 
                 -- If the second char is not a number, invalid. 
-                if tonumber(patternNum) == nil and nodePattern ~= "final_form" then 
+                if tonumber(patternNum) == nil and nodePattern ~= "final_form" and nodePattern ~= "post_final_form" then 
                     --return patternNum
                     return "<span style='color:red'>Please check your module invocation arguments. Something is invalid</span>"
                 end
                 patternNum = tonumber(patternNum)
                 local nodePatternSplit = mw.text.split(nodePattern,"_")
                 local paramName = ""
-
+ 
                 -- get the parameter name, eg A1_xp's param name is just "Xp"
                 -- B3_form's param name is just "Form"
                 -- notice the conversion of capitalization
@@ -353,8 +382,8 @@ function p.encounterTemplate(frame)
                                              ["Lv"] = "",
                                              ["Node Info"] = "",
                                              ["Form"] = "",
-                                             ["Air Supremacy"] = "",
-                                             ["Air Superiority"] = ""}
+                                             ["Enemy Air Power"] = "",
+                                             }
                     mapEncounterTable[letter][patternNum] = nodePatternInfo
                 end
                 mapEncounterTable[letter][patternNum][paramName] = patternInfo
@@ -382,6 +411,21 @@ function p.encounterTemplate(frame)
             end
         end
     end 
+    if frame.args["post_final_form"] ~= nil then
+        local nodeAndPatterns = mw.text.split(frame.args["post_final_form"]," ")
+        for _,nodePattern in pairs(nodeAndPatterns) do
+            local nodeLetter = mw.text.split(nodePattern,"")[1]        
+            if validNodeLetters[nodeLetter] then
+                local patternNum = mw.text.split(nodePattern,"")[2]
+                if tonumber(patternNum) ~= nil then
+                    patternNum = tonumber(patternNum)
+                    if mapEncounterTable[nodeLetter][patternNum] ~= nil then
+                        mapEncounterTable[nodeLetter][patternNum]["isPostFinalForm"] = true
+                    end
+                end
+            end
+        end
+    end 
     if frame.args["map_xp"] ~= nil then
         if tonumber(frame.args["map_xp"]) ~= nil then
             mapEncounterTable["map_xp"] = frame.args["map_xp"]
@@ -389,14 +433,14 @@ function p.encounterTemplate(frame)
         end
     end
     html = p.renderEncounterTable(mapEncounterTable,usedParams,bossNode,collapsed)
-
+ 
     return html
 end
-
+ 
 function p.replaceWordWithWikicode(str)
     local nodeInfoImageTable = {
         ["fuel"] = '[[File:Fuel.png|Fuel|25px]]',
-        ["ammo"] = '[[File:Amm.png|Ammo|25px]]',
+        ["ammo"] = '[[File:Ammunition.png|Ammo|25px]]',
         ["steel"] = '[[File:Steel.png|Steel|25px]]',
         ["bauxite"] = '[[File:Bauxite.png|Bauxite|25px]]'
     }
@@ -412,17 +456,21 @@ function p.replaceWordWithWikicode(str)
         ["dd_i%-class_elite[%s$]"] = '[[File:DD I Class2.png|160px|Destroyer I%-Class Elite|link=Destroyer I%-Class]]',
         ["dd_i%-class_flagship[%s$]"] = '[[File:DD_I_class3.png|160px|Destroyer I%-Class Flagship|link=Destroyer I%-Class]]',
         ["dd_i%-class_late_model[%s$]"] = '[[File:DD I Class 4.png|160px|Destroyer I%-Class Late Model|link=Destroyer I%-Class]]',
+        ["dd_i%-class_late_model_elite[%s$]"] = '[[File:DD I LM Elite.jpg|160px|Destroyer I%-Class Late Model Elite|link=Destroyer I%-Class]]',
         ["dd_ro%-class[%s$]"] = '[[File:DD Ro Class.jpg|160px|Destroyer Ro%-Class|link=Destroyer Ro%-Class]]',
         ["dd_ro%-class_elite[%s$]"] = '[[File:DD Ro Class2.png|160px|Destroyer Ro%-Class Elite|link=Destroyer Ro%-Class]]',
         ["dd_ro%-class_flagship[%s$]"] = '[[File:DD Ro Class3.png|160px|Destroyer Ro%-Class Flagship|link=Destroyer Ro%-Class]]',
         ["dd_ro%-class_late_model[%s$]"] = '[[File:DD Ro Class 4.png|160px|Destroyer Ro%-Class Late Model|link=Destroyer Ro%-Class]]',
+        ["dd_ro%-class_late_model_elite[%s$]"] = '[[File:DD Ro LM Elite.jpg|160px|Destroyer Ro%-Class Late Model Elite|link=Destroyer Ro%-Class]]',
         ["dd_ha%-class[%s$]"] = '[[File:DD Ha Class.png|160px|Destroyer Ha%-Class|link=Destroyer Ha%-Class]]',
         ["dd_ha%-class_elite[%s$]"] = '[[File:DD Ha Class2.png|160px|Destroyer Ha Class Elite|link=Destroyer Ha%-Class]]',
         ["dd_ha%-class_flagship[%s$]"] = '[[File:DD Ha Class3.png|160px|Destroyer Ha Class Flagship|link=Destroyer Ha%-Class]]',
         ["dd_ha%-class_late_model[%s$]"] = '[[File:DD Ha Class 4.png|160px|Destroyer Ha%-Class Late Model|link=Destroyer Ha%-Class]]',
+        ["dd_ha%-class_late_model_elite[%s$]"] = '[[File:DD Ha LM Elite.jpg|160px|Destroyer Ha%-Class Late Model Elite|link=Destroyer Ha%-Class]]',
         ["dd_ni%-class[%s$]"] = '[[File:DD Ni Class.png|160px|Destroyer Ni Class|link=Destroyer Ni%-Class]]',
         ["dd_ni%-class_elite[%s$]"] = '[[File:DD Ni Class2.png|160px|Destroyer Ni Class Elite|link=Destroyer Ni%-Class]]',
         ["dd_ni%-class_late_model[%s$]"] = '[[File:DD Ni Class 4.png|160px|Destroyer Ni%-Class Late Model|link=Destroyer Ni%-Class]]',
+        ["dd_ni%-class_late_model_elite[%s$]"] = '[[File:DD Ni LM Elite.jpg|160px|Destroyer Ni%-Class Late Model Elite|link=Destroyer Ni%-Class]]',
         ["cl_ho%-class[%s$]"] = '[[File:CL Ho Class.png|160px|Light Cruiser Ho Class|link=Light Cruiser Ho%-Class]]',
         ["cl_ho%-class_elite[%s$]"] = '[[File:CL Ho Class2.png|160px|Light Cruiser Ho Class Elite|link=Light Cruiser Ho%-Class]]',
         ["cl_ho%-class_flagship[%s$]"] = '[[File:CL Ho Class3.png|160px|Light Cruiser Ho Class Flagship|link=Light Cruiser Ho%-Class]]',
@@ -443,7 +491,7 @@ function p.replaceWordWithWikicode(str)
         ["ca_ne%-class[%s$]"] = '[[File:Ca_ne_b.jpg|160px|Heavy Cruiser Ne Class|link=Heavy Cruiser Ne%-Class]]',
         ["ca_ne%-class_elite[%s$]"] = '[[File:Ca_ne_elite_b.jpg|160px|Heavy Cruiser Ne Class Elite|link=Heavy Cruiser Ne%-Class]]',
         ["cvl_nu%-class[%s$]"] = '[[File:CVL Nu Class.png|160px|Light Carrier Nu Class|link=Light Carrier Nu%-Class]]',
-        ["cvl_nu%-class_elite[%s$]"] = '[File:CVL Nu Class2.png|160px|Light Carrier Nu Class Elite|link=Light Carrier Nu%-Class]]',
+        ["cvl_nu%-class_elite[%s$]"] = '[[File:CVL Nu Class2.png|160px|Light Carrier Nu Class Elite|link=Light Carrier Nu%-Class]]',
         ["cvl_nu%-class_flagship[%s$]"] = '[[File:CVL_Nu_Class3.png|160px|Light Carrier Nu Class Flagship|link=Light Carrier Nu%-Class]]',
         ["cv_wo%-class[%s$]"] = '[[File:CV O Class.png|160px|Standard Carrier Wo Class|link=Standard Carrier Wo%-Class]]',
         ["cv_wo%-class_elite[%s$]"] = '[[File:CV O Class2.png|160px|Standard Carrier Wo Class Elite|link=Standard Carrier Wo%-Class]]',
@@ -487,6 +535,7 @@ function p.replaceWordWithWikicode(str)
         ["airfield_princess"] = '[[File:Port_hime_card.png|160px|Airfield Princess|link=Airfield Princess]]',
         ["battleship_princess"] = '[[File:Bb_hime_card.png|160px|Battleship Princess|link=Battleship Princess]]',
         ["harbor_princess"] = '[[File:Harbor_hime_card.JPG|160px|Harbour Princess|link=Harbour Princess]]',
+        ["harbor_princess_4%-5_final_form"] = '[[File:Harbor Princess 613 Banner.png|160px|Harbour Princess|link=Harbour Princess]]',
         ["isolated_island_demon"] = '[[File:Isolated_Island_Oni_card.jpg|160px|Isolated Island Demon|link=Isolated Island Demon]]',
         ["northern_princess"] = '[[File:581_Card.jpg|160px|Northern Princess|link=Northern Princess]]',
         ["northern_princess_final_form"] = '[[File:582_Card.jpg|160px|Northern Princess Final Form|link=Northern Princess]]',
@@ -504,14 +553,16 @@ function p.replaceWordWithWikicode(str)
         ["battleship_water_demon"] = '[[File:BB Water Oni.png|160px|Battleship Water Demon|link=Battleship Water Demon]]',
         ["battleship_water_demon_final_form"] = '[[File:BB Water Oni2.png|160px|Battleship Water Demon|link=Battleship Water Demon]]',
         ["anchorage_water_demon"] = '[[File:609-Anchorage-Water-Demon.jpg|160px|Anchorage Water Demon|link=Anchorage Water Demon]]',
-        ["harbor_water_demon"] = "[[File:605-Harbor-Water-Demon.jpg|160px|Harbor Water Demon|link=Harbor Water Demon]]"
+        ["harbor_water_demon"] = "[[File:605-Harbor-Water-Demon.jpg|160px|Harbor Water Demon|link=Harbor Water Demon]]",
+        ["air_defense_princess"] = "[[File:Air_Defense_Princess_card.jpg|160px|Air Defense Princess|link=Air Defense Princess]]"
+ 
     }
-
+ 
     if str ~= nil then
-
+ 
         local originalString = str
         str = string.lower(str)
-
+ 
         for vesselName,wikicode in pairs(enemyShipTable) do
             str = str:gsub(vesselName,wikicode)
         end
@@ -543,5 +594,5 @@ function p.replaceWordWithWikicode(str)
         return "Nil was passed instead of a string"
     end
 end
-
+ 
 return p

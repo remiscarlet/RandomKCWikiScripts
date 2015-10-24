@@ -1,21 +1,34 @@
 local p = {}
-
+ 
 -- Module for map branching written by
 -- Remi_Scarlet
 -- I fucking hate lua.
-
+ 
+-- 10/24/15 Added colorful blue button thing
+ 
 local remiLib = require("Module:RemiLib")
-
+ 
 function p.renderBranchingTable(graph, collapsed)
+ 
+    local uniqueID = remiLib.timeHash()
+ 
+    local classString = "mw-customtoggle-" .. tostring(uniqueID)
+    local idString = "mw-customcollapsible-" .. tostring(uniqueID)
+ 
+    local button = mw.html.create('div')
+    button
+        :addClass(classString)
+        :addClass("globalbutton")
+        :wikitext("Show/Hide Branching Rules")
+ 
     local body = mw.html.create("table")
     body
-        :addClass("wikitable")
         :addClass("mw-collapsible")
+        :addClass("wikitable")
+        :addClass("mw-collapsed")
+        :attr("id",idString)
         :css("width","300px")
-    if collapsed then
-        body:addClass("mw-collapsed")
-    end
-        
+ 
     local titleRow = mw.html.create("tr")
     local th = mw.html.create("th")
     th
@@ -77,7 +90,7 @@ function p.renderBranchingTable(graph, collapsed)
                         tableRow = mw.html.create("tr")
                     end
                     col = mw.html.create("td")
-
+ 
                     col
                         :wikitext(toNode)
                         :css("text-align","center")
@@ -93,9 +106,9 @@ function p.renderBranchingTable(graph, collapsed)
             end
         end
     end
-    return tostring(body)
+    return tostring(button) .. "\n" .. tostring(body)
 end 
-
+ 
 function p.branchingTemplate(frame)
     -- implementing graph as an adjacency list
     local mapGraph = {}
@@ -103,7 +116,7 @@ function p.branchingTemplate(frame)
     if frame.args["collapsed"] ~= nil and string.lower(frame.args["collapsed"]) == "false" then
         collapsed = false
     end
-
+ 
     for param,value in pairs(frame.args) do
         local split = mw.text.split(param,"_")
         -- length is 3, eg A_to_B or B_to_C
@@ -121,9 +134,9 @@ function p.branchingTemplate(frame)
         end
     end
     local html = p.renderBranchingTable(mapGraph,collapsed)
-
+ 
     return html
-
+ 
 end
-
+ 
 return p

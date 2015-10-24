@@ -1,7 +1,10 @@
-def upperFirst(string):
-  c = string[0]
-  lst = list(string)
-  lst[0] = c.upper()
-  return "".join(lst)
+def f4C(n):
+    sequence = []
+    for i in range(1, n+1):
+        sequence = sequence + ["None"]
+        sequence[0] = 1
+        if len(sequence) > 1:
+            sequence[i-1] = sequence[i-2]*i
+    return sequence
 
-print upperFirst("asDf")
+print f4C(5)

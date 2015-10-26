@@ -82,7 +82,7 @@ function p.renderEncounterTable(info,headers, bossNode, collapsed)
     -- this would be done with like mw-customtoggle-1-1-enemy or whatnot, but since I can't
     -- actually discern what "map" it's being used on, I'm just using a hash function on the time of
     -- rendering to replace the map identifier.
-    local uniqueID = remiLib.timeHash()
+    local uniqueID = remiLib.timeHash(info)
  
     local classString = "mw-customtoggle-" .. tostring(uniqueID)
     local idString = "mw-customcollapsible-" .. tostring(uniqueID)

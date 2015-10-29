@@ -15,9 +15,6 @@ from py_expression_eval import Parser
 import sys
 sys.path.insert(0,'G:\\Dropbox\\YutoProgramming\\RandomKCWikiScripts\\amatsubot')
 from chatterbotapi import ChatterBotFactory, ChatterBotType
-from tweepy import Stream
-from tweepy import OAuthHandler
-from tweepy.streaming import StreamListener
 import Amatsubot_Settings as settings
 
 __module_name__ = "Amatsukaze" 
@@ -29,10 +26,6 @@ This is the first iteration of the AmatsukazeBot. Random new features will be ad
 intervals. Feel free to suggest strange functionalities to Remi/w0lf/Yuto and he'll probably 
 add it on when he's bored.
 '''
-
-DESTINATION = None
-KEEPLISTENING = True
-
 factory = ChatterBotFactory()
 
 bot = factory.create(ChatterBotType.CLEVERBOT)
@@ -69,6 +62,12 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 			if piece.find("http") >-1:
 				def getURLTitle(url,destination):
 					r = requests.head(url)
+					# Don't bother printing anything to channel if image or non-text, eg an image.
+					# Too many "puush.com - fj2i3cad.jpg shit lol"
+					isText = False
+					if r.headers["content-type"].find("text") > -1:
+						isText = True
+						r = requests.get(url)
 					encoding = re.search("<meta.*?content=\".*?charset=(.*?)\"",r.text,re.DOTALL)
 					print encoding
 					print "AAAA" 
@@ -78,7 +77,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 					title = re.search("<title.*?>(.*?)</title>",r.text.encode("utf8"), re.DOTALL)
 					if title != None and title.group(1) != "":
 						say(destination,title.group(1).strip())
-					elif r.status_code != 404:
+					elif r.status_code != 404 and isText:
 						url = urllib2.unquote(url).decode(encode)
 						split = url.split("/")
 						thing = split[:3]
@@ -102,20 +101,20 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 		########################
 		### OP ACCESS REQUIRED COMMANDS
 		########################
-		if firstWord == "!starttwit" and isYuto(xChatNick):
-			global LISTEN
-			global KEEPLISTENING
-			if not KEEPLISTENING:
-				LISTEN.start()
-				KEEPLISTENING = True
-				say(destination,"Starting twitter listener")
-		if firstWord in ["!endtwit","!stoptwit","!twitend"] and isYuto(xChatNick):
-			global LISTEN
-			global KEEPLISTENING
-			if KEEPLISTENING:
-				KEEPLISTENING = False
-				DESTINATION = xchat.get_context()
-				say(destination,"Flagged twitter listener to stop ASAP")
+		# if firstWord == "!starttwit" and isYuto(xChatNick):
+		# 	global LISTEN
+		# 	global KEEPLISTENING
+		# 	if not KEEPLISTENING:
+		# 		LISTEN.start()
+		# 		KEEPLISTENING = True
+		# 		say(destination,"Starting twitter listener")
+		# if firstWord in ["!endtwit","!stoptwit","!twitend"] and isYuto(xChatNick):
+		# 	global LISTEN
+		# 	global KEEPLISTENING
+		# 	if KEEPLISTENING:
+		# 		KEEPLISTENING = False
+		# 		DESTINATION = xchat.get_context()
+		# 		say(destination,"Flagged twitter listener to stop ASAP")
 		if firstWord == "!op":
 			if opped:
 				toOp = xChatMessageSplit[1]

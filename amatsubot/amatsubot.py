@@ -101,20 +101,6 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 		########################
 		### OP ACCESS REQUIRED COMMANDS
 		########################
-		# if firstWord == "!starttwit" and isYuto(xChatNick):
-		# 	global LISTEN
-		# 	global KEEPLISTENING
-		# 	if not KEEPLISTENING:
-		# 		LISTEN.start()
-		# 		KEEPLISTENING = True
-		# 		say(destination,"Starting twitter listener")
-		# if firstWord in ["!endtwit","!stoptwit","!twitend"] and isYuto(xChatNick):
-		# 	global LISTEN
-		# 	global KEEPLISTENING
-		# 	if KEEPLISTENING:
-		# 		KEEPLISTENING = False
-		# 		DESTINATION = xchat.get_context()
-		# 		say(destination,"Flagged twitter listener to stop ASAP")
 		if firstWord == "!op":
 			if opped:
 				toOp = xChatMessageSplit[1]
@@ -183,12 +169,12 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 					if len(xChatMessage.split(" "))>2:
 						message = xChatMessage.split(" ")[3:]
 						if opped or isYuto(xChatNick):
-							c.execute('SELECT * FROM heralds WHERE Nick = ?', (target,))#check
+							c.execute('SELECT * FROM Heralds WHERE Nick = ?', (target,))#check
 							result = c.fetchone()
 							if result == None:
-								c.execute('INSERT INTO heralds VALUES (?,?)', (target, " ".join(message)))
+								c.execute('INSERT INTO Heralds VALUES (?,?)', (target, " ".join(message)))
 							else:
-								c.execute('UPDATE heralds SET Herald=? WHERE Nick=?', (" ".join(message),target))
+								c.execute('UPDATE Heralds SET Herald=? WHERE Nick=?', (" ".join(message),target))
 							conn.commit()
 							say(destination, "Got it! I'll say that from now on <3")
 						else:
@@ -196,10 +182,10 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 							#say(destination,"You need to be opped to use that!")
 				if secondWord == "remove":
 					if opped or isYuto(xChatNick):
-						c.execute('SELECT * FROM heralds WHERE Nick = ?', (target,))#check
+						c.execute('SELECT * FROM Heralds WHERE Nick = ?', (target,))#check
 						result = c.fetchone()
 						if result != None:
-							c.execute('DELETE FROM heralds WHERE Nick = ?', (target,))
+							c.execute('DELETE FROM Heralds WHERE Nick = ?', (target,))
 							say(destination, "Okay, I won't say anything when "+xChatMessage.split(" ")[2]+" joins anymore!")
 						else:
 							say(destination, "I don't say anything when that user joins right now!")
@@ -798,8 +784,9 @@ def on_trigger_PM(word, word_eol, userdata) :
 	pass
 
 def on_trigger(word,word_eol,userdata):
+	checkForBotNick()
 	destination = xchat.get_context()
-	activeChannels = ["#captions", "#kancollewiki", "#asdf","#kancolle", "#amatsukaze"]
+	activeChannels = ["#captions", "#kancollewiki", "#asdf","#kancolle", "#amatsukaze","#kcad"]
 	activeNetworks = ["Slack", "EsperNet", "EsperNet (Bot)"]
 	blacklistChannels = []
 	activeNicks = ["captionsbot","amatsukaze"]
@@ -823,8 +810,6 @@ def on_join_content(word, word_eol, userdata, destination):
 	xChatNick = word[0].split("|")[0].lower()
 	xChatMessage = word[1]
 	xChatNickFull = word[0]
-	conn = sqlite3.connect('G:\\Dropbox\\YutoProgramming\\python\\xchat scripts\\AmatsukazeBot.db')
-	c = conn.cursor()
 	c.execute('SELECT * FROM heralds WHERE Nick = ?', (xChatNick,))#check
 	result = c.fetchone()
 	if result != None:
@@ -832,7 +817,7 @@ def on_join_content(word, word_eol, userdata, destination):
 
 def on_nick_join(word, word_eol, userdata):
 	destination = xchat.get_context()
-	activeChannels = ["#captions", "#kancollewiki", "#asdf","#kancolle", "#amatsukaze"]
+	activeChannels = ["#captions", "#kancollewiki", "#asdf","#kancolle", "#amatsukaze","#kcad"]
 	activeNetworks = ["Slack", "EsperNet", "EsperNet (Bot)"]
 	blacklistChannels = []
 	activeNicks = ["captionsbot","amatsukaze"]
@@ -855,14 +840,12 @@ xchat.hook_print("Invited", on_invite);
 xchat.hook_print("Join", on_nick_join);
 
 def checkForBotNick():
-	while 1:
-		nick = xchat.get_info("nick")
-		if "amatsukaze" in nick.lower():
-			if nick.lower() != "amatsukaze":
-				xchat.get_context().command("nick Amatsukaze")
-		time.sleep(60)
-nameCheck = threading.Thread(target=checkForBotNick)
-nameCheck.start()
+	nick = xchat.get_info("nick")
+	if "amatsukaze" in nick.lower():
+		if nick.lower() != "amatsukaze":
+			xchat.get_context().command("nick Amatsukaze")
+#nameCheck = threading.Thread(target=checkForBotNick)
+#nameCheck.start()
 
 print "\0034",__module_name__, __module_version__,"has been loaded\003"
 

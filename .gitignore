@@ -6,3 +6,4 @@ settings.py
 *.sqlite3
 *.db
 Amatsubot_Settings.py
+foo.*

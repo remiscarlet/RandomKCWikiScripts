@@ -11,9 +11,13 @@ import threading
 import requests
 import HTMLParser
 import json
+import os
 from py_expression_eval import Parser
 import sys
-sys.path.insert(0,'G:\\Dropbox\\YutoProgramming\\RandomKCWikiScripts\\amatsubot')
+if os.name == "posix":
+	sys.path.insert(0,os.path.join("/Users","YutoTakamoto","Dropbox","YutoProgramming","RandomKCWikiScripts","amatsubot"))
+else:
+	sys.path.insert(0,'G:\\Dropbox\\YutoProgramming\\RandomKCWikiScripts\\amatsubot')
 from chatterbotapi import ChatterBotFactory, ChatterBotType
 import Amatsubot_Settings as settings
 

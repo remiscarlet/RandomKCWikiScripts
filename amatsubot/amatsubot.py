@@ -1,8 +1,16 @@
+# -*- coding: UTF-8 -*-
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+import os
+
+
 import xchat
 import random
 import time
 import io
 import re
+import copy
 import math
 import urllib
 import urllib2
@@ -11,9 +19,8 @@ import threading
 import requests
 import HTMLParser
 import json
-import os
 from py_expression_eval import Parser
-import sys
+
 if os.name == "posix":
 	sys.path.insert(0,os.path.join("/Users","YutoTakamoto","Dropbox","YutoProgramming","RandomKCWikiScripts","amatsubot"))
 else:
@@ -255,7 +262,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 							message = '"'+result[4]+'"'
 							days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
 							timeStr = (str(timestamp[3]).zfill(2)+":"+str(timestamp[4]).zfill(2)+":"+str(timestamp[5]).zfill(2)+" GMT 0:00 on "
-									  +str(timestamp[1])+"/"+str(timestamp[2])+"/"+str(timestamp[0]))
+										+str(timestamp[1])+"/"+str(timestamp[2])+"/"+str(timestamp[0]))
 							say(destination,"Quote #"+quoteId+" was saved at "+timeStr+" by "+nick)
 							say(destination,message)
 				if secondWord in ["search","find","lookup"]:
@@ -308,7 +315,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 					nick = result[3]
 					message = '"'+result[4]+'"'
 					timeStr = (str(timestamp[3]).zfill(2)+":"+str(timestamp[4]).zfill(2)+":"+str(timestamp[5]).zfill(2)+" GMT 0:00 on "
-							  +str(timestamp[1])+"/"+str(timestamp[2])+"/"+str(timestamp[0]))
+								+str(timestamp[1])+"/"+str(timestamp[2])+"/"+str(timestamp[0]))
 					say(destination,"Quote #"+str(quoteId)+" was saved at "+timeStr+" by "+nick)
 					say(destination,message)
 			if len(xChatMessage.split(" ")) == 1:
@@ -343,9 +350,6 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 			face = "Heads" if random.randint(0,1) == 0 else "Tails"
 			say(destination,"Randomly flipping a "+flippingWhat+": \00304"+face )
 		#
-		#
-		if firstWord == "!mecab" and isCaptions:
-			say(destination,"\0034java.lang.UnsatisfiedLinkError\0037 ETA Until Completion: "+str(random.randint(10,100))+" hours")
 		#
 		if firstWord in ["!wolfram", "!wa", "!wolframalpha", "!alpha"]:
 			def getWolframAndSend(destination,url):
@@ -385,11 +389,11 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 					self.expr = expr
 					self.vars = variables
 					self.functions = {"fact":self.fact, 
-									  "factorial":self.fact,
-									  "rand":self.rand,
-									  "random":self.rand,
-									  "randint":self.randint,
-									  "choose":self.choose}
+										"factorial":self.fact,
+										"rand":self.rand,
+										"random":self.rand,
+										"randint":self.randint,
+										"choose":self.choose}
 				def fact(self,n):
 					return math.factorial(n)
 				def rand(self):
@@ -590,14 +594,120 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 			printString += "Wind strength is expected to be \00304"+windStrength+"\0037 with visibility ranges of \00304"+visibility+"\0037. "
 			printString += "This information was \00304"+lastUpdated+"\0037."
 			say(destination,printString)
+
+		#
+		#
+		if firstWord in ["!define","!definition","!d","!def","!dict","!dictionary"]:
+			if len(xChatMessage.split(" ")) == 1:
+				say(destination,"You didn't provide enough arguments! \00307!<define|def|dict|dictionary|d> <searchterm> [definition label]")
+			else:
+				searchWord = xChatMessage.split(" ")[1]
+				if len(xChatMessage.split(" "))>2:
+					searchedDef = " ".join(xChatMessage.split(" ")[2:])
+				else:
+					searchedDef = ""
+
+				urlList = ["http://www.dictionaryapi.com/api/v1/references/collegiate/xml/",searchWord,"?key=",settings.merriam_dictionary_api]
+				url = "".join(urlList)
+				r = requests.get(url)
+
+
+				if r.text != u"Invalid API key or reference name provided.":
+					# Pull the first definition block. Ignore the rest since
+					# they tend to be less relevent. This is just a quick search function.
+					# If they want a full set of definition they can google it.
+					p = re.compile("<def>.*?</def>")
+					definitionText = p.search(r.text,re.DOTALL)
+					#print definitionText.group(0)
+
+					# Pull the labels (1,2a,2b,3,etc) and their corresponding definitions
+					p = re.compile("<sn>(.*?)</sn>.*?<dt>(.*?)</dt>")
+					labelAndDefs = p.findall(definitionText.group(0),re.DOTALL)
+
+					# init vars
+					defDict = {}
+					exampleDict = {}
+					lastNumLabel = None
+					lastNumAndSubLabel = None
+
+					for labelAndDef in labelAndDefs:
+						label,definition = labelAndDef
+						# Get various examples. These are in <vi></vi> tags.
+						p = re.compile("<vi>(.*?)</vi>")
+						egs = p.findall(definition)
+						# Remove the examples from the text
+						definition = p.sub("",definition)
+						p = re.compile("<.*?>")
+						definition = p.sub("",definition)
+						# If def is like 4 a (1), so first def in a numbered series has sub def
+						if label[0].isdigit() and "<snp>" in label:
+							temp = str(re.sub("<.*?>","",label))
+							label = temp
+							lastNumLabel = temp[0]
+							lastNumAndSubLabel = temp.split("(")[0].strip()
+						# Starts with a number
+						elif label[0].isdigit() and "<snp>" not in label+"1":
+							lastNumLabel = label[0]
+							lastNumAndSubLabel = label
+						# starts with a <, so is a sub sub definition (4 a (1) etc)
+						elif label[0] == "<":
+							temp = re.sub("<.*?>","",label)
+							label = lastNumAndSubLabel + " " + temp
+						# We have a label sub definition but it has the letter and sub category, eg first sub-sub def
+						elif label[0] != "<" and "<" in label:
+							temp = re.sub("<.*?>","",label)
+							label = lastNumLabel + " " + temp
+							lastNumAndSubLabel = lastNumLabel + " " + temp[0]
+						# None of the above meaning it should just be a sub definition (4 a)
+						else:
+							label = lastNumLabel + " " + label
+							lastNumAndSubLabel = label
+
+						defDict[label] = definition[1:]
+						for eg in egs:
+							eg = re.sub("<.*?>","",eg)
+							if label not in exampleDict:
+								exampleDict[label] = []
+							exampleDict[label].append(eg)
+					def sorted(lst):
+						tmp = copy.copy(lst)
+						tmp.sort()
+						return tmp
+					sortedDefLabels = sorted(list(defDict.keys()))
+					say(destination,"a")
+					# If they want the definition labels.
+					if searchedDef == "defs":
+						say(destination,"Definition labels: " + " | ".join(sortedDefLabels))
+					else:
+						say(destination,"b")
+						if searchedDef != "" and searchedDef not in sortedDefLabels:
+							say(destination,"The definition label you gave was invalid! Defaulting to first definition")
+							searchedDef = sortedDefLabels[0]
+						if searchedDef == "": 
+							searchedDef = sortedDefLabels[0]
+						say(destination,"Definition labels: Type \00304!define <word> defs \00307for a list of definition labels.")
+						say(destination,"\"\00305" + searchWord.capitalize() + "\00307\" - definition #" + searchedDef + ": " + defDict[searchedDef])
+						examples = " - ".join( \
+											 map(lambda x: x.capitalize(), exampleDict[searchedDef])) \
+											 if searchedDef in exampleDict else ""
+						if examples != "":
+							say(destination,"\00305Examples: \00307"+examples)
+				else:
+					say(destination,"Error!")
+					say(destination,r.text[:512])
+
+
+
+
+
 		#
 		#
 		if firstWord == "!compass":
 			listOfDirs = ["North", "South", "East", "West", 
-						  "NE", "NW", "SE", "SW", 
-						  "NEE", "NNE", "NNW", "NWW",
-						  "SEE", "SSE", "SSW", "SWW",
-						  "Up", "Down", "Left", "Right"]
+							"NE", "NW", "SE", "SW", 
+							"NEE", "NNE", "NNW", "NWW",
+							"SEE", "SSE", "SSW", "SWW",
+							"Up", "Down", "Left", "Right"]
 			direc = ""
 			if random.randint(1,100)>80:
 				direc = random.choice(listOfDirs)
@@ -607,8 +717,8 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 				subAngle = random.random()
 				angleStr = str(angle+subAngle)
 				direc = random.choice(["diagonally", "forward", "diagonally forward", 
-									   "reversed", "inversed", "upside down", "over your shoulder and to the right",
-									   "inside out", "tuturuu"])
+										 "reversed", "inversed", "upside down", "over your shoulder and to the right",
+										 "inside out", "tuturuu"])
 				end = random.choice(["hit a bus", "die", "end up back where you started", "find an elephant",
 									 "get to the voidzone", "sink", "get burned by love", "walk off a building",
 									 "tear a hole in spacetime and end up playing cards with Mecha Hitler",

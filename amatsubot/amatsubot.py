@@ -674,12 +674,10 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 						tmp.sort()
 						return tmp
 					sortedDefLabels = sorted(list(defDict.keys()))
-					say(destination,"a")
 					# If they want the definition labels.
 					if searchedDef == "defs":
 						say(destination,"Definition labels: " + " | ".join(sortedDefLabels))
 					else:
-						say(destination,"b")
 						if searchedDef != "" and searchedDef not in sortedDefLabels:
 							say(destination,"The definition label you gave was invalid! Defaulting to first definition")
 							searchedDef = sortedDefLabels[0]

@@ -598,6 +598,10 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 		#
 		#
 		if firstWord in ["!define","!definition","!d","!def","!dict","!dictionary"]:
+			def sorted(lst):
+				tmp = copy.copy(lst)
+				tmp.sort()
+				return tmp
 			if len(xChatMessage.split(" ")) == 1:
 				say(destination,"You didn't provide enough arguments! \00307!<define|def|dict|dictionary|d> <searchterm> [definition label]")
 			else:
@@ -669,10 +673,6 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 							if label not in exampleDict:
 								exampleDict[label] = []
 							exampleDict[label].append(eg)
-					def sorted(lst):
-						tmp = copy.copy(lst)
-						tmp.sort()
-						return tmp
 					sortedDefLabels = sorted(list(defDict.keys()))
 					# If they want the definition labels.
 					if searchedDef == "defs":
@@ -683,13 +683,19 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 							searchedDef = sortedDefLabels[0]
 						if searchedDef == "": 
 							searchedDef = sortedDefLabels[0]
-						say(destination,"Definition labels: Type \00304!define <word> defs \00307for a list of definition labels.")
+						say(destination,"Definition labels: Type \00304!define <word> defs \00307for a list of other definitions.")
 						say(destination,"\"\00305" + searchWord.capitalize() + "\00307\" - definition #" + searchedDef + ": " + defDict[searchedDef])
 						examples = " - ".join( \
 											 map(lambda x: x.capitalize(), exampleDict[searchedDef])) \
 											 if searchedDef in exampleDict else ""
 						if examples != "":
 							say(destination,"\00305Examples: \00307"+examples)
+				elif "suggestion" in r.text:
+					p = re.compile("<suggestion>(.*?)</suggestion>")
+					suggestions = p.findall(r.text)
+					say(destination,"That word didn't exist! Did you mean any of the following?")
+					say(destination," | ".join(sorted(suggestions)))
+
 				else:
 					say(destination,"Error!")
 					say(destination,r.text[:512])
@@ -832,9 +838,27 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 			else:
 				showTodos(destination,nick,1)
 
+		#
+		#
+		if firstWord in ["!tell","!later"]:
+			if len(xChatMessage.split(" "))>2:
+				fromNick = xChatNickFull
+				split = xChatMessage.split(" ")
+				toNick = split[1].lower()
+				message = " ".join(split[2:])
+				timeEntered = str(time.time())
+				say(destination,"test")
+				c.execute("INSERT INTO Laters VALUES (?,?,?,?,?)",(fromNick,toNick,timeEntered,message,str(destination.get_info("channel"))))
+				conn.commit()
+				say(destination,"Alright! I'll tell \00304"+toNick+" \00307your message next time I see them active or join the channel!")
+			else:
+				say(destination,"You didn't provide enough arguments! \00304!<later|tell> <destination nick> <message>")
 
+
+		#
+		#
 		if firstWord in ["!commands", "!command"]:
-			commands = ["ver", "settopic\0037 or \0034!topic","flip","compass","calc\0037 (or just \0034!c\0037)","help","info","dice","weather", "herald","quotes","todo","ping","wolfram\0037 (or \0034!wa\0037)"]
+			commands = ["ver", "settopic\0037 or \0034!topic","!define\0037 or \0034!d","flip","compass","calc\0037 (or just \0034!c\0037)","help","info","dice","weather", "herald","quotes","todo","ping","wolfram\0037 (or \0034!wa\0037)"]
 			if isCaptions: commands.extend(["mecab", "quack"])
 			commands.sort()
 			fullString = ""
@@ -913,6 +937,7 @@ def on_trigger(word,word_eol,userdata):
 				# ON_TRIGGER_CONTENT FUNCTION
 				#######################
 				on_trigger_content(word, word_eol, userdata, destination)
+				checkForLaters(word[0].split("|")[0].lower(),destination)
 
 def on_invite(word, word_eol, userdata):
 	pass
@@ -926,6 +951,7 @@ def on_join_content(word, word_eol, userdata, destination):
 	result = c.fetchone()
 	if result != None:
 		say(destination, result[1])
+	checkForLaters(xChatNick,destination)
 
 def on_nick_join(word, word_eol, userdata):
 	destination = xchat.get_context()
@@ -950,6 +976,24 @@ xchat.hook_print("Channel Msg Hilight", on_trigger); #highlight words that conta
 xchat.hook_print("Private Message to Dialog", on_trigger_PM);
 xchat.hook_print("Invited", on_invite);
 xchat.hook_print("Join", on_nick_join);
+
+def checkForLaters(xChatNick,destination):
+	c.execute("SELECT ToNick FROM Laters ")
+	nicksToLater = c.fetchall()
+	for nick in nicksToLater:
+		if xChatNick.lower() == nick[0].lower():
+			c.execute("SELECT * FROM Laters WHERE ToNick = ?",(xChatNick.lower(),))
+			messages = c.fetchall()
+			for message in messages:
+				fromNick = message[0]
+				toNick = message[1]
+				timeEntered = float(message[2])
+				message = message[3]
+				channel = message[4]
+				xchat.get_context().command("msg "+toNick+" \00304"+fromNick+" \00307sent you a message in \00304" + channel + "\00307on \00304"+time.strftime("%a, %d %b %Y %H:%M:%S +0000",time.gmtime(timeEntered)))
+				xchat.get_context().command("msg "+toNick+" \00307"+message)
+			c.execute("DELETE FROM Laters WHERE ToNick = ?",(xChatNick.lower(),))
+			conn.commit()
 
 def checkForBotNick():
 	nick = xchat.get_info("nick")

@@ -847,7 +847,6 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 				toNick = split[1].lower()
 				message = " ".join(split[2:])
 				timeEntered = str(time.time())
-				say(destination,"test")
 				c.execute("INSERT INTO Laters VALUES (?,?,?,?,?)",(fromNick,toNick,timeEntered,message,str(destination.get_info("channel"))))
 				conn.commit()
 				say(destination,"Alright! I'll tell \00304"+toNick+" \00307your message next time I see them active or join the channel!")
@@ -988,10 +987,11 @@ def checkForLaters(xChatNick,destination):
 				fromNick = message[0]
 				toNick = message[1]
 				timeEntered = float(message[2])
-				message = message[3]
+				msg = message[3]
 				channel = message[4]
-				xchat.get_context().command("msg "+toNick+" \00304"+fromNick+" \00307sent you a message in \00304" + channel + "\00307on \00304"+time.strftime("%a, %d %b %Y %H:%M:%S +0000",time.gmtime(timeEntered)))
-				xchat.get_context().command("msg "+toNick+" \00307"+message)
+				
+				xchat.get_context().command("msg "+toNick+" \00304"+fromNick+" \00307sent you a message in \00304" + channel + "\00307 on \00304"+time.strftime("%a, %d %b %Y %H:%M:%S +0000",time.gmtime(timeEntered)))
+				xchat.get_context().command("msg "+toNick+" \00307"+msg)
 			c.execute("DELETE FROM Laters WHERE ToNick = ?",(xChatNick.lower(),))
 			conn.commit()
 

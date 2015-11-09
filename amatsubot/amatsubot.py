@@ -842,6 +842,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 		#
 		if firstWord in ["!tell","!later"]:
 			if len(xChatMessage.split(" "))>2:
+
 				fromNick = xChatNickFull
 				split = xChatMessage.split(" ")
 				toNick = split[1].lower()
@@ -853,6 +854,72 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 			else:
 				say(destination,"You didn't provide enough arguments! \00304!<later|tell> <destination nick> <message>")
 
+		#	
+		#
+		if firstWord in ["!remind","!reminder"]:
+			def parseTime(string):
+				params = dict()
+				p = re.compile("(\d+?)([a-zA-Z])")
+				results = p.findall(string)
+				for result in results:
+					if result[-1] not in "mhdw":
+						return None
+					params[result[-1]] = result[:-1]
+				return params
+			def convertTime(timeDict):
+			  secs = 0
+			  for tVal,value in timeDict.items():
+			    if tVal == "m":
+			      secs += value * 60
+			    elif tVal == "h":
+			      secs += value * 60 * 60
+			    elif tVal == "d":
+			      secs += value * 60 * 60 * 24
+			    elif tVal == "w":
+			      secs += value * 60 * 60 * 24 * 7
+			  return time.localtime(time.time() + secs)
+
+			split = xChatmessage.split(" ")
+			if len(split)>3:
+				toNick = split[1]
+				timeArg = parseTime(split[2])
+				msg = " ".join(split[3:])
+				if timeArg == None:
+					say(destination,"Your time argument was formatted incorrectly! Please enter it in the format of \00304\"30m2h1d6w\"\00307, or 30 minutes, 2 hours, 1 day, 6 weeks. No spaces.")
+				else:
+					fromNick = xChatNickFull
+					timeToRemind = convertTime(time)
+					currTime = time.time()
+					c.execute("INSERT INTO Reminders VALUES (?,?,?,?,?)",(fromNick,toNick,time.mktime(timeToRemind),currTime,msg))
+					remindee = "you" if fromNick.split("|")[0].lower() == toNick.lower() else toNick
+					say(destination,"Alright! I'll remind "+remindee+" about that on "+time.strftime("%a, %d %b %Y %H:%M:%S +0000",timeToRemind))
+					c.execute("SELECT MAX(ID) FROM Reminders")
+					result = c.fetchall()
+					highestID = result[0][0]
+					say(destination, "If you want to delete that reminder, use the command  \003!reminder del 04"+str(highestID)+"\00307!")
+					conn.commit()
+			elif len(split)==3:
+				if split[1] in ["del","delete","rem","remove"]:
+					if split[2].isdigit():
+						c.execute("SELECT * FROM Reminders WHERE ID = ?",(int(split[2]),))
+						result = c.fetchall()
+
+						fromNick = result[0][0].split(" ")[0].lower()
+						toNick = result[0][1].lower()
+						currNick = xChatNick.lower()
+
+						if result == []:
+							say(destination,"A reminder with that ID didn't exist!")
+						elif not (currNick != fromNick or currNick != toNick):
+							say(destination,"You can't delete a reminder that you didn't set or are set to receive!")
+						else:
+							c.execute("DELETE FROM Reminder WHERE ID = ?",(int(split[2]),))
+							conn.commit()
+							say(destination,"Reminder with that ID deleted!")
+
+
+			else:
+				say(destination,"You didn't provide enough arguments! \00304!<remind|reminder> <me|nick> <time(eg 30m2h4d2w no space)> <message>")
 
 		#
 		#
@@ -989,19 +1056,39 @@ def checkForLaters(xChatNick,destination):
 				timeEntered = float(message[2])
 				msg = message[3]
 				channel = message[4]
-				
+
 				xchat.get_context().command("msg "+toNick+" \00304"+fromNick+" \00307sent you a message in \00304" + channel + "\00307 on \00304"+time.strftime("%a, %d %b %Y %H:%M:%S +0000",time.gmtime(timeEntered)))
 				xchat.get_context().command("msg "+toNick+" \00307"+msg)
 			c.execute("DELETE FROM Laters WHERE ToNick = ?",(xChatNick.lower(),))
 			conn.commit()
+
+def checkForReminders():
+	c.execute("SELECT * FROM Reminders ORDER BY ReminderDate DESC")
+	results = c.fetchall()
+	currTime = time.time()
+	for data in results:
+		remindTime = float(data[2])
+		if currTime>remindTime:
+			toNick = data[0]
+			fromNick = data[1]
+			dateAdded = float(data[4])
+			remindID = data[5]
+			
+
+
+			#remind
+			pass
+		else:
+			break
+
+
+
 
 def checkForBotNick():
 	nick = xchat.get_info("nick")
 	if "amatsukaze" in nick.lower():
 		if nick.lower() != "amatsukaze":
 			xchat.get_context().command("nick Amatsukaze")
-#nameCheck = threading.Thread(target=checkForBotNick)
-#nameCheck.start()
 
 print "\0034",__module_name__, __module_version__,"has been loaded\003"
 

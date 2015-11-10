@@ -862,41 +862,45 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 				p = re.compile("(\d+?)([a-zA-Z])")
 				results = p.findall(string)
 				for result in results:
-					if result[-1] not in "mhdw":
+					if result[-1] not in "smhdw":
 						return None
-					params[result[-1]] = result[:-1]
+					params[result[-1]] = result[:-1][0]
 				return params
 			def convertTime(timeDict):
-			  secs = 0
-			  for tVal,value in timeDict.items():
-			    if tVal == "m":
-			      secs += value * 60
-			    elif tVal == "h":
-			      secs += value * 60 * 60
-			    elif tVal == "d":
-			      secs += value * 60 * 60 * 24
-			    elif tVal == "w":
-			      secs += value * 60 * 60 * 24 * 7
-			  return time.localtime(time.time() + secs)
+				secs = 0
+				for tVal,value in timeDict.items():
+					value = int(value)
+					if tVal == "s":
+						secs += value
+					elif tVal == "m":
+						secs += value * 60
+					elif tVal == "h":
+						secs += value * 60 * 60
+					elif tVal == "d":
+						secs += value * 60 * 60 * 24
+					elif tVal == "w":
+						secs += value * 60 * 60 * 24 * 7
+				return time.localtime(time.time() + secs)
 
-			split = xChatmessage.split(" ")
+			split = xChatMessage.split(" ")
 			if len(split)>3:
 				toNick = split[1]
+				if toNick == "me":
+					toNick = sanitizeNick(xChatNick)
 				timeArg = parseTime(split[2])
 				msg = " ".join(split[3:])
 				if timeArg == None:
-					say(destination,"Your time argument was formatted incorrectly! Please enter it in the format of \00304\"30m2h1d6w\"\00307, or 30 minutes, 2 hours, 1 day, 6 weeks. No spaces.")
+					say(destination,"Your time argument was formatted incorrectly! Please enter it in the format of \00304\"15s30m2h1d6w\"\00307, or 15 seconds, 30 minutes, 2 hours, 1 day, 6 weeks. No spaces.")
 				else:
 					fromNick = xChatNickFull
-					timeToRemind = convertTime(time)
+					timeToRemind = convertTime(timeArg)
 					currTime = time.time()
-					c.execute("INSERT INTO Reminders VALUES (?,?,?,?,?)",(fromNick,toNick,time.mktime(timeToRemind),currTime,msg))
+					c.execute("INSERT INTO Reminders (FromNick,ToNick,ReminderDate,DateAdded,Message) VALUES (?,?,?,?,?)",
+									  (str(fromNick),str(toNick),float(time.mktime(timeToRemind)),float(currTime),str(msg)))
 					remindee = "you" if fromNick.split("|")[0].lower() == toNick.lower() else toNick
-					say(destination,"Alright! I'll remind "+remindee+" about that on "+time.strftime("%a, %d %b %Y %H:%M:%S +0000",timeToRemind))
-					c.execute("SELECT MAX(ID) FROM Reminders")
-					result = c.fetchall()
-					highestID = result[0][0]
-					say(destination, "If you want to delete that reminder, use the command  \003!reminder del 04"+str(highestID)+"\00307!")
+					say(destination,"Alright! I'll remind \00304"+remindee+" \00307about that on \00304"+time.strftime("%a, %d %b %Y %H:%M:%S +0000",timeToRemind))
+					highestID = c.lastrowid
+					say(destination, "If you want to delete that reminder, use the command  \00304!reminder del \00305"+str(highestID))
 					conn.commit()
 			elif len(split)==3:
 				if split[1] in ["del","delete","rem","remove"]:
@@ -916,7 +920,6 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 							c.execute("DELETE FROM Reminder WHERE ID = ?",(int(split[2]),))
 							conn.commit()
 							say(destination,"Reminder with that ID deleted!")
-
 
 			else:
 				say(destination,"You didn't provide enough arguments! \00304!<remind|reminder> <me|nick> <time(eg 30m2h4d2w no space)> <message>")
@@ -1062,27 +1065,37 @@ def checkForLaters(xChatNick,destination):
 			c.execute("DELETE FROM Laters WHERE ToNick = ?",(xChatNick.lower(),))
 			conn.commit()
 
-def checkForReminders():
+def sanitizeNick(nick):
+	return nick.split("|")[0].lower()
+
+
+def checkForReminders(userdata):
+	destination = xchat.find_context(channel='#asdf') 
 	c.execute("SELECT * FROM Reminders ORDER BY ReminderDate DESC")
 	results = c.fetchall()
 	currTime = time.time()
 	for data in results:
 		remindTime = float(data[2])
 		if currTime>remindTime:
-			toNick = data[0]
-			fromNick = data[1]
-			dateAdded = float(data[4])
-			remindID = data[5]
-			
+			fromNick = data[0]
+			toNick = data[1] if sanitizeNick(fromNick) != sanitizeNick(data[1]) else "You"
+			dateAdded = float(data[3])
+			msg = data[4]
+			ID = data[5]
+			you = "yourself" if fromNick == "You" else "you"
 
-
+			c.execute("DELETE FROM Reminders WHERE ID=?",(ID,))
+			conn.commit()
+			destination.command("msg "+toNick+ " \00304" + fromNick + " \00307set a reminder for " + you + " on \00304"+time.strftime("%a, %d %b %Y %H:%M:%S +0000",time.gmtime(dateAdded)))
+			destination.command("msg "+toNick+ " \00307" + msg)
 			#remind
 			pass
 		else:
 			break
+	return 1
 
-
-
+hook = None
+hook = xchat.hook_timer(5000,checkForReminders) #call every 10 seconds
 
 def checkForBotNick():
 	nick = xchat.get_info("nick")

@@ -989,6 +989,7 @@ def on_trigger_PM(word, word_eol, userdata) :
 	pass
 
 def on_trigger(word,word_eol,userdata):
+	global HOOK
 	checkForBotNick()
 	destination = xchat.get_context()
 	activeChannels = ["#captions", "#kancollewiki", "#asdf","#kancolle", "#amatsukaze","#kcad"]
@@ -1000,7 +1001,9 @@ def on_trigger(word,word_eol,userdata):
 	if xchat.get_info("network") in activeNetworks or bypass:
 		if channel in activeChannels or (bypass and channel not in blacklistChannels):
 			if destination.get_info("nick").lower() in activeNicks:
-
+				if HOOK == None:
+					HOOK = xchat.get_context()
+					HOOK.command("msg remi_scarlet HOOK acquired")
 				###### WARNING ######
 				# JUST MODIFY THE
 				# ON_TRIGGER_CONTENT FUNCTION
@@ -1023,6 +1026,7 @@ def on_join_content(word, word_eol, userdata, destination):
 	checkForLaters(xChatNick,destination)
 
 def on_nick_join(word, word_eol, userdata):
+	global HOOK
 	destination = xchat.get_context()
 	activeChannels = ["#captions", "#kancollewiki", "#asdf","#kancolle", "#amatsukaze","#kcad"]
 	activeNetworks = ["Slack", "EsperNet", "EsperNet (Bot)"]
@@ -1033,6 +1037,9 @@ def on_nick_join(word, word_eol, userdata):
 	if xchat.get_info("network") in activeNetworks or bypass:
 		if channel in activeChannels or (bypass and channel not in blacklistChannels):
 			if destination.get_info("nick").lower() in activeNicks:
+				if HOOK == None:
+					HOOK = xchat.get_context()
+					HOOK.command("msg remi_scarlet HOOK acquired")
 
 				###### WARNING ######
 				# JUST MODIFY THE
@@ -1070,34 +1077,37 @@ def sanitizeNick(nick):
 
 
 def checkForReminders(userdata):
-	destination = xchat.get_context() 
-	c.execute("SELECT * FROM Reminders ORDER BY ReminderDate DESC")
-	results = c.fetchall()
-	currTime = time.time()
-	activeNicks = ["amatsukaze","amatsukaze|bot"]
-	if destination.get_info("nick").lower() in activeNicks:
-		for data in results:
-			remindTime = float(data[2])
-			if currTime>remindTime:
-				fromNick = data[0]
-				toNick = data[1] if sanitizeNick(fromNick) != sanitizeNick(data[1]) else "You"
-				dateAdded = float(data[3])
-				msg = data[4]
-				ID = data[5]
-				you = "yourself" if fromNick == "You" else "you"
+	global HOOK
 
-				c.execute("DELETE FROM Reminders WHERE ID=?",(ID,))
-				conn.commit()
-				destination.command("msg "+toNick+ " \00304" + fromNick + " \00307set a reminder for " + you + " on \00304"+time.strftime("%a, %d %b %Y %H:%M:%S +0000",time.gmtime(dateAdded)))
-				destination.command("msg "+toNick+ " \00307" + msg)
-				#remind
-				pass
-			else:
-				break
-		return 1
+	if HOOK != None:
+		destination = HOOK
+		c.execute("SELECT * FROM Reminders ORDER BY ReminderDate ASC")
+		results = c.fetchall()
+		currTime = time.time()
+		activeNicks = ["amatsukaze","amatsukaze|bot"]
+		destination.command("")
+		if destination.get_info("nick").lower() in activeNicks:
+			for data in results:
+				remindTime = float(data[2])
+				if currTime>remindTime:
+					fromNick = data[0]
+					toNick = data[1]
+					dateAdded = float(data[3])
+					msg = data[4]
+					ID = data[5]
+					you = "yourself" if fromNick == "You" else "you"
+					c.execute("DELETE FROM Reminders WHERE ID=?",(ID,))
+					conn.commit()
+					destination.command("msg "+toNick+ " \00304" + fromNick + " \00307set a reminder for " + you + " on \00304"+time.strftime("%a, %d %b %Y %H:%M:%S ",time.gmtime(dateAdded)))
+					destination.command("msg "+toNick+ " \00307" + msg)
+					#remind
+					pass
+				else:
+					break
+	return 1
 
-hook = None
-hook = xchat.hook_timer(5000,checkForReminders) #call every 10 seconds
+HOOK = None
+HOOK_OBJ = xchat.hook_timer(5000,checkForReminders) #Call every 5 seconds
 
 def checkForBotNick():
 	nick = xchat.get_info("nick")

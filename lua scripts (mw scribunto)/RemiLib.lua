@@ -1,11 +1,11 @@
 local p = {}
- 
+
 local bit32 = require( 'bit32' )
- 
+
 -- Module for random library functions for lua because lua sucks. Written by
 -- Remi_Scarlet
 -- I fucking hate lua.
- 
+
 -- Takes a table. Returns a bool of whether it's empty or not.
 function table.empty (self)
     for _, _ in pairs(self) do
@@ -13,12 +13,12 @@ function table.empty (self)
     end
     return true
 end
- 
+
 -- takes a string and returns string with first letter capitalized
 function p.capitalize(str)
     return (str:gsub("^%l", string.upper))
 end
- 
+
 function p.hashString(str)
     local hash = 0
     if str == nil or str == "" then
@@ -33,12 +33,12 @@ function p.hashString(str)
     end
     return hash
 end
- 
- 
+
+
 -- Hashes a seed if given, if not just returns a hash based on current time.
 function p.timeHash(seed)
     local randomizer = 0
- 
+        
     if seed == nil then
         randomizer = math.random(0,9999999)
     elseif type(seed) == "table" then
@@ -68,10 +68,10 @@ function p.timeHash(seed)
     end
     local time = os.time()
     local rand = math.random()
-    local rtnHash = (math.floor(time*265314426625821*rand)-randomizer*time) % 2^32+math.floor(math.random()*1381242451)*randomizer
+    local rtnHash = (math.floor(time*5501*rand)-math.floor(randomizer*time) + math.floor(math.random()*5501*randomizer)) % 2^32
     return rtnHash
 end
- 
+
 -- returns a string representation of a table.
 -- cannot do recursive tables. Eg, only single dimensional tables will work
 -- should a multi-dimensional table be given, it will simply put "table" as the value
@@ -95,7 +95,7 @@ function p.dictConcat(dict,sep)
     end
     return final
 end
- 
+
 -- returns tables merged. 
 function p.mergeTable(t1,t2)
     for k,v in pairs(t2) do
@@ -111,7 +111,7 @@ function p.mergeTable(t1,t2)
     end
     return t1
 end
- 
+
 -- Assumes a1 and a2 are "arrays" with their keys being ints in increasing order from 1
 -- returns array with a2's indexes being appended to a1 in order
 function p.mergeArrays(a1,a2)
@@ -121,12 +121,12 @@ function p.mergeArrays(a1,a2)
     end
     return a1
 end
- 
+
 p.lowercase = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"}
 p.uppercase = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"}
 p.letters = p.mergeArrays(p.lowercase,p.uppercase)
- 
- 
+
+
 -- checks if data is in the array as a key
 function p.valid(data, array)
     local valid = {}
@@ -141,7 +141,7 @@ function p.valid(data, array)
         end
     end
 end
- 
+
 -- returns number of elements and tables there are.
 -- recurse parameter is a boolean on whether to recurse on tables
 function p.getTableSize(table, recurse)
@@ -156,5 +156,5 @@ function p.getTableSize(table, recurse)
     end
     return size
 end
- 
+
 return p

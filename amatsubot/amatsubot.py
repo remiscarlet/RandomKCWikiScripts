@@ -914,7 +914,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 
 						if result == []:
 							say(destination,"A reminder with that ID didn't exist!")
-						elif not (currNick != fromNick or currNick != toNick):
+						elif not (currNick != fromNick and currNick != toNick):
 							say(destination,"You can't delete a reminder that you didn't set or are set to receive!")
 						else:
 							c.execute("DELETE FROM Reminder WHERE ID = ?",(int(split[2]),))

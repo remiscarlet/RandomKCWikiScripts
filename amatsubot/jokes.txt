@@ -1,0 +1,96 @@
+Programmer (noun.)`A machine that turns coffee into code.
+Algorithm (noun.)`Word used by progammers when they do not want to explain what they did.
+Hardware (noun.)`The part of a computer that you can 04kick
+What's the OOP way to become rich?`Inheritance
+What is a programmer's favorite hangout place?`The Foo Bar
+What do computers and air conditioners have in common?`They both become useless when you open 04Windows
+Why do Java programmers have to wear glasses?`Because they don't C# (Disclaimer C# also sucks)
+A programmer had a problem. He decided to use Java.`Now he has a ProblemFactory
+If you put a million monkeys on a million keyboards, one of the will eventually write a Java program`The rest are Perl scripts. Alternatively J scripts.
+3 SQL queries walk into a NoSQL bar. A while later they walk out`Because they b couldn't find a table
+An SQL qury goes into a bar and walks up to two tables and asks`04"Can I join you?"
+I don't see women as \00304objects.`I consider each to be a 04class03 of her own.
+What did C++ say to C?`"You don't have class."
+There are 2 hard problems in computer science`caching, naming, and off-by-1 errors
+Why did the chicken cross the road?`Assembler Chicken: First, it builds the road ......
+Why did the chicken cross the road?`C Chicken: It crosses the road without looking both ways.
+Why did the chicken cross the road?`C++ Chicken: The chicken wouldn't have to cross the road, you' d simply refer to him on the other side.
+Why did the chicken cross the road?`Gopher Chicken: Tried to run but got beaten by the Web chicken.
+Why did the chicken cross the road?`Intel Pentium Chicken: The chicken crossed 4.9999978 times.
+Why did the chicken cross the road?`Java Chicken: If your road needs to be crossed by a chicken, then the server will download one to the other side. (Of course, those are chicklets.)  See also WMI Monitor.
+Why did the chicken cross the road?`Linux Chicken: Don't you *dare* try to cross the road the same way we do!
+Why did the chicken cross the road?`Mac Chicken: No reasonable chicken owner would want a chicken to cross the road, so there's no way to tell it how to cross the road.
+Why did the chicken cross the road?`Newton Chicken: Can't cluck, can't fly, and can't lay eggs, but you can carry it across the road in your pocket.
+Why did the chicken cross the road?`OOP Chicken: It doesn't need to cross the road, it just sends a message.
+Why did the chicken cross the road?`Microsoft's Chicken: It's already on both sides of the road. What's more its just bought the road.
+Why did the chicken cross the road?`Quantum Logic Chicken: The chicken is distributed probabilistically on all sides of the road until you observe it on the side of your choice.
+Why did the chicken cross the road?`VB Chicken: USHighways! <TheRoad.cross> (aChicken)
+Why did the chicken cross the road?`XP Chicken Jumps out onto the road, turns right, and just keeps on running.
+Why did the chicken cross the road?`The Longhorn Chicken had an identity crisis and is now calling itself Vista.
+Why did the chicken cross the road?`The Vista Chicken dazzled itself with its own graphics.
+Programs for sale:`Fast, reliable, cheap - choose two.
+Two bytes meet. The first byte asks, "Are you ill?"`The second byte replies, "No, just feeling a bit off"
+How many programmers to change a lightbulb?`None. That's a hardware problem.
+There are two types of people in this world:`those who understand recursion and those who don’t understand that there are two types of people in this world
+Why do programmers mix up Halloween and Christmas?`OCT31 == DEC25
+04"Knock Knock" 03"Who's There?" A very long pause ensues`04"Java."
+What did the suicidal function say?`"GOODBYE WORLD"
+How do functions break up?`They stop calling each other
+When is a function a bad investment?`When there's no return.
+What happened to the function that ran away?`It never returned
+When do two functions fight?`When they have arguments
+What did the flirtatious function say?`"Call me"
+What happened to all the illegal exceptions?`They were all caught
+What do threads do after they make love?`They go to sleep
+Why do we rarely see a program with crooked teeth?`Because most of them have braces (Ironically I'm written in Python kek)
+Perl`A language that looks the same before and after encryption
+Software engineering is a race between software engineers striving to make better idiot-proof programs and the universe trying to build bigger idiots`So far the universe is winning.
+A good Ruby programmer?`Oh yes, he's a Gem.
+Do you know much about AJAX?`CORS I do.
+npm install warming -g`
+CSS developers have the biggest ego`They think they're so 04!important
+The forgetful front-end developer;`He had a short attention <span>.
+Shooting yourself in the foot:`Assembler: You attempt to shoot yourself in the foot only to discover that you must first invent the gun, the bullet, the trigger, and your foot.
+Shooting yourself in the foot:`C: You shoot yourself in the foot.
+Shooting yourself in the foot:`C++: You accidentally create a dozen instances of yourself and shoot them all in the foot. Providing emergency medical assistance is impossible since you can't tell which are bitwise copies and which are just pointing at others and saying, "That's me, over there."
+Shooting yourself in the foot:`Cobol: The gun won't fire unless it's aligned in column 8.
+Shooting yourself in the foot:`dBase: You squeeze the trigger, but the bullet moves so slowly that by the time your foot feels the pain you've forgotten why you shot yourself anyway.
+Shooting yourself in the foot:`Java: You shoot yourself in the foot. All the other users of your site leave hobbling and cursing.
+Shooting yourself in the foot:`Lisp: You shoot yourself in the appendage which holds the gun with which you shoot yourself in the appendage which holds the gun with which...
+Shooting yourself in the foot:`Pascal: The compiler won't let you shoot yourself in the foot.
+Shooting yourself in the foot:`Perl: You separate the bullet from the gun with a hyperoptimized regexp, and then you transport it to your foot using several typeglobs. However, the program fails to run and you can't correct it since you don't understand what the hell it is you've written.
+Shooting yourself in the foot:`VB: You'll shoot yourself in the foot, but you'll have so much fun doing it that you won't care.
+How do you change a lightbulb in OO programming? `You don't. Instead, you tell the lamp to do it.
+How do you change a lightbulb in functional programming? `You can't, at least not in pure functional programming.
+How do you change a lightbulb in logical programming? `You imply that it is changed.
+How do you change a lightbulb in concurrent programming? `You take the lamp to a secure area so nobody else can try to change the lightbulb while you're changing it. Alternatively, you might get a lamp with lightbulbs that can't be changed, and just get a new lamp when the lightbulb goes out.
+A man says to a programmer friend "Can you help me? I can't open this jar."`The friend responds, "Download Java".
+Your mother is so fat, she sat on a binary tree and flattened it to a linked list in constant time.`
+Your mother is so fat, she solves the Travelling Salesman problem in O(1) by visiting all cities simultaneously.`
+Your mother is so fat they assigned her a new top-level domain.`
+Your mother is so fat, dijkstra shortest path algorithm around her ass causes an infinite loop.`
+Your mother is so fat, the recursive function computing her mass causes a stack overflow.`
+Your mother is so fat, she couldn't get popped off the stack.`
+Your mother is so fat when she core dumps it fills up all the free space.`
+Your mother is so fat, when allocating memory on the heap for her, malloc returns a null pointer.`
+Exception up = new Exception(“Something is really wrong.”);\\throw up;
+The designer you treat like shit has quit unexpectedly`Your company and other employees are not affected. Click Renogotiate to discuss terms for new contract. Click HR to find out how badly you fucked up.
+I was about to crack a joke on Ubuntu's text editor, but you might not gedit.`
+A Cobol programmer made so much money doing Y2K remediation that he was able to have himself cryogenically frozen when he died. One day in the future, he was unexpectedly resurrected.`When he asked why he was unfrozen, he was told: "It's the year 9999 - and you know Cobol"
+Why was the statement scared while the comment was not?`Statements are executed.
+In order to understand recursion, you must first understand recursion.`
+Some people, when confronted with a problem, think "I know, I'll use regular expressions."`Now they have two problems.
+So, you have a problem. You say "I know, I'll use floating point!"`Now you have 2.0001341678 problems.
+A programmer had a problem. He thought to himself, "I know, I'll solve it with threads!".`has Now problems. two he
+What did the router say to the doctor?`"It hurts when IP"
+How many prolog programmers does it take to change a lightbulb?`Yes.
+How come there is no obfuscated Perl contest?`Because everyone would win.
+What did the backend engineer say in lament?`Nobody can see how elegant my code is.
+Programmer's girlfriend: "Are you going to sit and type in front of that thing all day or are you going out with me?"`Programmer: "Yes."
+What data structure would you use to implement a LRU cache that gives you O(log n) for insertion/deletion or search?`A linked list of size log n
+I'm starting a band called 1023mb`I don't think we'll ever get a gig.
+
+
+
+
+

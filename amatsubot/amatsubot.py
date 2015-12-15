@@ -10,6 +10,7 @@ import random
 import time
 import io
 import re
+import csv
 import copy
 import math
 import urllib
@@ -21,10 +22,13 @@ import HTMLParser
 import json
 from py_expression_eval import Parser
 
+BASEDIR = ""
 if os.name == "posix":
 	sys.path.insert(0,os.path.join("/Users","YutoTakamoto","Dropbox","YutoProgramming","RandomKCWikiScripts","amatsubot"))
+	BASEDIR = os.path.join("/Users","YutoTakamoto","Dropbox","YutoProgramming","RandomKCWikiScripts","amatsubot")
 else:
 	sys.path.insert(0,'G:\\Dropbox\\YutoProgramming\\RandomKCWikiScripts\\amatsubot')
+	BASEDIR = 'G:\\Dropbox\\YutoProgramming\\RandomKCWikiScripts\\amatsubot'
 from chatterbotapi import ChatterBotFactory, ChatterBotType
 import Amatsubot_Settings as settings
 
@@ -261,7 +265,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 							nick = result[3]
 							message = '"'+result[4]+'"'
 							days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
-							timeStr = (str(timestamp[3]).zfill(2)+":"+str(timestamp[4]).zfill(2)+":"+str(timestamp[5]).zfill(2)+" GMT 0:00 on "
+							timeStr = (str(timestamp[3]).zfill(2)+":"+str(timestamp[4]).zfill(2)+":"+str(timestamp[5]).zfill(2)+" GMT on "
 										+str(timestamp[1])+"/"+str(timestamp[2])+"/"+str(timestamp[0]))
 							say(destination,"Quote #"+quoteId+" was saved at "+timeStr+" by "+nick)
 							say(destination,message)
@@ -598,107 +602,127 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 		#
 		#
 		if firstWord in ["!define","!definition","!d","!def","!dict","!dictionary"]:
+
+			secondWord = xChatMessageSplit[1].lower()
+			if secondWord == "amatsukaze":
+				say(destination,"The best IJN destroyer there ever was and Remi's true shipwaifu. Get lost.")
+			if secondWord == "remi_scarlet":
+				say(destination,"My creator. He's a sweetie <3")
+
+
 			def sorted(lst):
-				tmp = copy.copy(lst)
-				tmp.sort()
-				return tmp
+			  tmp = copy.copy(lst)
+			  tmp.sort()
+			  return tmp
 			if len(xChatMessage.split(" ")) == 1:
-				say(destination,"You didn't provide enough arguments! \00307!<define|def|dict|dictionary|d> <searchterm> [definition label]")
+			  say(destination,"You didn't provide enough arguments! \00307!<define|def|dict|dictionary|d> <searchterm> [definition label]")
 			else:
-				searchWord = xChatMessage.split(" ")[1]
-				if len(xChatMessage.split(" "))>2:
-					searchedDef = " ".join(xChatMessage.split(" ")[2:])
-				else:
-					searchedDef = ""
+			  searchWord = xChatMessage.split(" ")[1]
+			  if len(xChatMessage.split(" "))>2:
+			    searchedDef = " ".join(xChatMessage.split(" ")[2:])
+			  else:
+			    searchedDef = ""
 
-				urlList = ["http://www.dictionaryapi.com/api/v1/references/collegiate/xml/",searchWord,"?key=",settings.merriam_dictionary_api]
-				url = "".join(urlList)
-				r = requests.get(url)
+			  urlList = ["http://www.dictionaryapi.com/api/v1/references/collegiate/xml/",searchWord,"?key=",settings.merriam_dictionary_api]
+			  url = "".join(urlList)
+			  r = requests.get(url)
+			  print url
 
 
-				if r.text != u"Invalid API key or reference name provided.":
-					# Pull the first definition block. Ignore the rest since
-					# they tend to be less relevent. This is just a quick search function.
-					# If they want a full set of definition they can google it.
-					p = re.compile("<def>.*?</def>")
-					definitionText = p.search(r.text,re.DOTALL)
-					#print definitionText.group(0)
+			  if r.text != u"Invalid API key or reference name provided.":
+			    # Pull the first definition block. Ignore the rest since
+			    # they tend to be less relevent. This is just a quick search function.
+			    # If they want a full set of definition they can google it.
+			    p = re.compile("<def>.*?</def>")
+			    definitionText = p.search(r.text,re.DOTALL)
+			    #print definitionText.group(0)
 
-					# Pull the labels (1,2a,2b,3,etc) and their corresponding definitions
-					p = re.compile("<sn>(.*?)</sn>.*?<dt>(.*?)</dt>")
-					labelAndDefs = p.findall(definitionText.group(0),re.DOTALL)
+			    # Pull the labels (1,2a,2b,3,etc) and their corresponding definitions
+			    p = re.compile("<sn>(.*?)</sn>.*?<dt>(.*?)</dt>")
+			    labelAndDefs = p.findall(definitionText.group(0),re.DOTALL)
+			    if labelAndDefs == []:
+			      p = re.compile("<dt>(.*?)</dt>")
+			      labelAndDefs = p.findall(definitionText.group(0),re.DOTALL)
+			      print labelAndDefs
 
-					# init vars
-					defDict = {}
-					exampleDict = {}
-					lastNumLabel = None
-					lastNumAndSubLabel = None
+			    # init vars
+			    defDict = {}
+			    exampleDict = {}
+			    lastNumLabel = None
+			    lastNumAndSubLabel = None
 
-					for labelAndDef in labelAndDefs:
-						label,definition = labelAndDef
-						# Get various examples. These are in <vi></vi> tags.
-						p = re.compile("<vi>(.*?)</vi>")
-						egs = p.findall(definition)
-						# Remove the examples from the text
-						definition = p.sub("",definition)
-						p = re.compile("<.*?>")
-						definition = p.sub("",definition)
-						# If def is like 4 a (1), so first def in a numbered series has sub def
-						if label[0].isdigit() and "<snp>" in label:
-							temp = str(re.sub("<.*?>","",label))
-							label = temp
-							lastNumLabel = temp[0]
-							lastNumAndSubLabel = temp.split("(")[0].strip()
-						# Starts with a number
-						elif label[0].isdigit() and "<snp>" not in label+"1":
-							lastNumLabel = label[0]
-							lastNumAndSubLabel = label
-						# starts with a <, so is a sub sub definition (4 a (1) etc)
-						elif label[0] == "<":
-							temp = re.sub("<.*?>","",label)
-							label = lastNumAndSubLabel + " " + temp
-						# We have a label sub definition but it has the letter and sub category, eg first sub-sub def
-						elif label[0] != "<" and "<" in label:
-							temp = re.sub("<.*?>","",label)
-							label = lastNumLabel + " " + temp
-							lastNumAndSubLabel = lastNumLabel + " " + temp[0]
-						# None of the above meaning it should just be a sub definition (4 a)
-						else:
-							label = lastNumLabel + " " + label
-							lastNumAndSubLabel = label
+			    for labelAndDef in labelAndDefs:
+			      if type(labelAndDef)== unicode:
+			        break
+			      label,definition = labelAndDef
+			      # Get various examples. These are in <vi></vi> tags.
+			      p = re.compile("<vi>(.*?)</vi>")
+			      egs = p.findall(definition)
+			      # Remove the examples from the text
+			      definition = p.sub("",definition)
+			      p = re.compile("<.*?>")
+			      definition = p.sub("",definition)
+			      # If def is like 4 a (1), so first def in a numbered series has sub def
+			      if label[0].isdigit() and "<snp>" in label:
+			        temp = str(re.sub("<.*?>","",label))
+			        label = temp
+			        lastNumLabel = temp[0]
+			        lastNumAndSubLabel = temp.split("(")[0].strip()
+			      # Starts with a number
+			      elif label[0].isdigit() and "<snp>" not in label+"1":
+			        lastNumLabel = label[0]
+			        lastNumAndSubLabel = label
+			      # starts with a <, so is a sub sub definition (4 a (1) etc)
+			      elif label[0] == "<":
+			        temp = re.sub("<.*?>","",label)
+			        label = lastNumAndSubLabel + " " + temp
+			      # We have a label sub definition but it has the letter and sub category, eg first sub-sub def
+			      elif label[0] != "<" and "<" in label:
+			        temp = re.sub("<.*?>","",label)
+			        label = lastNumLabel + " " + temp
+			        lastNumAndSubLabel = lastNumLabel + " " + temp[0]
+			      # None of the above meaning it should just be a sub definition (4 a)
+			      else:
+			        label = lastNumLabel + " " + label
+			        lastNumAndSubLabel = label
 
-						defDict[label] = definition[1:]
-						for eg in egs:
-							eg = re.sub("<.*?>","",eg)
-							if label not in exampleDict:
-								exampleDict[label] = []
-							exampleDict[label].append(eg)
-					sortedDefLabels = sorted(list(defDict.keys()))
-					# If they want the definition labels.
-					if searchedDef == "defs":
-						say(destination,"Definition labels: " + " | ".join(sortedDefLabels))
-					else:
-						if searchedDef != "" and searchedDef not in sortedDefLabels:
-							say(destination,"The definition label you gave was invalid! Defaulting to first definition")
-							searchedDef = sortedDefLabels[0]
-						if searchedDef == "": 
-							searchedDef = sortedDefLabels[0]
-						say(destination,"Definition labels: Type \00304!define <word> defs \00307for a list of other definitions.")
-						say(destination,"\"\00305" + searchWord.capitalize() + "\00307\" - definition #" + searchedDef + ": " + defDict[searchedDef])
-						examples = " - ".join( \
-											 map(lambda x: x.capitalize(), exampleDict[searchedDef])) \
-											 if searchedDef in exampleDict else ""
-						if examples != "":
-							say(destination,"\00305Examples: \00307"+examples)
-				elif "suggestion" in r.text:
-					p = re.compile("<suggestion>(.*?)</suggestion>")
-					suggestions = p.findall(r.text)
-					say(destination,"That word didn't exist! Did you mean any of the following?")
-					say(destination," | ".join(sorted(suggestions)))
+			      defDict[label] = definition[1:]
+			      for eg in egs:
+			        eg = re.sub("<.*?>","",eg)
+			        if label not in exampleDict:
+			          exampleDict[label] = []
+			        exampleDict[label].append(eg)
+			    sortedDefLabels = sorted(list(defDict.keys()))
+			    print sortedDefLabels
+			    # If they want the definition labels.
+			    if searchedDef == "defs":
+			      say(destination,"Definition labels: " + " | ".join(sortedDefLabels))
+			    else:
+			      if searchedDef != "" and searchedDef not in sortedDefLabels:
+			        say(destination,"The definition label you gave was invalid! Defaulting to first definition")
+			        searchedDef = sortedDefLabels[0]
+			      if searchedDef == "" and sortedDefLabels != []:
+			        searchedDef = sortedDefLabels[0]
+			      if sortedDefLabels != []:
+			        say(destination,"Definition labels: Type \00304!define <word> defs \00307for a list of other definitions.")
+			        say(destination,"\"\00305" + searchWord.capitalize() + "\00307\" - definition #" + searchedDef + ": " + defDict[searchedDef])
+			      else:
+			        definition = labelAndDefs[0]
+			        say(destination,"\"\00305" + searchWord.capitalize() + "\00307\" - definition: "+definition)
+			      examples = " - ".join( \
+			                 map(lambda x: x.capitalize(), exampleDict[searchedDef])) \
+			                 if searchedDef in exampleDict else ""
+			      if examples != "":
+			        say(destination,"\00305Examples: \00307"+examples)
+			  elif "suggestion" in r.text:
+			    p = re.compile("<suggestion>(.*?)</suggestion>")
+			    suggestions = p.findall(r.text)
+			    say(destination,"That word didn't exist! Did you mean any of the following?")
+			    say(destination," | ".join(sorted(suggestions)))
 
-				else:
-					say(destination,"Error!")
-					say(destination,r.text[:512])
+			  else:
+			    say(destination,"Error!")
+			    say(destination,r.text[:512])
 
 
 
@@ -845,6 +869,8 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 
 				fromNick = xChatNickFull
 				split = xChatMessage.split(" ")
+				if split[1].lower() == "tell":
+					split.pop(1)
 				toNick = split[1].lower()
 				message = " ".join(split[2:])
 				timeEntered = str(time.time())
@@ -854,6 +880,14 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 			else:
 				say(destination,"You didn't provide enough arguments! \00304!<later|tell> <destination nick> <message>")
 
+		if firstWord in ["!joke"]:
+			global global_jokes
+			random.shuffle(global_jokes)
+			joke = random.choice(global_jokes)
+			say(destination,joke[0])
+			if joke[1] != "":
+				say(destination,joke[1])
+				
 		#	
 		#
 		if firstWord in ["!remind","!reminder"]:
@@ -865,6 +899,8 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 					if result[-1] not in "smhdw":
 						return None
 					params[result[-1]] = result[:-1][0]
+				if params == {}:
+					return None
 				return params
 			def convertTime(timeDict):
 				secs = 0
@@ -914,7 +950,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 
 						if result == []:
 							say(destination,"A reminder with that ID didn't exist!")
-						elif not (currNick != fromNick and currNick != toNick):
+						elif not (currNick == fromNick or currNick == toNick):
 							say(destination,"You can't delete a reminder that you didn't set or are set to receive!")
 						else:
 							c.execute("DELETE FROM Reminder WHERE ID = ?",(int(split[2]),))
@@ -927,7 +963,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 		#
 		#
 		if firstWord in ["!commands", "!command"]:
-			commands = ["ver", "settopic\0037 or \0034!topic","!define\0037 or \0034!d","flip","compass","calc\0037 (or just \0034!c\0037)","help","info","dice","weather", "herald","quotes","todo","ping","wolfram\0037 (or \0034!wa\0037)"]
+			commands = ["ver", "joke", "settopic\0037 or \0034!topic","!define\0037 or \0034!d","flip","compass","calc\0037 (or just \0034!c\0037)","help","info","dice","weather", "herald","quotes","todo","ping","wolfram\0037 (or \0034!wa\0037)"]
 			if isCaptions: commands.extend(["mecab", "quack"])
 			commands.sort()
 			fullString = ""
@@ -942,7 +978,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 	#
 	#	
 	if xChatMessage[0] == "%":
-		if channel not in ["#kancollewiki", "#kancolle"]:
+		if channel not in ["#kancollewiki", "#kancolle","#kcad"]:
 			def thinker (destination, sessionToUse, xChatMessage):
 				message = sessionToUse["session"].think(xChatMessage[1:])
 				say(destination,sessionToUse["name"]+": "+message)
@@ -1040,7 +1076,6 @@ def on_nick_join(word, word_eol, userdata):
 				if HOOK == None:
 					HOOK = xchat.get_context()
 					HOOK.command("msg remi_scarlet HOOK acquired")
-
 				###### WARNING ######
 				# JUST MODIFY THE
 				# ON_TRIGGER_CONTENT FUNCTION
@@ -1067,7 +1102,7 @@ def checkForLaters(xChatNick,destination):
 				msg = message[3]
 				channel = message[4]
 
-				xchat.get_context().command("msg "+toNick+" \00304"+fromNick+" \00307sent you a message in \00304" + channel + "\00307 on \00304"+time.strftime("%a, %d %b %Y %H:%M:%S +0000",time.gmtime(timeEntered)))
+				xchat.get_context().command("msg "+toNick+" \00304"+fromNick+" \00307sent you a message in \00304" + channel + "\00307 on \00304"+time.strftime("%a, %d %b %Y %H:%M:%S +0500",time.gmtime(timeEntered)))
 				xchat.get_context().command("msg "+toNick+" \00307"+msg)
 			c.execute("DELETE FROM Laters WHERE ToNick = ?",(xChatNick.lower(),))
 			conn.commit()
@@ -1108,6 +1143,14 @@ def checkForReminders(userdata):
 
 HOOK = None
 HOOK_OBJ = xchat.hook_timer(5000,checkForReminders) #Call every 5 seconds
+
+global_jokes = list()
+someError = ""
+with open(os.path.join(BASEDIR,"jokes.txt"),"r") as csvfile:
+	csvread = csv.reader(csvfile, delimiter="`")
+	for line in csvread:
+		if line != []:
+			global_jokes.append(line)
 
 def checkForBotNick():
 	nick = xchat.get_info("nick")

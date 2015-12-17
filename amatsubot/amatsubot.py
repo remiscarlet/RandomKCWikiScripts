@@ -882,11 +882,16 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 
 		if firstWord in ["!joke"]:
 			global global_jokes
-			random.shuffle(global_jokes)
-			joke = random.choice(global_jokes)
+			global jokeIndex
+			#random.shuffle(global_jokes)
+			joke = global_jokes[jokeIndex]
+			jokeIndex +=1
 			say(destination,joke[0])
 			if joke[1] != "":
 				say(destination,joke[1])
+			if jokeIndex >= len(global_jokes):
+				jokeIndex = 0
+				random.shuffle(global_jokes)
 				
 		#	
 		#
@@ -1146,11 +1151,14 @@ HOOK_OBJ = xchat.hook_timer(5000,checkForReminders) #Call every 5 seconds
 
 global_jokes = list()
 someError = ""
-with open(os.path.join(BASEDIR,"jokes.txt"),"r") as csvfile:
+with open(os.path.join(BASEDIR,"jokes.csv"),"r") as csvfile:
 	csvread = csv.reader(csvfile, delimiter="`")
 	for line in csvread:
 		if line != []:
 			global_jokes.append(line)
+	for i in xrange(5):
+		random.shuffle(global_jokes)
+	jokeIndex = 0
 
 def checkForBotNick():
 	nick = xchat.get_info("nick")

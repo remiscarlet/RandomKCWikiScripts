@@ -4,8 +4,11 @@
     <title>fooooo</title>
 </head>
 <body>
+  <div id="foo">
+    {% csrf_token %}
     {% for item, value in data.items %}
         {{item}}: {{value}}<br />
     {% endfor %}
+  </div>
 </body>
 </html>

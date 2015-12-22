@@ -10,4 +10,7 @@ urlpatterns = patterns('',
     url(r'^admin', include(admin.site.urls)),
     url(r'^$', views.index),
     url(r'^index/*$', views.index),
+    url(r'^debug/*$', views.foo),
+    url(r'^foo/*$', views.kcdump),
+
 )

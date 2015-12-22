@@ -1,8 +1,9 @@
 .DS_Store
 *.pyc
 legacy - git ignore
-phantomjs
-settings.py
+kcwiki-web/nodeShit/node_modules/
+settings.*
+dump.json
 *.sqlite3
 *.db
 Amatsubot_Settings.py

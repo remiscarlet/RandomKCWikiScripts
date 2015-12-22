@@ -18,6 +18,12 @@ def index(request):
   html = template.render(context)
   return HttpResponse(html)
 
+def kcdump(request):
+  template = django.template.loader.get_template("kcdump.html")
+  context = RequestContext(request, {})
+  html = template.render(context)
+  return HttpResponse(html)
+
 def ajaxDescriptionGenerator(request):
   description = """
   Kiyoshimo Hourly Lines
@@ -27,3 +33,11 @@ def ajaxDescriptionGenerator(request):
     javascript +="$(\"[name=description"+str(i)+"]\").val(\""+description.strip()+"\");"
 
   print javascript
+
+@csrf_exempt
+def foo(request):
+  template = django.template.loader.get_template("foo.html")
+  context = RequestContext(request,{"data":request.POST})
+  print request.META
+  html = template.render(context)
+  return HttpResponse(html)

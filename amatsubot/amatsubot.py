@@ -84,8 +84,6 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 						isText = True
 						r = requests.get(url)
 					encoding = re.search("<meta.*?content=\".*?charset=(.*?)\"",r.text,re.DOTALL)
-					print encoding
-					print "AAAA" 
 					encode = "utf8"
 					if encoding != None:
 						encode = encoding.group(1)

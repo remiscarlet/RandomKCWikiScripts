@@ -39,7 +39,6 @@ var options = {
     'width': 1280,
     'height': 780,
     'plugin':true,
-    'show':true,
     'webPreferences': {
         'plugins': true,
     }
@@ -146,7 +145,7 @@ function site4(url){
   needle.post(url, payload, headerOpts, function(err, resp){
     console.log(err);
     console.log(resp.statusCode)
-    fs.writeFile("./dump.json", resp.body, function(err) {
+    fs.writeFile("../../dump.json", resp.body, function(err) {
         if(err) {
             return console.log(err);
         }

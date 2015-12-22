@@ -364,6 +364,32 @@ Z3改,z3 kai,DD,fast
 龍驤改二,ryuujou kai ni,CVL,fast
 龍鳳,ryuuhou,CVL,slow
 龍鳳改,ryuuhou kai,CVL,slow
+速吸,hayasui,AO,slow
+速吸改,hayasui kai,AO,slow
+萩風,hagikaze,DD,fast
+萩風改,hagikaze kai,DD,fast
+瑞穂,mizuho,AV,slow
+瑞穂改,mizuho kai,AV,slow
+鹿島,kashima,CLP
+鹿島改,kashima kai,CLP
+風雲,kazagumo,DD,fast
+風雲改,kazagumo kai,DD,fast
+照月,teruzuki,DD,fast
+照月改,teruzuki kai,DD,fast
+海風,umikaze,DD,fast
+海風改,umikaze kai,DD,fast
+江風,kawakaze,DD,fast
+江風改,kawakaze kai,DD,fast
+翔鶴改二,shoukaku kai ni,CV,fast
+瑞鶴改二,zuikaku kai ni,CV,fast
+翔鶴改二甲,shoukaku kai ni kou,CV,fast
+瑞鶴改二甲,zuikaku kai ni kou,CV,fast
+Graf Zeppelin,graf zeppelin,CV,fast
+Graf Zeppelin改,graf zeppelin kai,CV,fast
+Libeccio,libeccio,DD,fast
+Libeccio改,libeccio kai,DD,fast
+嵐,arashi,DD,fast
+嵐改,arashi kai,DD,fast
 駆逐イ級,DD I-class,DD,fast
 駆逐イ級後期型,DD I-class Late Model,DD,fast
 駆逐ロ級,DD Ro-class,DD,fast

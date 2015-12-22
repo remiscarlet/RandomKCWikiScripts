@@ -2,6 +2,7 @@
 *.pyc
 legacy - git ignore
 kcwiki-web/nodeShit/node_modules/
+settings_mine.js
 settings.*
 dump.json
 *.sqlite3

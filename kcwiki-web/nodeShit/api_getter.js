@@ -22,15 +22,15 @@
 var Nightmare = require('nightmare');
 var Promise = require('q').Promise;
 var fs = require('fs');
-
-
 var needle = require("needle");
 
+// Set some default values for needle's requests
 needle.defaults({
   open_timeout: 60000,
   user_agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36',
   parse_response: false });
 
+// Contains dmm login information.
 var settings = require("./settings.js")
 
 
@@ -45,8 +45,12 @@ var options = {
     }
 };
 var kc = new Nightmare(options)
-  
+
+// Will go to login page, login,
+// set to Japanese website,
+// and set region cookies  
 function site1(data){
+
   Promise.resolve(kc
     .goto("https://www.dmm.com/en/my/-/login/=/path=SgReFg__/")
     .wait(1000)
@@ -70,7 +74,12 @@ function site1(data){
     })
     )
 };
+
+
 var iframeUrl;
+// Will load the game url and then grab the iframe's url
+// Must load iframe endpoint at osapi.dmm.com because of
+// cross-domain security checks
 function site2(data){
   Promise.resolve(kc
       .goto("http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/")
@@ -84,6 +93,8 @@ function site2(data){
 };
 
 var osapiUrl;
+// Will load the inner osapi.dmm page
+// and get the api link from here.
 function site3(url){
   osapiUrl = url;
   console.log("osapi.dmm.com link (inner iframe url)");
@@ -103,6 +114,9 @@ function site3(url){
   });
 }
 
+// Given the api link, will regex it
+// and then send a request to the api_start2 endpoint
+// and dump the response json into dump.json
 function site4(url){
   console.log("");
   var re = /api_token=(\w+)/;

@@ -1,4 +1,9 @@
 # -*- coding: UTF-8 -*-
+
+# Downloads all voices from the atpages page. 
+#
+# This script is deprecated and not used anymore.
+
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')

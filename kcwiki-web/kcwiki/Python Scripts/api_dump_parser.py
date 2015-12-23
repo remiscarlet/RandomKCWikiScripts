@@ -1,14 +1,14 @@
 # -*- coding: UTF-8 -*-
-# -*- coding: UTF-8 -*-
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
 import re
 import os
+import paths
 
 BASEDIR = os.path.dirname(os.path.realpath(__file__))
-jsonDumpFile = open(os.path.join(BASEDIR,"..","dump.json"),"r")
+jsonDumpFile = open(paths.masterdump,"r")
 jsonDump = jsonDumpFile.readline() # This gun' be big
 
 
@@ -41,27 +41,29 @@ jsonDump = p.sub("api_master_",jsonDump)
 
 
 # Will catch all but the last section.
-p = re.compile("ter_(\w+?)\":(\[.+?\])\,\"api_mas",re.DOTALL)
+p = re.compile("ter_(\w+?)\":\[(.+?)\]\,\"api_mas",re.DOTALL)
 # Will catch last section, which is presumably going to be the bgm
-p2 = re.compile("ter_(bgm)\":(\[.+?\])\}\}")
+p2 = re.compile("ter_(bgm)\":\[(.+?)\]\}\}")
 
 r = p.findall(jsonDump)
 r2 = p2.findall(jsonDump)
 
 
 for result in r:
-  f = open(os.path.join(BASEDIR,"api_mst_"+result[0]+"_data.json"),"w")
+  f = open(os.path.join(paths.api_decoding,"api_mst_"+result[0]+"_data.json"),"w")
   data = result[1]
   reg = re.compile("\}\,\{")
   data = reg.sub("},\n{",data)
+  data = re.sub(",\n","\n",data)
   f.write(data.decode("unicode-escape"))
   f.close()
   print result[0]
 
 for result in r2:
-  f = open(os.path.join(BASEDIR,"api_mst_"+result[0]+"_data.json"),"w")
+  f = open(os.path.join(paths.api_decoding,"api_mst_"+result[0]+"_data.json"),"w")
   data = result[1]
   reg = re.compile("\}\,\{")
   data = reg.sub("},\n{",data)
+  data = re.sub(",\n","\n",data)
   f.write(data.decode("unicode-escape"))
   f.close()

@@ -7,23 +7,19 @@ import subprocess
 import sys
 import os
 import threading
-
+import paths
+import kclib
 
 
 command = [u"ffmpeg",u"-i",u"INPUT", u"-ac", u"1", u"-ar",u"16000", u"OUTPUT", u"-y", ]
 command = [u"ffmpeg",u"-i",u"INPUT",u"-c:a",u"libvorbis",u"-qscale:a",u"9",u"OUTPUT"]
-baseDir = unicode(os.path.join("/","Users","YutoTakamoto","Desktop","Kancolle Mp3 Voices", "Sounds"))
+baseDir = unicode(os.path.join("/","Users","YutoTakamoto","Desktop","Kancolle Scrape Data", "temp"))
 #baseDir = unicode(os.path.join("/","Users","YutoTakamoto","Documents","Captions", "core", "en-US","iOS Adjustment Audio","Cleaned Audio"))
-destDir = unicode(os.path.join("/","Users","YutoTakamoto","Desktop","Kancolle Ogg Voices"))
+destDir = unicode(os.path.join("/","Users","YutoTakamoto","Desktop","Kancolle Scrape Data","kancolle ogg"))
 __ACCEPTEDFILETYPE__ = ["mp3","ogg"]
 __RENAME_TO_WIKI_FORMAT = True
 
-attrDict = dict()
-with open("kanmusu_jp-en_mapping.txt","r") as attrMapping:
-	for line in attrMapping.readlines():
-		split = line.split(",")
-		for attr in split:
-			attrDict[attr] = split
+attrDict = kclib.returnFullAssocShipIdentDict()
 
 def convert(directory,source,output,fileType):
 	#print fileType

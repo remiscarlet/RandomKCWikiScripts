@@ -1,6 +1,6 @@
 .DS_Store
 *.pyc
-Scrape Logs/*
+*Scrape Logs/
 legacy - git ignore
 kcwiki-web/nodeShit/node_modules/
 settings_mine.js

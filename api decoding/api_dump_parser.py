@@ -18,6 +18,7 @@ apiSections = [
   "api_mst_ship",
   "api_mst_shipgraph",
   "api_mst_slotitem_equiptype",
+  "api_mst_equip_exslot",
   "api_mst_stype",
   "api_mst_slotitem",
   "api_mst_furniture",
@@ -46,6 +47,8 @@ p2 = re.compile("ter_(bgm)\":(\[.+?\])\}\}")
 
 r = p.findall(jsonDump)
 r2 = p2.findall(jsonDump)
+
+
 for result in r:
   f = open(os.path.join(BASEDIR,"api_mst_"+result[0]+"_data.json"),"w")
   data = result[1]

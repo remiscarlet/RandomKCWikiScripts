@@ -1,11 +1,12 @@
-# Major API Dump Sections And Known Information Ver.1.0.0
-The kcsapi/start_api2 json dump is split into 16 primary sections. These sections are the top-level of interesting data in the depth of the json tree. To give a better idea of data format, the json tree is split as follows
+# Major API Dump Sections And Known Information Ver.1.0.1
+The kcsapi/start_api2 json dump is split into 17 primary sections. These sections are the top-level of interesting data in the depth of the json tree. To give a better idea of data format, the json tree is split as follows
 
 ```
 svdata={"api_result":1,"api_result_msg":"成功","api_data":{
   "api_mst_ship":[{DATA},{DATA},...,{DATA}],
   "api_mst_shipgraph":[{DATA},{DATA},...,{DATA}],
   "api_mst_slotitem_equiptype":[{DATA},{DATA},...,{DATA}],
+  "api_mst_equip_exslot":[{DATA,{DATA},...,{DATA}],
   "api_mst_stype":[{DATA},{DATA},...,{DATA}],
   "api_mst_slotitem":[{DATA},{DATA},...,{DATA}],
   "api_mst_furniture":[{DATA},{DATA},...,{DATA}],
@@ -27,7 +28,9 @@ Where ```DATA``` is an object containing key-value pairs of data such as ```api_
 
 The sections are as follows and their information is as listed. Sorted alphabetically:
 
-**api_mst_bgm**: Id's for each bgm track and their title. These are bgm's used in port specifically. Note that the url endpoint for these requires a random lowercase letter appended to the id itself to access. Not sure how these work but I've brute-forced them out. 
+-------
+
+***api_mst_bgm***: Id's for each bgm track and their title. These are bgm's used in port specifically. Note that the url endpoint for these requires a random lowercase letter appended to the id itself to access. Not sure how these work but I've brute-forced them out. 
 
 Access the following tracks at the url ```http://203.104.209.23/kcs/resources/bgm_p/<ID_WITH_LETTER>.swf```
 
@@ -72,24 +75,34 @@ Access the following tracks at the url ```http://203.104.209.23/kcs/resources/bg
 * ```227f```
 * ```228c```
 
+-------
 
 ***api_mst_exslot***
 I have no fucking clue dude. It's literally nothing but 3 numbers.
 
+-------
+
 ***api_mst_furniture***
 Contains information on furniture. Id's, prices, names
+
+-------
 
 ***api_mst_furnituregraph***
 Presumably a list of equipment that are animated, eg in flash files. api_version may be the number of variants/frames there are.
 
+-------
+
 ***api_mst_maparea***
 A list of the worlds and their Id's.
+
+-------
 
 ***api_mst_mapbgm***
 Contains data for what bgm is used in each map. As far as I can tell, the second number in each list isn't used... or something. The "song id" is the 1st element in each list so eg **[10,10]** means the song id is 10.
 
 The url endpoint for map songs is ```http://203.104.209.102/kcs/resources/swf/sound_b_bgm_<id>.swf``` Obviously the hostserver ip is interchangeable with any other server.
 
+-------
 
 ***api_mst_mapcell***
 Contains every NODE's information on each map. Eg, Node A on 1-1, etc.
@@ -102,6 +115,8 @@ Contains every NODE's information on each map. Eg, Node A on 1-1, etc.
   * ```7```: Aerial-phase only
   * ```8```: No battle
   * ```9```: Presumably the green recon nodes but unconfirmed.
+
+-------
 
 ***api_mst_mapinfo***
 Contains information about the map such as its id, description, how many times the boss needs to be killed, difficulty and rewards.
@@ -117,6 +132,7 @@ Contains information about the map such as its id, description, how many times t
 * ```api_required_defeat_count```: Number of kills required. Presumably event maps don't use this as they use ```api_max_maphp``` instead
 * ```api_sally_flag```: Unknown. All values are [1,0]. Need data from events to confirm, but may be whether combined fleet or not. Eg, if [1,1] then it means both fleets are used whereas [1,0] means only first is used.
 
+-------
 
 ***api_mst_mission***
 Expedition information.
@@ -132,9 +148,12 @@ Expedition information.
 * ```api_win_item2```: Second reward, if any
 * ```api_return_flag```: Not exactly sure, but this is set to 1 on every expedition **except** support expeditions
 
+-------
 
 ***api_mst_payitem***
 Purchasable entries on the cash store.
+
+-------
 
 ***api_mst_ship***
 Section of the JSON dump at kcsapi/start_api2 that contains (most) data for shipgirls and abyssals including stats, intro line, identifiers, etc
@@ -176,9 +195,12 @@ Section of the JSON dump at kcsapi/start_api2 that contains (most) data for ship
   * ```6``` = Aviation Cruiser (CAV)
   * ```7``` = Light Carrier (CVL)
 
+-------
 
 ***api_mst_shipgraph***
 Contains the obfuscated id's for friendly and enemy vessels. Also contains unused identifiers. New ships have been populating unused identifiers and presumably will continue to do so.
+
+-------
 
 ***api_mst_shipupgrade***
 Any ship that needs a blueprint or catapult anywhere in its upgrade tree is included in here on all forms. Because this may get confusing, let's pretend we're looking at a Bismarck Zwei.
@@ -192,15 +214,22 @@ Any ship that needs a blueprint or catapult anywhere in its upgrade tree is incl
 * ```api_catapult_count```: What do you think this means.
 * ```api_sortno```: The sortno, or the id that appears in-game, of the ship we're upgrading into. Since this list contains all forms of ships that have any kind of item-requiring upgrade in its tree, for cases where we're upgrading non-kai to kai and the in-game id doesn't change, the api_sortno for that ship will simply increase by 100. Eg, Tone is sortno 273 but turns into 373 at kai. This is also actually a simplification because ```api_mst_ship``` has tone kai as 1373. Pretend non-id changing ships have a 1 prepended to their sortno.
 
+-------
 
 ***api_mst_slotitem***
 Data for every equipment in the game. All id's beyond 500 are abyssal equipment and prior are kanmusu equipment
 
+-------
+
 ***api_mst_slotitem_equiptype***
 Contains id's for each equipment TYPE such as primary gun, secondary, torpedo, etc
 
+-------
+
 ***api_mst_stype***
 Contains data on ship types.
+
+-------
 
 ***api_mst_useitem***
 Contains data for all "usable" items as well as reward items such as resources (fuel/ammo/steel/baux)

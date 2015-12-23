@@ -1,0 +1,45 @@
+
+
+http://203.104.209.102/kcs/resources/swf/sound_b_bgm_1.swf?version=2.0.6
+http://203.104.209.102/kcs/scenes/BattleResultMain.swf?version=2.6.6
+http://203.104.209.102/kcs/scenes/BattleMain.swf?version=2.6.6
+http://203.104.209.102/kcs/scenes/SupplyMain.swf?version=2.6.5
+http://203.104.209.102/kcs/scenes/RepairMain.swf?version=2.3.5
+http://203.104.209.102/kcs/scenes/RecordMain.swf?version=2.3.8
+http://203.104.209.102/kcs/scenes/AlbumMain.swf?version=2.6.6.1
+http://203.104.209.102/kcs/scenes/ItemlistMain.swf?version=2.6.4
+http://203.104.209.102/kcs/scenes/InteriorMain.swf?version=2.3
+
+http://203.104.209.23/kcs/resources/bgm_p/101r.swf
+http://203.104.209.23/kcs/resources/bgm_p/103v.swf <- Sortie music ???
+http://203.104.209.23/kcs/resources/bgm_p/104a.swf <- furniture music????
+http://203.104.209.23/kcs/resources/bgm_p/105h.swf
+http://203.104.209.23/kcs/resources/bgm_p/107b.swf
+http://203.104.209.23/kcs/resources/bgm_p/119t.swf
+http://203.104.209.23/kcs/resources/bgm_p/227f.swf
+
+http://203.104.209.102/kcsapi/api_req_map/next <- request next map
+  - post headers
+  - api_verno:1
+  - api_recovery_type:0 <- presumably "whether went back or not y/n"
+  - api_token:b6c872beb28a3177ced37442c92fcd642575880f
+
+
+http://203.104.209.102/kcsapi/api_req_sortie/battle
+  - api_verno:1
+  - api_recovery_type:0
+  - api_formation:1
+  - api_token:b6c872beb28a3177ced37442c92fcd642575880f
+
+
+api_req_sortie/battle result
+svdata={"api_result":1,"api_result_msg":"\u6210\u529f","api_data":{"api_dock_id":1,"api_ship_ke":[-1,505,501,501,-1,-1,-1],"api_ship_lv":[-1,1,1,1,-1,-1,-1],"api_nowhps":[-1,15,14,-1,-1,-1,-1,33,20,20,-1,-1,-1],"api_maxhps":[-1,15,15,-1,-1,-1,-1,33,20,20,-1,-1,-1],"api_midnight_flag":1,"api_eSlot":[[504,525,-1,-1,-1],[501,-1,-1,-1,-1],[501,-1,-1,-1,-1],[-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1]],"api_eKyouka":[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]],"api_fParam":[[10,27,13,6],[10,27,12,5],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]],"api_eParam":[[14,24,10,15],[5,15,6,5],[5,15,6,5],[0,0,0,0],[0,0,0,0],[0,0,0,0]],"api_search":[6,1],"api_formation":[1,1,1],"api_stage_flag":[1,0,0],"api_kouku":{"api_plane_from":[[-1],[-1]],"api_stage1":{"api_f_count":0,"api_f_lostcount":0,"api_e_count":0,"api_e_lostcount":0,"api_disp_seiku":1,"api_touch_plane":[-1,-1]},"api_stage2":null,"api_stage3":null},"api_support_flag":0,"api_support_info":null,"api_opening_flag":0,"api_opening_atack":null,"api_hourai_flag":[1,0,0,1],"api_hougeki1":{"api_at_list":[-1,1,7,2,9,8],"api_at_type":[-1,0,0,0,0,0],"api_df_list":[-1,[9],[2],[7],[1],[1]],"api_si_list":[-1,[2],[504],[2],[501],[501]],"api_cl_list":[-1,[1],[1],[1],[0],[0]],"api_damage":[-1,[12],[10],[2],[0],[0]]},"api_hougeki2":null,"api_hougeki3":null,"api_raigeki":{"api_frai":[-1,2,0,0,0,0,0],"api_erai":[-1,2,2,0,0,0,0],"api_fdam":[-1,0,2,0,0,0,0],"api_edam":[-1,0,26,0,0,0,0],"api_fydam":[-1,26,0,0,0,0,0],"api_eydam":[-1,2,0,0,0,0,0],"api_fcl":[-1,1,0,0,0,0,0],"api_ecl":[-1,1,0,0,0,0,0]}}}
+
+
+svdata={"api_result":1,"api_result_msg":"\u6210\u529f","api_data":[{"api_member_id":20380756,"api_id":50,"api_value":2,"api_usetype":0,"api_category":0,"api_name":"\u5fdc\u6025\u4fee\u7406\u8981\u54e1","api_description":["",""],"api_price":0,"api_count":2},{"api_member_id":20380756,"api_id":66,"api_value":0,"api_usetype":0,"api_category":0,"api_name":"\u6226\u95d8\u7ce7\u98df","api_description":["",""],"api_price":0,"api_count":0},{"api_member_id":20380756,"api_id":67,"api_value":0,"api_usetype":0,"api_category":0,"api_name":"\u6d0b\u4e0a\u88dc\u7d66","api_description":["",""],"api_price":0,"api_count":0}]}
+
+
+svdata={"api_result":1,"api_result_msg":"成功","api_data":[{"api_id":5,"api_name":"母港","api_description":"母港BGM設定可能","api_bgm_id":101,"api_use_coin":100,"api_bgm_flag":1,"api_loops":1},{"api_id":6,"api_name":"秋月の空","api_description":"母港BGM設定可能","api_bgm_id":205,"api_use_coin":1000,"api_bgm_flag":1,"api_loops":2},{"api_id":7,"api_name":"明石の工廠","api_description":"母港BGM設定可能","api_bgm_id":206,"api_use_coin":1000,"api_bgm_flag":1,"api_loops":2},{"api_id":8,"api_name":"連合艦隊の出撃","api_description":"母港BGM設定可能","api_bgm_id":210,"api_use_coin":1000,"api_bgm_flag":1,"api_loops":2},{"api_id":9,"api_name":"海上護衛戦","api_description":"母港BGM設定可能","api_bgm_id":208,"api_use_coin":1000,"api_bgm_flag":1,"api_loops":2},{"api_id":10,"api_name":"冬の艦隊","api_description":"母港BGM設定可能","api_bgm_id":211,"api_use_coin":1000,"api_bgm_flag":1,"api_loops":2},{"api_id":11,"api_name":"迎春の鎮守府","api_description":"母港BGM設定可能","api_bgm_id":212,"api_use_coin":1000,"api_bgm_flag":1,"api_loops":2},{"api_id":12,"api_name":"士魂の護り","api_description":"母港BGM設定可能","api_bgm_id":213,"api_use_coin":1000,"api_bgm_flag":1,"api_loops":2},{"api_id":13,"api_name":"特型駆逐艦","api_description":"母港BGM設定可能","api_bgm_id":214,"api_use_coin":1000,"api_bgm_flag":1,"api_loops":2},{"api_id":14,"api_name":"艦娘のお菓子作り","api_description":"母港BGM設定可能","api_bgm_id":215,"api_use_coin":1000,"api_bgm_flag":1,"api_loops":2},{"api_id":15,"api_name":"桃の節句と艦娘","api_description":"母港BGM設定可能","api_bgm_id":216,"api_use_coin":1000,"api_bgm_flag":1,"api_loops":2},{"api_id":16,"api_name":"武蔵の帰投","api_description":"母港BGM設定可能","api_bgm_id":217,"api_use_coin":1000,"api_bgm_flag":1,"api_loops":2},{"api_id":17,"api_name":"雨音の鎮守府","api_description":"母港BGM設定可能","api_bgm_id":218,"api_use_coin":1000,"api_bgm_flag":1,"api_loops":2},{"api_id":18,"api_name":"雨とお酒と艦娘","api_description":"母港BGM設定可能","api_bgm_id":219,"api_use_coin":1000,"api_bgm_flag":1,"api_loops":2},{"api_id":19,"api_name":"暁の水平線に","api_description":"視聴ロングバージョン","api_bgm_id":220,"api_use_coin":700,"api_bgm_flag":0,"api_loops":1},{"api_id":20,"api_name":"鎮守府の朝","api_description":"視聴ロングバージョン","api_bgm_id":221,"api_use_coin":700,"api_bgm_flag":0,"api_loops":1},{"api_id":21,"api_name":"華の二水戦","api_description":"視聴ロングバージョン","api_bgm_id":222,"api_use_coin":700,"api_bgm_flag":0,"api_loops":1},{"api_id":22,"api_name":"提督との絆","api_description":"視聴ロングバージョン","api_bgm_id":223,"api_use_coin":700,"api_bgm_flag":0,"api_loops":1},{"api_id":23,"api_name":"浜辺の艦娘","api_description":"母港BGM設定可能","api_bgm_id":224,"api_use_coin":1000,"api_bgm_flag":1,"api_loops":2},{"api_id":24,"api_name":"加賀岬","api_description":"試製新曲先行公開","api_bgm_id":225,"api_use_coin":1000,"api_bgm_flag":1,"api_loops":2},{"api_id":25,"api_name":"加賀岬改(母港ver)","api_description":"同曲母港BGMバージョン","api_bgm_id":226,"api_use_coin":1000,"api_bgm_flag":1,"api_loops":2},{"api_id":26,"api_name":"鎮守府の秋祭り","api_description":"母港BGM設定可能","api_bgm_id":227,"api_use_coin":1000,"api_bgm_flag":1,"api_loops":2},{"api_id":27,"api_name":"聖夜の母港","api_description":"母港BGM設定可能","api_bgm_id":228,"api_use_coin":1500,"api_bgm_flag":1,"api_loops":2}]}
+
+
+

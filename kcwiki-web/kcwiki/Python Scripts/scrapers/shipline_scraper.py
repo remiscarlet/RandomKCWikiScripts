@@ -1,14 +1,9 @@
 # -*- coding: UTF-8 -*-
-# kanmusu_data_mapper.py
 #
 # Description: 
-#
-# 
-#
-# INPUT: 
-#
-#
-# Output: 
+# Scrapes shiplines based on several inputs described
+# below by the parameters to scrapeShiplines
+# Reads in data such as obfuscated names from json file
 #
 
 import sys
@@ -42,11 +37,16 @@ def scrapeShiplines(toScrape=None,
     toScrape = list(temp)
 
   for ship in toScrape:
+    isAbyssal = mapping[ship.lower()]["isAbyssal"]
+    lang = "en" if namesInEn else "jp"
     data = mapping[ship.lower()]
     audioURL[1] = data["obf"]
     toSkip = False
     baseDir = customPath if customPath != None else paths.soundDir
-    shipFolder = os.path.join(baseDir,data["id"]+" "+data["en"].capitalize()+ " - "+data["obf"])
+    if not isAbyssal:
+      shipFolder = os.path.join(baseDir,data["id"]+" "+data[lang].capitalize()+ " - "+data["obf"])
+    else:
+      shipFolder = os.path.join(baseDir,data["id"]+" "+data[lang]+ " - "+data["obf"])
 
     if not os.path.isdir(shipFolder):
       os.mkdir(shipFolder)
@@ -59,8 +59,8 @@ def scrapeShiplines(toScrape=None,
       if toSkip:
         continue
       audioURL[3] = str(i)
-      lang = "en" if namesInEn else "jp"
-      if not mapping[ship.lower()]["isAbyssal"]:
+      print i
+      if not isAbyssal:
         lineName = kclib.voiceIdMapping[i] if i in kclib.voiceIdMapping else "UNKNOWN"
         lineName += " " 
         fileName = str(i)+u" "+lineName+data[lang].capitalize()
@@ -91,8 +91,8 @@ def scrapeShiplines(toScrape=None,
               logger.verboseLog("NEW AUDIO LINE")
         else:
           lineName = kclib.voiceIdMapping[i] if i in kclib.voiceIdMapping else "UNKNOWN"
-          print "File exists and not checking fileDiffs! "+" ".join([k+": "+v for k,v in data.items()])+"\n===="+lineName
-          logger.verboseLog("File exists and not checking fileDiffs! "+" ".join([k+": "+v for k,v in data.items()])+"\n===="+lineName)
+          print "File exists and not checking fileDiffs! "+" ".join([k+": "+str(v) for k,v in data.items()])+"\n===="+lineName
+          logger.verboseLog("File exists and not checking fileDiffs! "+" ".join([k+": "+str(v) for k,v in data.items()])+"\n===="+lineName)
 
 
       # If we're not skipping AND the file exists, we redownload
@@ -118,7 +118,9 @@ def scrapeShiplines(toScrape=None,
           logger.verboseLog(voiceResponse.headers)
           print voiceResponse
           logger.verboseLog(voiceResponse)
-          if i < 5 or i >28:
+          if ((i == 1) or #if not even voice #1 exists. Every ship that has lines at least hast 1.mp3
+              (i > 10 and isAbyssal) or #no abyssals had lines above 10 so yeah. (Checked 1-27)
+              (i > 28)): #Not having a line above 28 means no hourlies
             toSkip = True
           print "Invalid content-type, likely a file that doesn't exist!"
           logger.verboseLog("Invalid content-type, likely a file that doesn't exist!")
@@ -140,9 +142,9 @@ toCheck = inp.strip().replace(",","").split(" ")
 toDownload = os.path.join("/Users","YutoTakamoto","Desktop","Kancolle Scrape Data","temp")
 
 scrapeShiplines(toScrape = kclib.returnAllShipNames(side="abyssals"), 
-                overwrite = True,
-                linesToCheck=[2,3,4],
-                customPath=toDownload,
-                namesInEn=True)
+                overwrite = False,
+                linesToCheck = None,
+                customPath = toDownload,
+                namesInEn = True)
 
 

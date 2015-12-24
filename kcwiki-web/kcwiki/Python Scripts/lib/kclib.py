@@ -255,16 +255,18 @@ def returnFullAssocShipIdentDict():
   for line in csvreader:
 
     # This check is just for abyssals. Since some abyssal
-    # bosses have multiple entries with the same jp name,
+    # bosses have multiple entries with the same jp/en name,
     # this checks if a name already exists, in which add a number to the end
     # until that name does not exist in the dictionary. 
     temp = line[0]
+    temp2 = line[1]
     i = 2
     while temp in mapping:
       temp = line[0]+str(i)
+      temp2 = line[1]+str(i)
       i+=1
 
-    data = {"jp":temp,"en":line[1],"obf":line[2],"id":line[3],"sortno":line[4],"isAbyssal":bool(line[5])}
+    data = {"jp":temp,"en":temp2,"obf":line[2],"id":line[3],"sortno":line[4],"isAbyssal":bool(line[5])}
     mapping[temp.lower()] = data
     mapping[line[1].lower()] = data
     mapping[line[2]] = data
@@ -286,10 +288,11 @@ def remEmptyFolders(path):
       if os.path.isfile(newPath) or \
          os.path.isdir(newPath):
         empty = False
-
   if empty:
     print path
     os.rmdir(path)
+
+remEmptyFolders(paths.scrapeDir)
 
 
 # Simply returns every ships' name in one language. (Includes abyssals)

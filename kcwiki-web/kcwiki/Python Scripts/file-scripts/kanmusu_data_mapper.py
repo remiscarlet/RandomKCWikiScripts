@@ -59,9 +59,11 @@ exceptions = {
 for line in jsonDump.readlines():
   parsed = json.loads(line)
   isAbyssal = False
-  #If an abyssal
+  #If Verniy and kadokawa is a fucking lazyass
+  #api_name is bep but api_yomi still says hibiki
   if parsed["api_name"] == u"Верный":
     romajiName = "Verniy"
+  #If an abyssal
   elif parsed["api_yomi"] in ["","-","elite","flagship"]:
     romajiName = kclib.abyssalTranslations[parsed["api_name"]]
     if parsed["api_yomi"] in ["elite","flagship"]:

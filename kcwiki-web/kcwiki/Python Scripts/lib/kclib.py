@@ -99,6 +99,7 @@ kanaMapping = {
   u"　":" "
 }
 
+
 voiceIdMapping = {
   1:"Intro",
   2:"Secretary 1",
@@ -252,12 +253,44 @@ def returnFullAssocShipIdentDict():
   f = open(paths.kanmusu_data_mapping,"r")
   csvreader = csv.reader(f,delimiter=",")
   for line in csvreader:
-    data = {"jp":line[0],"en":line[1],"obf":line[2],"id":line[3],"sortno":line[4],"isAbyssal":bool(line[5])}
-    mapping[line[0]] = data
-    mapping[line[1]] = data
+
+    # This check is just for abyssals. Since some abyssal
+    # bosses have multiple entries with the same jp name,
+    # this checks if a name already exists, in which add a number to the end
+    # until that name does not exist in the dictionary. 
+    temp = line[0]
+    i = 2
+    while temp in mapping:
+      temp = line[0]+str(i)
+      i+=1
+
+    data = {"jp":temp,"en":line[1],"obf":line[2],"id":line[3],"sortno":line[4],"isAbyssal":bool(line[5])}
+    mapping[temp.lower()] = data
+    mapping[line[1].lower()] = data
     mapping[line[2]] = data
     mapping[line[3]] = data
   return mapping
+
+# Recursively deletes any empty directories
+def remEmptyFolders(path):
+  dirContent = os.listdir(path)
+  empty = True
+  for item in dirContent:
+    newPath = os.path.join(path,item)
+    if os.path.isdir(newPath):
+      remEmptyFolders(newPath)
+  dirContent = os.listdir(path)
+  for item in dirContent:
+    if item != ".DS_Store":
+      newPath = os.path.join(path,item)
+      if os.path.isfile(newPath) or \
+         os.path.isdir(newPath):
+        empty = False
+
+  if empty:
+    print path
+    os.rmdir(path)
+
 
 # Simply returns every ships' name in one language. (Includes abyssals)
 # To get English names, just set isEn to true.
@@ -280,6 +313,9 @@ def returnAllShipNames(isEn=False,side="all"):
 # Eg, returnVariants("bismarck")
 #     => ['bismarck', 'bismarck drei', 'bismarck kai', 'bismarck zwei']
 # When giving the japanese name, make sure to set isEn to False
+#
+# Will also return all variants of abyssals if multiple entries
+# for same abyssal exist, eg most bosses.
 def returnVariants(ship, isEn=True):
   # Because fuck name changing ships.
   if ship in nameChangingShips:
@@ -293,7 +329,6 @@ def returnVariants(ship, isEn=True):
     if name.find(ship)>-1:
       names.add(name)
   return list(names)
-
 
 # Simply returns the inputted hiragana to its romaji equivalent.
 # Pretty resilient.

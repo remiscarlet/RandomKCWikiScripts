@@ -18,12 +18,21 @@ from kcinit import *
 
 mapping = kclib.returnFullAssocShipIdentDict()
 
-# toScrape should be a list
-# overWrite should be a boolean
-def scrapeShiplines(toScrape=None, linesToCheck=None, overwrite=False,ignoreFilesize=False, customPath=None):
+# toScrape: A list of names to scrape. Can be a list of 
+#           jp names, en names, api_id's or obfuscated names.
+# linesToCheck: A list of voice id's to download.
+# overwrite: A boolean on whether to overwrite even if file exists.
+#            Will only write to disk if the filesize is different.
+# customPath: Full path. Specify where you want it downloaded. Default is paths.soundDir
+# namesInEn: Boolean. Whether to download the files with the names in english or japanese. 
+def scrapeShiplines(toScrape=None, 
+                    linesToCheck=None, 
+                    overwrite=False,
+                    customPath=None,
+                    namesInEn=True):
   audioURL = ["http://125.6.187.253/kcs/sound/kc","OBFNAME","/","AUDIONAME",".mp3"]
   if toScrape == None:
-    toScrape = kclib.returnAllShipNamesJp()
+    toScrape = kclib.returnAllShipNames()
   else:
     temp = set()
     for name in toScrape:
@@ -50,8 +59,18 @@ def scrapeShiplines(toScrape=None, linesToCheck=None, overwrite=False,ignoreFile
       if toSkip:
         continue
       audioURL[3] = str(i)
-      lineName = kclib.voiceIdMapping[i] if i in kclib.voiceIdMapping else "UNKNOWN"
-      fileName = unicode(str(i))+u" "+unicode(lineName)+u" "+data["en"].capitalize()
+      lang = "en" if namesInEn else "jp"
+      if not mapping[ship.lower()]["isAbyssal"]:
+        lineName = kclib.voiceIdMapping[i] if i in kclib.voiceIdMapping else "UNKNOWN"
+        lineName += " " 
+        fileName = str(i)+u" "+lineName+data[lang].capitalize()
+      else:
+        # Abyssal voice lines are non-standard in that some have more lines
+        # than others and their usage isn't necessarily set to the id so
+        # no way to have a blanket method for naming all the lines
+        lineName = ""
+        fileName = str(i)+u" "+lineName+data[lang]
+
       audioFilepath = os.path.join(shipFolder,fileName+".mp3")
       voiceResponse = None 
       isDifferentFilesize = None
@@ -79,41 +98,38 @@ def scrapeShiplines(toScrape=None, linesToCheck=None, overwrite=False,ignoreFile
       # If we're not skipping AND the file exists, we redownload
       # OR the file just doesn't exist flatout.
       if (os.path.isfile(audioFilepath) and overwrite) or not os.path.isfile(audioFilepath):
-        if not os.path.isfile(audioFilepath) or isDifferentFilesize or (os.path.isfile(audioFilepath) and ignoreFilesize):
-          if voiceResponse == None:
-            voiceResponse = requests.get("".join(audioURL))
-          if "content-type" in voiceResponse.headers and voiceResponse.headers["content-type"] == "audio/mpeg":
-            with open(audioFilepath,"wb") as f:
-              for block in voiceResponse.iter_content(1024):
-                f.write(block)
-              f.close()
-            print "Scrape for "+fileName+" complete."
-            logger.verboseLog("Scrape for "+fileName+" complete.")
-            logger.log("SHIP GIRL LINE:-"+fileName)
-            noNewAudio = False
-          else:
-            print "++++++++"+str("".join(audioURL))
-            logger.verboseLog("++++++++"+str("".join(audioURL)))
-            print audioURL
-            logger.verboseLog(audioURL)
-            print voiceResponse.headers
-            logger.verboseLog(voiceResponse.headers)
-            print voiceResponse
-            logger.verboseLog(voiceResponse)
-            if i < 5 or i >28:
-              toSkip = True
-            print "Invalid content-type, likely a file that doesn't exist!"
-            logger.verboseLog("Invalid content-type, likely a file that doesn't exist!")
+        if voiceResponse == None:
+          voiceResponse = requests.get("".join(audioURL))
+        if "content-type" in voiceResponse.headers and voiceResponse.headers["content-type"] == "audio/mpeg":
+          with open(audioFilepath,"wb") as f:
+            for block in voiceResponse.iter_content(1024):
+              f.write(block)
+            f.close()
+          print "Scrape for "+fileName+" complete."
+          logger.verboseLog("Scrape for "+fileName+" complete.")
+          logger.log("SHIP GIRL LINE:-"+fileName)
+          noNewAudio = False
         else:
-          if not isDifferentFilesize:
-            print "The exact same file at "+str(audioFilepath)+" already exists! (Has not changed)"
-            logger.verboseLog( "The exact same file at "+str(audioFilepath)+" already exists! (Has not changed)")
-          elif os.path.isfile(audioFilepath):
-            print "A file by the path "+str(audioFilepath)+" already exists!"
-            logger.verboseLog("A file by the path "+str(audioFilepath)+" already exists!")
-
+          print "++++++++"+str("".join(audioURL))
+          logger.verboseLog("++++++++"+str("".join(audioURL)))
+          print audioURL
+          logger.verboseLog(audioURL)
+          print voiceResponse.headers
+          logger.verboseLog(voiceResponse.headers)
+          print voiceResponse
+          logger.verboseLog(voiceResponse)
+          if i < 5 or i >28:
+            toSkip = True
+          print "Invalid content-type, likely a file that doesn't exist!"
+          logger.verboseLog("Invalid content-type, likely a file that doesn't exist!")
       else:
-        pass
+        if not isDifferentFilesize:
+          print "The exact same file at "+str(audioFilepath)+" already exists! (Has not changed)"
+          logger.verboseLog( "The exact same file at "+str(audioFilepath)+" already exists! (Has not changed)")
+        elif os.path.isfile(audioFilepath):
+          print "A file by the path "+str(audioFilepath)+" already exists!"
+          logger.verboseLog("A file by the path "+str(audioFilepath)+" already exists!")
+  kclib.remEmptyFolders(toDownload)
 
 
 inp = """
@@ -123,6 +139,10 @@ toCheck = inp.strip().replace(",","").split(" ")
 
 toDownload = os.path.join("/Users","YutoTakamoto","Desktop","Kancolle Scrape Data","temp")
 
-scrapeShiplines(toScrape = toCheck, overwrite = True,linesToCheck=[2,3,4],ignoreFilesize=True, customPath=toDownload)
+scrapeShiplines(toScrape = kclib.returnAllShipNames(side="abyssals"), 
+                overwrite = True,
+                linesToCheck=[2,3,4],
+                customPath=toDownload,
+                namesInEn=True)
 
 

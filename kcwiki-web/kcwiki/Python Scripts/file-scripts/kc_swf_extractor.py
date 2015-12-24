@@ -142,8 +142,6 @@ def pngEverything(baseDir):
 						base = "Image "+imageNum+" at frame "+frameNum
 						mask = "Image "+imageNum+" alpha channel at frame "+frameNum
 						for extension in extensions:
-							#print base+extension
-							#print mask+extension
 							if base+extension in fileList:
 								base+=extension
 							if mask+extension in fileList:

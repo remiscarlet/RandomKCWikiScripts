@@ -1,3 +1,7 @@
+# Module meant to be initialized on every
+# python file run in this project.
+
+
 import os
 import sys
 

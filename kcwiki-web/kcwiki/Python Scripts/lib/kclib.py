@@ -10,8 +10,16 @@ from collections import OrderedDict
 import os
 
 
+# There are libraries that do this but
+# they mostly require additional shit being installed
+# like cabocha or mecab and I only need a very specific
+# functionality so I just went ahead and created it. Also they
+# use different romaji than I want. (They use proper linguistically
+# accepted romaji like si and ti instead of shi and chi)
+#
+# I swear I'm not needlessly reinventing the wheel
 kanaMapping = {
-  u"あ":"a",                            u"ア":"a",
+  u"あ":"a",                           u"ア":"a",
   u"い":"i",                           u"イ":"i",
   u"う":"u",                           u"ウ":"u",
   u"え":"e",                           u"エ":"e",

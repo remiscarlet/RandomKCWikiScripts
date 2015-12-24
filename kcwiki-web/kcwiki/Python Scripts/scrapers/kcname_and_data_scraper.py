@@ -79,9 +79,6 @@ if not os.path.isdir(equipmentDir):
   os.mkdir(equipmentDir)
 
 
-# Get list of preexisting kanmusu shipIDs and names from voices (Assuming all voices and swfs coexist)
-preExistingKanmusu = list() # <- ???????? I know I was going somewhere with this but hell if I know now
-
 for f in os.listdir(soundDir):
   print f
   logger.verboseLog(f)

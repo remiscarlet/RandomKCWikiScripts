@@ -12,3 +12,5 @@ if REDOWNLOAD_JSON:
 
   subprocess.Popen(u" ".join(commandline), shell=True)
 
+import api_dump_parser
+import kanmusu_data_mapper

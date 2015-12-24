@@ -1085,11 +1085,11 @@ def on_nick_join(word, word_eol, userdata):
 				#######################
 				on_join_content(word, word_eol, userdata, destination)
 
-xchat.hook_print("Channel Message", on_trigger); #non-highlight words CONTAINING "loli"
-xchat.hook_print("Channel Msg Hilight", on_trigger); #highlight words that contain "loli" (in other words, loli and lolis
-xchat.hook_print("Private Message to Dialog", on_trigger_PM);
-xchat.hook_print("Invited", on_invite);
-xchat.hook_print("Join", on_nick_join);
+xchat.hook_print("Channel Message", on_trigger) #non-highlight words CONTAINING "loli"
+xchat.hook_print("Channel Msg Hilight", on_trigger) #highlight words that contain "loli" (in other words, loli and lolis
+xchat.hook_print("Private Message to Dialog", on_trigger_PM)
+xchat.hook_print("Invited", on_invite)
+xchat.hook_print("Join", on_nick_join)
 
 def checkForLaters(xChatNick,destination):
 	c.execute("SELECT ToNick FROM Laters ")
@@ -1164,5 +1164,5 @@ def checkForBotNick():
 		if nick.lower() != "amatsukaze":
 			xchat.get_context().command("nick Amatsukaze")
 
-print "\0034",__module_name__, __module_version__,"has been loaded\003"
+print "\0034",__module_name__, __module_version__,"has been loaded!"
 

@@ -9,11 +9,8 @@ import subprocess
 import threading
 
 
-command = [u"ffmpeg",u"-i",u"INPUT", u"-ac", u"1", u"-ar",u"16000", u"OUTPUT", u"-y", ]
 command = [u"ffmpeg",u"-i",u"INPUT",u"-c:a",u"libvorbis",u"-qscale:a",u"9",u"OUTPUT"]
 __ACCEPTEDFILETYPE__ = ["mp3","ogg"]
-
-attrDict = kclib.returnFullAssocShipIdentDict()
 
 def convert(baseDir,sourceFileName,outputFileName,fileType):
 	#print fileType
@@ -44,6 +41,8 @@ def moveFile(fileName,srcDir,destDir):
 
 
 
+
+# 
 def recurseDir(baseDir,destDir):
 	for thing in os.listdir(baseDir):
 		if thing != ".DS_Store":
@@ -63,8 +62,15 @@ def recurseDir(baseDir,destDir):
 						t = threading.Thread(target=convert, args=(baseDir, thing, output,split[-1]))
 						t.start()
 
-baseDir = unicode(os.path.join("/","Users","YutoTakamoto","Desktop","Kancolle Scrape Data", "temp"))
-destDir = unicode(os.path.join("/","Users","YutoTakamoto","Desktop","Kancolle Scrape Data","kancolle ogg"))
+_baseDir = unicode(os.path.join("/","Users","YutoTakamoto","Desktop","Kancolle Scrape Data", "temp"))
+_destDir = unicode(os.path.join("/","Users","YutoTakamoto","Desktop","Kancolle Scrape Data","kancolle ogg"))
 
-recurseDir(baseDir,destDir)
+
+# Will encode every .mp3 recursively inside baseDir and output
+# in the exact same folder structure to destDir
+def encodeAndMove(baseDir,destDir):
+	recurseDir(baseDir,destDir)
+
+
+
 

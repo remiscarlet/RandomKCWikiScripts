@@ -236,14 +236,15 @@ nameChangingShips = {
 # Returns a dictionary with every japanese name,
 # every english name and every api_id set as a key
 # with their values being a dict with keys
-# "jp", "en", "obf", "id", "sortno"
+# "jp", "en", "obf", "id", "sortno", "isAbyssal"
 # the value of each being what you'd imagine. id=api_id, sortno=api_sortno
+# isAbyssal has boolean value.
 def returnFullAssocShipIdentDict():
   mapping = dict()
   f = open(paths.kanmusu_data_mapping,"r")
   csvreader = csv.reader(f,delimiter=",")
   for line in csvreader:
-    data = {"jp":line[0],"en":line[1],"obf":line[2],"id":line[3],"sortno":line[4]}
+    data = {"jp":line[0],"en":line[1],"obf":line[2],"id":line[3],"sortno":line[4],"isAbyssal":bool(line[5])}
     mapping[line[0]] = data
     mapping[line[1]] = data
     mapping[line[2]] = data
@@ -252,15 +253,20 @@ def returnFullAssocShipIdentDict():
 
 # Simply returns every ships' name in one language. (Includes abyssals)
 # To get English names, just set isEn to true.
-def returnAllShipNames(isEn=False):
+# side expects an "enum" between ["all","abyssals","kanmusu"]
+# side specifies exactly what you think it specifies.
+# 
+def returnAllShipNames(isEn=False,side="all"):
   names = list()
   f = open(paths.kanmusu_data_mapping,"r")
   csvreader = csv.reader(f,delimiter=",")
   for line in csvreader:
-    i = 1 if isEn else 0
-    names.append(line[i])
+    if ((side == "all") or
+        (line[5] == "True" and side == "abyssals") or
+        (line[5] == "False" and side == "kanmusu")):
+      i = 1 if isEn else 0
+      names.append(line[i])
   return names
-
 
 # Given a ship, will return all its variants in lowercase.
 # Eg, returnVariants("bismarck")

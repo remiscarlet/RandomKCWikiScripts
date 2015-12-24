@@ -6,9 +6,8 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-import logger
-import os
-import requests
+from kcinit import *
+
 
 fileDir = os.path.join("/Users","YutoTakamoto","Desktop","Kancolle Scrape Data")
 

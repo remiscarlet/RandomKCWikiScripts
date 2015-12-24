@@ -17,9 +17,20 @@
 // Requires needle
 // npm install needle
 
+if (process.argv.length < 3){
+  console.log("Usage: node api_getter.js <json dump dir>")
+  console.log("The dump filename, \"dump.json\" is appended automatically")
+  process.exit()
+}
 
+var dumpDir = process.argv[2]
+
+if (dumpDir == "."){
+  dumpDir = process.cwd()
+}
 
 var Nightmare = require('nightmare');
+var path = require('path');
 var Promise = require('q').Promise;
 var fs = require('fs');
 var needle = require("needle");
@@ -146,15 +157,17 @@ function site4(url){
   needle.post(url, payload, headerOpts, function(err, resp){
     console.log(err);
     console.log(resp.statusCode)
-    fs.writeFile("../kcwiki/Python Scripts/data/dump.json", resp.body, function(err) {
+    fs.writeFile(path.join(dumpDir,"dump.json"), resp.body, function(err) {
         if(err) {
             return console.log(err);
         }
         console.log("The file was saved!");
+        process.exit();
     }); 
   });
 }
 
 site1();
+
 
 

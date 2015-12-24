@@ -1,19 +1,21 @@
 import os
 
 BASEDIR = os.path.dirname(os.path.realpath(__file__))
-BASEDIR = os.path.join(BASEDIR,"..","..","..")
+BASEDIR = os.path.abspath(os.path.join(BASEDIR,"..","..","..",".."))
+
 
 # Modify this to point to where you want scrape data to be dumped.
-fileDir = os.path.join("/Users","YutoTakamoto","Desktop","Kancolle Scrape Data")
-if not os.path.isdir(fileDir):
-  os.mkdir(fileDir)
-swfDir = os.path.join(fileDir,"Flash")
+scrapeDir = os.path.join("/Users","YutoTakamoto","Desktop","Kancolle Scrape Data")
+
+if not os.path.isdir(scrapeDir):
+  os.mkdir(scrapeDir)
+swfDir = os.path.join(scrapeDir,"Flash")
 if not os.path.isdir(swfDir):
   os.mkdir(swfDir)
-soundDir = os.path.join(fileDir,"Sounds")
+soundDir = os.path.join(scrapeDir,"Sounds")
 if not os.path.isdir(soundDir):
   os.mkdir(soundDir)
-equipmentDir = os.path.join(fileDir,"Equipment")
+equipmentDir = os.path.join(scrapeDir,"Equipment")
 if not os.path.isdir(equipmentDir):
   os.mkdir(equipmentDir)
 
@@ -37,7 +39,8 @@ api_mst_slotitem_equiptype_data = os.path.join(api_decoding,"api_mst_slotitem_eq
 api_mst_stype_data = os.path.join(api_decoding,"api_mst_stype_data.json")
 api_mst_useitem_data = os.path.join(api_decoding,"api_mst_useitem_data.json")
 
-
+#directory to nodeShit
+nodedir = os.path.join(BASEDIR,"kcwiki-web","nodeShit")
 
 pythonscripts = os.path.join(BASEDIR,"kcwiki-web","kcwiki","Python Scripts")
 pythondata = os.path.join(pythonscripts,"data")

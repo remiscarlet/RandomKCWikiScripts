@@ -27,8 +27,8 @@ if os.name == "posix":
 	sys.path.insert(0,os.path.join("/Users","YutoTakamoto","Dropbox","YutoProgramming","RandomKCWikiScripts","amatsubot"))
 	BASEDIR = os.path.join("/Users","YutoTakamoto","Dropbox","YutoProgramming","RandomKCWikiScripts","amatsubot")
 else:
-	sys.path.insert(0,'G:\\Dropbox\\YutoProgramming\\RandomKCWikiScripts\\amatsubot')
-	BASEDIR = 'G:\\Dropbox\\YutoProgramming\\RandomKCWikiScripts\\amatsubot'
+	sys.path.insert(0,'R:\\Dropbox\\YutoProgramming\\RandomKCWikiScripts\\amatsubot')
+	BASEDIR = 'R:\\Dropbox\\YutoProgramming\\RandomKCWikiScripts\\amatsubot'
 from chatterbotapi import ChatterBotFactory, ChatterBotType
 import Amatsubot_Settings as settings
 

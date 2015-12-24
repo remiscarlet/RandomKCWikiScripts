@@ -26,14 +26,9 @@
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
-import re
-import requests
-import json
-import os
+from kcinit import *
 import datetime
-import paths
 
-import logger
 
 
 ########################

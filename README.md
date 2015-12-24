@@ -9,3 +9,13 @@ Scripts and webserver for en.kancollewiki.net for the purpose of scraping resour
 
 There are separate readme's for most major directories so further information can be found in there.
 
+##IMPORTANT NOTE
+If you want any of the python shit to work, you're going to have to add a .pth file that leads to this root folder. If you fail to do so this shit will not work because of imports and relative pathing. To find out how to add a .pth file to this directory, please read [This Link](https://docs.python.org/2/library/site.html).
+
+I personally have my file located at ```/Library/Python/2.7/site-packages/kcwiki.pth```
+
+##Credit
+Everything here is written by Remi_Scarlet, aka Yuto Takamoto except for the Django webserver default files.
+
+##Copyright
+Please no stealerino kthx. GNU GPL license kthx.

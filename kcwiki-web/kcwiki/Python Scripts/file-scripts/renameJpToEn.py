@@ -2,9 +2,7 @@
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
-import os
-import string
-import copy
+import kcinit
 basePath = os.path.join(u"/",u"Users",u"YutoTakamoto",u"Desktop",u"Kancolle Scrape Data","Flash")
 
 def upperFirst(string):

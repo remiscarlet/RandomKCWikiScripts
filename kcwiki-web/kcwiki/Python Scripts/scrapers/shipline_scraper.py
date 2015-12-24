@@ -14,15 +14,7 @@
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
-import csv
-import re
-import os
-import paths
-import kclib
-import json
-import logger
-import requests
-
+from kcinit import *
 
 mapping = kclib.returnFullAssocShipIdentDict()
 
@@ -32,6 +24,14 @@ def scrapeShiplines(toScrape=None, linesToCheck=None, overwrite=False,ignoreFile
   audioURL = ["http://125.6.187.253/kcs/sound/kc","OBFNAME","/","AUDIONAME",".mp3"]
   if toScrape == None:
     toScrape = kclib.returnAllShipNamesJp()
+  else:
+    temp = set()
+    for name in toScrape:
+      name = name.lower()
+      temp.update(kclib.returnVariants(name,True))
+      temp.update(kclib.returnVariants(name,False))
+    toScrape = list(temp)
+
   for ship in toScrape:
     data = mapping[ship.lower()]
     audioURL[1] = data["obf"]

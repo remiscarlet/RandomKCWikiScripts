@@ -13,19 +13,14 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-import re
-import os
-import string
-import requests
-import csv
+from kcinit import *
 
-BASEDIR = os.path.dirname(os.path.realpath(__file__))
-jsonDir = os.path.join(BASEDIR,"api decoding")
+
 p = re.compile("\"api_id\"\:(\d+)")
 
 # Load up the bgm id's from the api json
 bgmIdList = list()
-f = open(os.path.join(jsonDir,"api_mst_bgm_data.json"))
+f = open(paths.api_mst_bgm_data)
 for line in f.readlines():
   if line.strip() != "":
     id = p.findall(line)
@@ -34,14 +29,14 @@ f.close()
 
 # Load any mappings we already know of
 mappings = {}
-f = open(os.path.join(BASEDIR,"music_id_mapping.csv"),"r")
+f = open(paths.music_id_mapping,"r")
 csvreader = csv.reader(f,delimiter=",")
 for line in csvreader:
   mappings[line[0]] = line[1]
 f.close()
 
 # 
-f = open(os.path.join(BASEDIR,"music_id_mapping.csv"),"a")
+f = open(paths.music_id_mapping,"a")
 csvwriter = csv.writer(f,delimiter=",")
 for id in bgmIdList:
 

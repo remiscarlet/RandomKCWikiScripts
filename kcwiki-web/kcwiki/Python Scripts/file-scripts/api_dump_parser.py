@@ -3,9 +3,8 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-import re
-import os
-import paths
+from kcinit import *
+
 
 BASEDIR = os.path.dirname(os.path.realpath(__file__))
 jsonDumpFile = open(paths.masterdump,"r")
@@ -57,7 +56,6 @@ for result in r:
   data = re.sub(",\n","\n",data)
   f.write(data.decode("unicode-escape"))
   f.close()
-  print result[0]
 
 for result in r2:
   f = open(os.path.join(paths.api_decoding,"api_mst_"+result[0]+"_data.json"),"w")

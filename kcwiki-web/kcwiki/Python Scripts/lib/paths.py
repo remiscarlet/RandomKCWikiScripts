@@ -15,6 +15,9 @@ if not os.path.isdir(swfDir):
 soundDir = os.path.join(scrapeDir,"Sounds")
 if not os.path.isdir(soundDir):
   os.mkdir(soundDir)
+musicDir = os.path.join(scrapeDir,"Music")
+if not os.path.isdir(musicDir):
+  os.mkdir(musicDir)
 equipmentDir = os.path.join(scrapeDir,"Equipment")
 if not os.path.isdir(equipmentDir):
   os.mkdir(equipmentDir)

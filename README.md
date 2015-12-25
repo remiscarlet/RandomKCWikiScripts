@@ -14,6 +14,8 @@ If you want any of the python shit to work, you're going to have to add a .pth f
 
 I personally have my file located at ```/Library/Python/2.7/site-packages/kcwiki.pth```
 
+For those who want a dump of what resources my scripts gather so far, [Click This Link](https://mega.nz/#F!V0E0SAQL!zE7O2yTspljIdjs_AoRVxw)(Last updated 12/25/15). Obviously these scripts are a work in process and I plan on pulling a lot more resources.
+
 ##Credit
 Everything here is written by Remi_Scarlet, aka Yuto Takamoto except for the Django webserver default files.
 

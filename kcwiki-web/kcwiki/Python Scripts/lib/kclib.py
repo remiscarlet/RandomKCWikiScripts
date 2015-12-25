@@ -532,6 +532,8 @@ def remEmptyFolders(path):
     print path
     os.rmdir(path)
 
+#remEmptyFolders(paths.abyssalSoundDir)
+
 
 # Returns a dict containing mapping between
 # api_id and api_name of the port bgm's found in api_mst_bgm_data.json

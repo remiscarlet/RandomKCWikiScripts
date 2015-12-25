@@ -18,56 +18,27 @@ workerPool = threading.Semaphore(20)
 
 mapping = kclib.returnFullAssocShipIdentDict()
 
-# toScrape: A list of names to scrape. Can be a list of 
-#           jp names, en names, api_id's or obfuscated names.
+
 # linesToCheck: A list of voice id's to download.
 # overwrite: A boolean on whether to overwrite even if file exists.
 #            Will only write to disk if the filesize is different.
 # customPath: Full path. Specify where you want it downloaded. Default is paths.soundDir
-# namesInEn: Boolean. Whether to download the files with the names in english or japanese. 
 def scrapeAbyssalLines(linesToCheck=None, 
                        overwrite=False,
                        customPath=None):
   
   audioURL = ["http://125.6.187.253/kcs/sound/kc","OBFNAME","/","AUDIONAME",".mp3"]
 
-  dictOfObfIds = kclib.returnDictOfAllObfIds()
-  obfToNameMapping = kclib.unusedSoundObfIdMapping
+  toScrape = kclib.returnAllShipNames(side="abyssals")
 
   baseDir = paths.abyssalSoundDir
 
-  for obfId,apiId in dictOfObfIds.items():
-    apiId = str(apiId)
-    if obfId not in mapping:
-      swfURL[1] = obfId
-
-
-      name = obfToNameMapping[obfId] if obfId in obfToNameMapping else "UNKNOWN"
-      if name == "":
-        name = "UNKNOWN"
-      if name == "NULL":
-        continue
-
-      toSkip = False
-      shipFolder = os.path.join(baseDir,apiId+" "+name+ " - "+obfId)
-
-      if not os.path.isdir(shipFolder):
-        os.mkdir(shipFolder)
-
-      # Loop through 1 to 15 to look for all potential ship voice lines
-      if linesToCheck == None:
-        linesToCheck = xrange(1,15)
-      for i in linesToCheck:
-        if toSkip:
-          continue
-        audioURL[3] = str(i)
-        lineName = ""
-        fileName = str(i)+u" "+lineName+data[lang]
-
-        audioFilepath = os.path.join(shipFolder,fileName+".mp3")
-        
-
-
+  ####
+  # LOTS OF SHIT HERE
+  ####
+  if True:
+    if True:
+      if False:
         def getAudio(audioFilepath, audioURL,overwrite):
           global workerPool
           workerPool.acquire()
@@ -148,9 +119,8 @@ toCheck = inp.strip().replace(",","").split(" ")
 
 #toDownload = os.path.join("/Users","YutoTakamoto","Desktop","Kancolle Scrape Data","temp")
 
-scrapeAbyssalLines(toScrape = None, 
-                overwrite = False,
-                linesToCheck = None,
-                namesInEn = True)
+scrapeAbyssalLines(linesToCheck=None, 
+                   overwrite = False,
+                   customPath = None)
 
 

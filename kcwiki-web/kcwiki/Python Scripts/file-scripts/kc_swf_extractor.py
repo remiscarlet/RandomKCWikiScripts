@@ -48,17 +48,30 @@ extractedShipImageDict = {
 	"Image 14 alpha channel at frame 14.png": None,
 	"Image 14 at frame 14.jpg": "14 Refuel Image.png",
 	"Image 15 alpha channel at frame 15.png": None,
-	"Image 15 at frame 15.jpg": "15 Refuel Image Damaged.png"
+	"Image 15 at frame 15.jpg": "15 Refuel Image Damaged.png",
+	"Image 1 at frame 3.jpg": "1 Game Card.png",
+	"Image 2 at frame 4.jpg": "2 Game Card Damaged.png",
+	"Image 3 alpha channel at frame 5.png": None,
+	"Image 3 at frame 5.jpg": "3 Game Card Alpha.png",
+	"Image 4 alpha channel at frame 6.png": None,
+	"Image 4 at frame 6.jpg": "4 Game Card Alpha Damaged.png",
+	"Image 5 alpha channel at frame 7.png": None,
+	"Image 5 at frame 7.jpg": "5 Full Profile Alpha.png",
+	"Image 6 alpha channel at frame 8.png": None,
+	"Image 6 at frame 8.jpg": "6 Full Profile Alpha Damaged.png",
+	"Image 7 at frame 13.jpg": "7 Library Page Text.png",
 }
 
 filesToRenameDict = {
 	"Image 1 at frame 1.jpg": "1 In-Fleet Profile.jpg",
 	"Image 2 at frame 2.jpg": "2 In-Fleet Profile Damaged.jpg",
 	"Image 3 at frame 3.jpg": "3 Game Card.jpg",
-	"Image 4 at frame 4.jpg": "4 Game Card Damaged.jpg"
+	"Image 4 at frame 4.jpg": "4 Game Card Damaged.jpg",
+	"Image 1 at frame 3.jpg": "1 Game Card.png",
+	"Image 2 at frame 4.jpg": "2 Game Card Damaged.png",
 }
 
-baseDir = os.path.join("/Users","YutoTakamoto","Desktop","Kancolle Scrape Data","Flash")
+baseDir = os.path.join("/Users","YutoTakamoto","Desktop","Kancolle Scrape Data","Flash-Unused")
 #baseDir = os.path.join("/Users","YutoTakamoto","Desktop","KC SPRING POST-EVENT UPDATE","Flash")
 def escSpace(string):
 	return "\""+string+"\""
@@ -71,7 +84,7 @@ def unpackSWF(swfLoc):
 		command[i] = item.replace(" ","\ ")
 	print u" ".join(command)
 	os.system(u" ".join(command))
-	time.sleep(0.25)
+	time.sleep(0.35)
 
 
 def createMaskedPNG(base,mask,output):
@@ -132,10 +145,10 @@ def pngEverything(baseDir):
 				fileList = os.listdir(foldPath)
 				#print fileList
 				for file in fileList:
-					print foldPath
+					#print foldPath
 					result = re.search("Image (\d+?) at frame (\d+)",file)
 					if result != None:
-						print file
+						#print file
 						imageNum = result.group(1)
 						frameNum = result.group(2)
 						extensions = [".png",".jpg"]
@@ -146,8 +159,10 @@ def pngEverything(baseDir):
 								base+=extension
 							if mask+extension in fileList:
 								mask+=extension
+						#print base, mask
 						if mask not in fileList:
 							continue
+						#print "a"
 						basePath = os.path.join(foldPath,base)
 						maskPath = os.path.join(foldPath,mask)
 						name = ""
@@ -156,6 +171,7 @@ def pngEverything(baseDir):
 						else:
 							name = "UNKNOWN "+imageNum+".png"
 						outputFilePath = os.path.join(foldPath,prependFileName+name)
+
 						if not os.path.isfile(outputFilePath):
 							createMaskedPNG(basePath,maskPath,outputFilePath)
 			#print foldPath

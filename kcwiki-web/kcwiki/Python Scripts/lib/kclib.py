@@ -226,6 +226,38 @@ abyssalTranslations = {
 }
 
 
+portSongJpToEn = {
+  u"冬の抜錨":"Fuyu no Batsubyou",
+  u"冬の艦隊":"Fuyu no Kantai",
+  u"加賀岬":"Kaga Misaki",
+  u"加賀岬改(母港ver)":"Kaga Misaki Kai (Bokou ver)",
+  u"士魂の護り":"Shikon no Mamori",
+  u"提督との絆":"Teitoku to no Kizuna",
+  u"明石の工廠":"Akashi no Koushou",
+  u"暁の水平線に":"Akatsuki no Suiheisen ni",
+  u"桃の節句と艦娘":"Momonosekku to Kanmusu",
+  u"武蔵の帰投":"Musashi no Kitou",
+  u"母港":"Bokou",
+  u"浜辺の艦娘":"Hamabe no Kan",
+  u"海上護衛戦":"Kaijou Goeisen",
+  u"特型駆逐艦":"Tokugata Kuchikukan",
+  u"秋の鎮守府":"Aki no Chinjufu",
+  u"秋月の空":"Shuugetsu no Sora",
+  u"第三十駆逐隊、抜錨準備！":"Dai Sanjuu Kuchikutai, Batsubyou Junbi!",
+  u"第五戦隊の出撃":"Dai Go Sentai no Shutsugeki",
+  u"節分の鎮守府":"Setsubun no Chinjufu",
+  u"索敵機、発艦始め！":"Sakuteki, Hakkan Hajime!",
+  u"聖夜の母港":"Seiya no Bokou",
+  u"艦娘のお菓子作り":"Kanmusu no Okashizukuri",
+  u"華の二水戦":"Hana no Nisuisen",
+  u"迎春の鎮守府":"Geishun no Chinjufu",
+  u"連合艦隊の出撃":"Rengou Kantai no Shutsugeki",
+  u"鎮守府の朝":"Chinjufu no Asa",
+  u"鎮守府の秋祭り":"Chinjufu no Akimatsuri",
+  u"雨とお酒と艦娘":"Ame to Osake to Kanmusu",
+  u"雨音の鎮守府":"Ameoto no Chinjufu"
+}
+
 nameChangingShips = {
   "littorio":["italia","littorio"],
   "italia":["italia","littorio"],
@@ -240,6 +272,203 @@ nameChangingShips = {
   u"ヴェールヌイ":[u"ヴェールヌイ",u"響"],
   u"響":[u"ヴェールヌイ",u"響"]
 }
+
+unusedSWFObfIdMapping = {
+  "mhqqhhvvpzxg":"Christmas 2013 Naka",
+  "rzgndzraoddu":"NULL",
+  "hbhkiyykheeq":"NULL",
+  "boxlrnnmjkhb":"NULL",
+  "jqvoyyolpqgv":"NULL",
+  "igezlfrivcar":"NULL",
+  "fwywlrdttcoc":"NULL",
+  "fuzvvipztlod":"NULL",
+  "nyveugfueqrn":"NULL",
+  "ospkpclnhxkj":"NULL",
+  "yotuoourymyr":"NULL",
+  "utbekttrwkug":"NULL",
+  "tmodouudtfbl":"NULL",
+  "zzjoppqteksh":"NULL",
+  "rybmohpldpuq":"NULL",
+  "uhbkffblgplp":"NULL",
+  "uscckqoguchc":"NULL",
+  "qtuuhjmqmvfh":"NULL",
+  "wmebertagnxm":"NULL",
+  "lnltescodihe":"NULL",
+  "tgknyzwyexxt":"NULL",
+  "beymvxmvhoct":"NULL",
+  "spmuptretooz":"NULL",
+  "zbwwxnwyxhps":"NULL",
+  "xxnlcxflgfji":"NULL",
+  "dvcslbfkmdsy":"NULL",
+  "tvieoobotato":"NULL",
+  "grmdtyheocuc":"NULL",
+  "mqlroxfnufpz":"NULL",
+  "lrjshshjmuym":"NULL",
+  "nklodnkbtplk":"NULL",
+  "tyrymrwgeovs":"NULL",
+  "qixlkacosirp":"NULL",
+  "bickiyziobgh":"NULL",
+  "gbccmymngqwj":"NULL",
+  "rrbdyhfiywqg":"Christmas 2014 Naka",
+  "nkxhelerqbjl":"Christmas 2014 Naka Kai Ni",
+  "rnofsrlqiegx":"Christmas 2014 Shigure Kai Ni",
+  "qzsmwrrbnefu":"Christmas 2014 Ryuujou",
+  "khvcelmbxlsq":"Christmas 2014 Ryuujou Kai Ni",
+  "jsmytovrrxyx":"Christmas 2014 Sazanami",
+  "hfqetnvodyhm":"New Years 2015 Akebono",
+  "xfvfvoryqbyi":"New Years 2015 Yuudachi Kai Ni",
+  "krnmyizepihr":"New Years 2015 Akashi",
+  "dvxetgdwyopk":"New Years 2015 Akashi Kai",
+  "wodfmwagpixg":"New Years 2015 Ooyodo",
+  "klargseqljrb":"New Years 2015 Ooyodo Kai",
+  "qwbicuxeliqj":"Valentines 2015 Mutsuki Kai Ni",
+  "vptgugtdxqec":"Valentines 2015 Kisaragi Kai Ni",
+  "pgazsjgtftrv":"Valentines 2015 Murakumo",
+  "ggxbxoylnlkv":"Valentines 2015 Shigure Kai Ni",
+  "jfpblepvbqlv":"Valentines 2015 Hamakaze",
+  "vdtwxormhevo":"Rainy Season 2015 Shouhou",
+  "scronrcptbfd":"Rainy Season 2015 Murasame",
+  "uhmnbrdfrxjx":"Rainy Season 2015 Takanami",
+  "cdsgfutghqlr":"Early Summer 2015 Oboro",
+  "rqxbjmdizgzp":"Early Summer 2015 Akebono",
+  "yfrcebhkfeme":"Early Summer 2015 Sazanami",
+  "wlvqxbzvynds":"Early Summer 2015 Ushio",
+  "ojdsvkgrgyun":"Early Summer 2015 Ushio Kai Ni",
+  "ftowpnpiekhh":"Early Summer 2015 Shiratsuyu",
+  "ecwcfrvdtktj":"Summer 2015 Shigure Kai Ni",
+  "iakggseprkmv":"Summer 2015 Yuudachi Kai Ni",
+  "syrrbygrimvl":"Summer 2015 Murasame",
+  "kjftklsgiiqw":"Summer 2015 Tenryuu",
+  "khkhnfcvzhlh":"Summer 2015 Tatsuta",
+  "jkvjvdnyjvkg":"Summer 2015 Akashi Kai",
+  "xgsjrrdbdkep":"Summer 2015 Littorio",
+  "pmqlugofbygx":"Summer 2015 Italia",
+  "drnqclocqniv":"Early Autumn 2015 Oboro",
+  "khzhuwdqwlfd":"Early Autumn 2015 Isokaze",
+  "oppmayouoaon":"Early Autumn 2015 Isokaze Kai",
+  "kkvtzegqjmkf":"Early Autumn 2015 Urakaze",
+  "wmwkglylqfhc":"Early Autumn 2015 Hamakaze",
+  "eqboowhrhakv":"Early Autumn 2015 Kawakaze",
+  "kwduknmgsaex":"Oktoberfest 2015 Z1",
+  "ptdxmthckjut":"Mid Autumn 2015 Ikazuchi",
+  "obicookwhnpj":"Mid Autumn 2015 Inazuma",
+  "nrlysgpguqtd":"Early Autumn 2015 Nagara",
+  "mcfmpizxyhiu":"Early Autumn 2015 Natori",
+  "fizjatjjphkx":"Mid Autumn 2015 Kuma",
+  "jywjvjcnbzsi":"Mid Autumn 2015 Tama",
+  "svtoekyvdpju":"Early Autumn 2015 Ooyodo",
+  "bmcvmonqyxoi":"Early Autumn 2015 Jintsuu Kai Ni",
+  "pggrpfnrqfhg":"Early Autumn 2015 Mizuho",
+  "nexgeqpuskju":"Saury Event 2015 Akebono",
+  "euyqyxkfxnke":"Saury Event 2015 Ushio",
+  "nnfnhrslnjub":"Saury Event 2015 Ushio Kai Ni",
+  "htxwmiwimiwl":"Saury Event 2015 Murasame",
+  "ttbyunrlgtlx":"Mid Autumn 2015 Chitose",
+  "oofsntihjfmn":"Mid Autumn 2015 Chiyoda",
+  "sbhjkklpufcq":"Mid Autumn 2015 Harusame",
+  "cnhbdryxidwq":"Halloween 2015 Roma",
+  "yfcyhhkhwigb":"Halloween 2015 Libeccio",
+
+
+}
+
+unusedSoundObfIdMapping = {
+  "mhqqhhvvpzxg":"",
+  "rzgndzraoddu":"",
+  "hbhkiyykheeq":"",
+  "boxlrnnmjkhb":"",
+  "jqvoyyolpqgv":"",
+  "igezlfrivcar":"",
+  "fwywlrdttcoc":"",
+  "fuzvvipztlod":"",
+  "nyveugfueqrn":"",
+  "ospkpclnhxkj":"",
+  "yotuoourymyr":"",
+  "utbekttrwkug":"",
+  "tmodouudtfbl":"",
+  "zzjoppqteksh":"",
+  "rybmohpldpuq":"",
+  "uhbkffblgplp":"",
+  "uscckqoguchc":"",
+  "qtuuhjmqmvfh":"",
+  "wmebertagnxm":"",
+  "lnltescodihe":"",
+  "tgknyzwyexxt":"",
+  "beymvxmvhoct":"",
+  "spmuptretooz":"",
+  "zbwwxnwyxhps":"",
+  "xxnlcxflgfji":"",
+  "dvcslbfkmdsy":"",
+  "tvieoobotato":"",
+  "grmdtyheocuc":"",
+  "mqlroxfnufpz":"",
+  "lrjshshjmuym":"",
+  "nklodnkbtplk":"",
+  "tyrymrwgeovs":"",
+  "qixlkacosirp":"",
+  "bickiyziobgh":"",
+  "gbccmymngqwj":"",
+  "rrbdyhfiywqg":"",
+  "nkxhelerqbjl":"",
+  "rnofsrlqiegx":"",
+  "qzsmwrrbnefu":"",
+  "khvcelmbxlsq":"",
+  "jsmytovrrxyx":"",
+  "hfqetnvodyhm":"",
+  "xfvfvoryqbyi":"",
+  "krnmyizepihr":"",
+  "dvxetgdwyopk":"",
+  "wodfmwagpixg":"",
+  "klargseqljrb":"",
+  "qwbicuxeliqj":"",
+  "vptgugtdxqec":"",
+  "pgazsjgtftrv":"",
+  "ggxbxoylnlkv":"",
+  "jfpblepvbqlv":"",
+  "vdtwxormhevo":"",
+  "scronrcptbfd":"",
+  "uhmnbrdfrxjx":"",
+  "cdsgfutghqlr":"",
+  "rqxbjmdizgzp":"",
+  "yfrcebhkfeme":"",
+  "wlvqxbzvynds":"",
+  "ojdsvkgrgyun":"",
+  "ftowpnpiekhh":"",
+  "ecwcfrvdtktj":"",
+  "iakggseprkmv":"",
+  "syrrbygrimvl":"",
+  "kjftklsgiiqw":"",
+  "khkhnfcvzhlh":"",
+  "jkvjvdnyjvkg":"",
+  "xgsjrrdbdkep":"",
+  "pmqlugofbygx":"",
+  "drnqclocqniv":"",
+  "khzhuwdqwlfd":"",
+  "oppmayouoaon":"",
+  "kkvtzegqjmkf":"",
+  "wmwkglylqfhc":"",
+  "eqboowhrhakv":"",
+  "kwduknmgsaex":"",
+  "ptdxmthckjut":"",
+  "obicookwhnpj":"",
+  "nrlysgpguqtd":"",
+  "mcfmpizxyhiu":"",
+  "fizjatjjphkx":"",
+  "jywjvjcnbzsi":"",
+  "svtoekyvdpju":"",
+  "bmcvmonqyxoi":"",
+  "pggrpfnrqfhg":"",
+  "nexgeqpuskju":"",
+  "euyqyxkfxnke":"",
+  "nnfnhrslnjub":"",
+  "htxwmiwimiwl":"",
+  "ttbyunrlgtlx":"",
+  "oofsntihjfmn":"",
+  "sbhjkklpufcq":"",
+  "cnhbdryxidwq":"",
+  "yfcyhhkhwigb":"",
+}
+
 
 
 # Returns a dictionary with every japanese name,
@@ -265,13 +494,24 @@ def returnFullAssocShipIdentDict():
       temp = line[0]+str(i)
       temp2 = line[1]+str(i)
       i+=1
-
-    data = {"jp":temp,"en":temp2,"obf":line[2],"id":line[3],"sortno":line[4],"isAbyssal":bool(line[5])}
+    isAbyssal = True if line[5] == "True" else False
+    data = {"jp":temp,"en":temp2,"obf":line[2],"id":line[3],"sortno":line[4],"isAbyssal":bool(isAbyssal)}
     mapping[temp.lower()] = data
     mapping[line[1].lower()] = data
     mapping[line[2]] = data
     mapping[line[3]] = data
   return mapping
+
+# Will return a dict containing all the obfuscated id's mapped to 
+# their api_id's regardless of whether they're used or not by api_mst_ship
+def returnDictOfAllObfIds():
+  ids = dict()
+  f = open(paths.api_mst_shipgraph_data,"r")
+  for line in f.readlines():
+    parsed = json.loads(line)
+    ids[parsed["api_filename"]] = parsed["api_id"]
+  return ids
+
 
 # Recursively deletes any empty directories
 def remEmptyFolders(path):
@@ -292,7 +532,17 @@ def remEmptyFolders(path):
     print path
     os.rmdir(path)
 
-remEmptyFolders(paths.scrapeDir)
+
+# Returns a dict containing mapping between
+# api_id and api_name of the port bgm's found in api_mst_bgm_data.json
+# key is an int and value is a unicode string
+def returnPortBGMMapping():
+  mapping = dict()
+  f = open(paths.api_mst_bgm_data,"r")
+  for line in f.readlines():
+    parsed = json.loads(line)
+    mapping[int(parsed["api_id"])] = parsed["api_name"]
+  return mapping
 
 
 # Simply returns every ships' name in one language. (Includes abyssals)

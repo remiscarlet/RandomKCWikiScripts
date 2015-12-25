@@ -42,21 +42,29 @@ def scrapeShipSWF(toScrape=None,
     toScrape = list(temp)
 
   for ship in toScrape:
+
     isAbyssal = mapping[ship.lower()]["isAbyssal"]
-    lang = "en" if namesInEn else "jp"
     data = mapping[ship.lower()]
+    lang = "en" if namesInEn else "jp"
+    name = data[lang]
+    if lang == "en":
+      if not isAbyssal:
+        temp = name.split(" ")
+        for i in xrange(len(temp)):
+          temp[i] = temp[i].capitalize()
+        name = " ".join(temp)
 
     swfURL[1] = data["obf"]
-    downloadPath = paths.swfPath if customPath = None else customPath
-    swfFilePath = os.path.join(unicode(downloadPath),data["id"]+" "+data[lang]+ " - "+data["obf"]+u".swf")
+    downloadPath = paths.swfDir if customPath == None else customPath
+    swfFilePath = os.path.join(unicode(downloadPath),data["id"]+" "+name+ " - "+data["obf"]+u".swf")
     if not os.path.isfile(swfFilePath) or overwrite:
       f = open(swfFilePath,"wb")
       r = requests.get("".join(swfURL))
       f.write(r.content)
       f.close()
-      print "GOT NEW SWF "+ship, vals["shipName"].encode("utf-8")
-      logger.verboseLog("GOT NEW SWF "+data["obf"], data[lang].encode("utf-8"))
-      logger.log("SWF FOR:--------"+data["obf"] + " - "+data[lang].encode("utf-8"))
+      print "GOT NEW SWF "+name.encode("utf-8")
+      logger.verboseLog("GOT NEW SWF "+data["obf"], name.encode("utf-8"))
+      logger.log("SWF FOR:--------"+data["obf"] + " - "+name.encode("utf-8"))
       noNewSWF = False
   if noNewSWF:
     logger.log("=No new SWF's downloaded")
@@ -67,11 +75,11 @@ Kashima, Agano, Noshiro, Sakawa, Yahagi, Yura, Maya, Yuudachi, Asashimo
 """
 toCheck = inp.strip().replace(",","").split(" ")
 
-toDownload = os.path.join("/Users","YutoTakamoto","Desktop","Kancolle Scrape Data","temp")
+#toDownload = os.path.join("/Users","YutoTakamoto","Desktop","Kancolle Scrape Data","temp")
 
-scrapeShipSWF(toScrape = kclib.returnAllShipNames(side="abyssals"), 
-              overwrite = True,
-              customPath = toDownload,
+scrapeShipSWF(toScrape = kclib.returnAllShipNames(side="all"), 
+              overwrite = False,
+              customPath = None,
               namesInEn = True)
 
 

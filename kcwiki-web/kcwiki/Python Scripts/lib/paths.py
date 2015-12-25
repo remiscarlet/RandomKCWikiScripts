@@ -12,9 +12,15 @@ if not os.path.isdir(scrapeDir):
 swfDir = os.path.join(scrapeDir,"Flash")
 if not os.path.isdir(swfDir):
   os.mkdir(swfDir)
+unusedSwfDir = os.path.join(scrapeDir,"Flash-Unused")
+if not os.path.isdir(unusedSwfDir):
+  os.mkdir(unusedSwfDir)
 soundDir = os.path.join(scrapeDir,"Sounds")
 if not os.path.isdir(soundDir):
   os.mkdir(soundDir)
+abyssalSoundDir = os.path.join(scrapeDir,"AbyssalSounds")
+if not os.path.isdir(abyssalSoundDir):
+  os.mkdir(abyssalSoundDir)
 musicDir = os.path.join(scrapeDir,"Music")
 if not os.path.isdir(musicDir):
   os.mkdir(musicDir)

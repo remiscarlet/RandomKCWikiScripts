@@ -35,7 +35,7 @@ def scrape(fileDir):
       os.mkdir(furnitureSpecificDir)
     #for easier writing
     furnDir = furnitureSpecificDir
-    for i in xrange(50):
+    for i in xrange(75):
       toSkip = False
       baseURL = link+("%03d" % i)
       formats = [".png",".jpg",".swf"]
@@ -73,7 +73,6 @@ def scrape(fileDir):
                 logger.verboseLog(fileDir)
                 print "File \""+fileName+"\" completed downloading."
                 logger.verboseLog("File \""+fileName+"\" completed downloading.")
-                NEW_FURNITURE_FOLDERS_AND_FILES.append(fileDir)
                 logger.log(fileDir)
                 noNewFurniture = False
 
@@ -82,7 +81,7 @@ def scrape(fileDir):
                 logger.verboseLog("File \""+fileName+"\" doesn't exist!")
 
           else:
-            if i < 5 or i >28:
+            if i < 5 or i >40:
               toSkip = True
             print "File \""+fileName+"\" doesn't exist on the server!"
             logger.verboseLog("File \""+fileName+"\" doesn't exist on the server!")

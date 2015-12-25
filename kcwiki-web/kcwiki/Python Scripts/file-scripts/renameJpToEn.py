@@ -2,8 +2,9 @@
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
-import kcinit
-basePath = os.path.join(u"/",u"Users",u"YutoTakamoto",u"Desktop",u"Kancolle Scrape Data","Flash")
+from kcinit import *
+import copy
+basePath = os.path.join(u"/",u"Users",u"YutoTakamoto",u"Desktop",u"Kancolle Scrape Data","Sounds")
 
 def upperFirst(string):
   c = string[0]
@@ -11,15 +12,7 @@ def upperFirst(string):
   lst[0] = c.upper()
   return "".join(lst)
 
-attrDict = dict()
-with open("kanmusu_jp-en_mapping.txt","r") as attrMapping:
-  for line in attrMapping.readlines():
-    split = line.split(",")
-    thing = list()
-    for attr in split:
-      thing.append(attr.decode("utf8"))
-    for attr in thing:
-      attrDict[attr] = thing
+attrDict = kclib.returnFullAssocShipIdentDict()
 #print attrDict
 def recurseAndRename(path):
   print "#"
@@ -31,7 +24,7 @@ def recurseAndRename(path):
     origSplit = copy.copy(split)
     for part in split:
       if part in attrDict:
-        split[split.index(part)] = " ".join([upperFirst(item) for item in attrDict[part][1].split(" ")])
+        split[split.index(part)] = " ".join([upperFirst(item) for item in attrDict[part]["en"].split(" ")])
     extendedSplit = list()
     if split == origSplit:
       for item in split:
@@ -41,7 +34,7 @@ def recurseAndRename(path):
         orig = part
         print repr(part)
         if part in attrDict:
-          extendedSplit[extendedSplit.index(orig)] = " ".join([upperFirst(item) for item in attrDict[part][1].split(" ")])
+          extendedSplit[extendedSplit.index(orig)] = " ".join([upperFirst(item) for item in attrDict[part]["en"].split(" ")])
       if "." in extendedSplit:
         lastBit = extendedSplit[-3:]
         print lastBit
@@ -55,8 +48,8 @@ def recurseAndRename(path):
     print repr(appendedPath)
     print repr(newPath)
     os.rename(appendedPath,newPath)
-    if os.path.isdir(appendedPath):
-      recurseAndRename(appendedPath)
+    if os.path.isdir(newPath):
+      recurseAndRename(newPath)
 
 
 recurseAndRename(basePath)

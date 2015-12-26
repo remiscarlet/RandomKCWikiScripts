@@ -162,7 +162,8 @@ shipSuffix = OrderedDict([
   (u"改二","kai ni"),
   (u"航改","CVL kai"),
   (u"航", "CVL"),
-  (u"改", "kai")
+  (u"改", "kai"),
+  (u"甲", "kou")
 ])
 
 
@@ -368,8 +369,6 @@ unusedSWFObfIdMapping = {
   "sbhjkklpufcq":"Mid Autumn 2015 Harusame",
   "cnhbdryxidwq":"Halloween 2015 Roma",
   "yfcyhhkhwigb":"Halloween 2015 Libeccio",
-
-
 }
 
 unusedSoundObfIdMapping = {
@@ -469,6 +468,10 @@ unusedSoundObfIdMapping = {
   "yfcyhhkhwigb":"",
 }
 
+abyssalLineMapping = {
+  
+
+}
 
 
 # Returns a dictionary with every japanese name,
@@ -486,21 +489,24 @@ def returnFullAssocShipIdentDict():
     # This check is just for abyssals. Since some abyssal
     # bosses have multiple entries with the same jp/en name,
     # this checks if a name already exists, in which add a number to the end
-    # until that name does not exist in the dictionary. 
+    # until that name does not exist in the dictionary.
     temp = line[0]
     temp2 = line[1]
     i = 2
-    while temp in mapping:
+    while temp in mapping or temp2 in mapping:
       temp = line[0]+str(i)
       temp2 = line[1]+str(i)
       i+=1
     isAbyssal = True if line[5] == "True" else False
-    data = {"jp":temp,"en":temp2,"obf":line[2],"id":line[3],"sortno":line[4],"isAbyssal":bool(isAbyssal)}
+    data = {"jp":temp,"en":temp2,"obf":line[2],"id":line[3],"sortno":line[4],"isAbyssal":isAbyssal}
     mapping[temp.lower()] = data
-    mapping[line[1].lower()] = data
+    mapping[temp2.lower()] = data
     mapping[line[2]] = data
     mapping[line[3]] = data
   return mapping
+#returnFullAssocShipIdentDict()
+# for k,v in returnFullAssocShipIdentDict().items():
+#   print k,v
 
 # Will return a dict containing all the obfuscated id's mapped to 
 # their api_id's regardless of whether they're used or not by api_mst_ship
@@ -511,6 +517,7 @@ def returnDictOfAllObfIds():
     parsed = json.loads(line)
     ids[parsed["api_filename"]] = parsed["api_id"]
   return ids
+
 
 
 # Recursively deletes any empty directories
@@ -553,16 +560,21 @@ def returnPortBGMMapping():
 # side specifies exactly what you think it specifies.
 # 
 def returnAllShipNames(isEn=False,side="all"):
-  names = list()
-  f = open(paths.kanmusu_data_mapping,"r")
-  csvreader = csv.reader(f,delimiter=",")
-  for line in csvreader:
+  if side not in ["all", "abyssals", "kanmusu"]:
+    raise Exception("Parameter \"side\" not valid in function \"returnAllShipNames\" in kclib.")
+  names = set()
+  ships = returnFullAssocShipIdentDict()
+  for shipData in ships.values():
+    #print shipData
     if ((side == "all") or
-        (line[5] == "True" and side == "abyssals") or
-        (line[5] == "False" and side == "kanmusu")):
-      i = 1 if isEn else 0
-      names.append(line[i])
-  return names
+        (shipData["isAbyssal"] == True and side == "abyssals") or
+        (shipData["isAbyssal"] == False and side == "kanmusu")):
+      lang = "en" if isEn else "jp"
+      names.add(shipData[lang])
+  # for name in names:
+  #   print name
+  return list(names)
+#print returnAllShipNames(side="abyssals")
 
 # Given a ship, will return all its variants in lowercase.
 # Eg, returnVariants("bismarck")

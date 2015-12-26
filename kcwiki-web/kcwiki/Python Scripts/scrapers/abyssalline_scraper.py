@@ -18,6 +18,11 @@ workerPool = threading.Semaphore(20)
 
 mapping = kclib.returnFullAssocShipIdentDict()
 
+obfIdMapping = kclib.returnDictOfAllObfIds()
+
+enemyNameMapping = kclib.unusedSoundObfIdMapping
+
+
 
 # linesToCheck: A list of voice id's to download.
 # overwrite: A boolean on whether to overwrite even if file exists.
@@ -28,17 +33,36 @@ def scrapeAbyssalLines(linesToCheck=None,
                        customPath=None):
   
   audioURL = ["http://125.6.187.253/kcs/sound/kc","OBFNAME","/","AUDIONAME",".mp3"]
-
+  lineMapping = kclib.abyssalLineMapping
   toScrape = kclib.returnAllShipNames(side="abyssals")
 
   baseDir = paths.abyssalSoundDir
+  #print toScrape
+  for obfId,id in obfIdMapping.items():
+    if obfId not in mapping or mapping[obfId]["isAbyssal"]:
+      name = enemyNameMapping[obfId] if obfId in enemyNameMapping else "UNKNOWN"
+      if name == "":
+        name = "UNKNOWN"
 
-  ####
-  # LOTS OF SHIT HERE
-  ####
-  if True:
-    if True:
-      if False:
+
+      shipFolder = os.path.join(baseDir,str(id)+" "+name+ " - "+obfId)
+
+      if not os.path.isdir(shipFolder):
+        os.mkdir(shipFolder)
+
+
+      audioURL[1] = obfId
+
+
+      if linesToCheck == None:
+        linesToCheck = xrange(1,60)
+      for i in linesToCheck:
+        lineName = lineMapping[i]+" " if i in lineMapping else ""
+        fileName = str(i)+" "+name+"- "+obfId
+        audioFilepath = os.path.join(shipFolder,fileName+".mp3")
+        audioURL[3] = str(i)
+        #print audioURL
+
         def getAudio(audioFilepath, audioURL,overwrite):
           global workerPool
           workerPool.acquire()
@@ -59,8 +83,8 @@ def scrapeAbyssalLines(linesToCheck=None,
                   logger.verboseLog("NEW AUDIO LINE")
             else:
               lineName = kclib.voiceIdMapping[i] if i in kclib.voiceIdMapping else "UNKNOWN"
-              print "File exists and not checking fileDiffs! "+" ".join([k+": "+str(v) for k,v in data.items()])+"\n===="+lineName
-              logger.verboseLog("File exists and not checking fileDiffs! "+" ".join([k+": "+str(v) for k,v in data.items()])+"\n===="+lineName)
+              print "File exists and not checking fileDiffs! "+" ".join([k+": "+str(v) for k,v in abyssalData.items()])+"\n===="+lineName
+              logger.verboseLog("File exists and not checking fileDiffs! "+" ".join([k+": "+str(v) for k,v in abyssalData.items()])+"\n===="+lineName)
 
 
           # If we're not skipping AND the file exists, we redownload
@@ -86,7 +110,8 @@ def scrapeAbyssalLines(linesToCheck=None,
               print voiceResponse
               logger.verboseLog(voiceResponse)
               if (i == 1): #since every populated id has a 1.mp3, yeah. 
-                toSkip = True
+                pass
+                #toSkip = True
               print "Invalid content-type, likely a file that doesn't exist!"
               logger.verboseLog("Invalid content-type, likely a file that doesn't exist!")
           else:

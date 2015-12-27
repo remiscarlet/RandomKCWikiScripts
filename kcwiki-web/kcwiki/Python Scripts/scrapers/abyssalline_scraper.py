@@ -55,7 +55,7 @@ def scrapeAbyssalLines(linesToCheck=None,
 
 
       if linesToCheck == None:
-        linesToCheck = xrange(1,60)
+        linesToCheck = xrange(1,400)
       for i in linesToCheck:
         lineName = lineMapping[i]+" " if i in lineMapping else ""
         fileName = str(i)+" "+name+"- "+obfId
@@ -63,7 +63,9 @@ def scrapeAbyssalLines(linesToCheck=None,
         audioURL[3] = str(i)
         #print audioURL
 
-        def getAudio(audioFilepath, audioURL,overwrite):
+        abyssalData = {"id":id,"obfId":obfId,"name":name,"lineId":i}
+
+        def getAudio(audioFilepath, audioURL,overwrite,abyssalData):
           global workerPool
           workerPool.acquire()
           voiceResponse = None 
@@ -127,7 +129,7 @@ def scrapeAbyssalLines(linesToCheck=None,
         ###########################
 
 
-        t = threading.Thread(target=getAudio, args=(audioFilepath, audioURL,overwrite))
+        t = threading.Thread(target=getAudio, args=(audioFilepath, audioURL,overwrite,abyssalData))
         while threading.active_count() >20:
           pass
         t.start()

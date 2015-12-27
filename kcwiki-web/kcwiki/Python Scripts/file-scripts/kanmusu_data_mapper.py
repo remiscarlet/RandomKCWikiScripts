@@ -94,6 +94,13 @@ for line in jsonDump.readlines():
   obf = mapping[parsed["api_id"]]
   sortno = parsed["api_sortno"] if "api_sortno" in parsed else "0"
   csvwriter.writerow([parsed["api_name"],romajiName,obf,parsed["api_id"],sortno,isAbyssal])
+csvwriter.writerow(["タカオ","Arpeggio Takao","","-1","-1",True])
+csvwriter.writerow(["ハルナ","Arpeggio Haruna","","-1","-1",True])
+csvwriter.writerow(["コンゴウ","Arpeggio Kongou","","-1","-1",True])
+csvwriter.writerow(["マヤ","Arpeggio Maya","","-1","-1",True])
+csvwriter.writerow(["キリシマ","Arpeggio Kirishima","","-1","-1",True])
+csvwriter.writerow(["イオナ","Arpeggio Iona","","-1","-1",True])
+
 
 
 

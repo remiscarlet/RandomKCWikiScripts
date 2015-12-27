@@ -99,8 +99,8 @@
 千代田,chiyoda,cayfwlehtvgj,103,50,False
 千歳改,chitose kai,wvkpfygaipjq,104,95,False
 千代田改,chiyoda kai,tsfbgfyeqxhg,105,96,False
-千歳甲,chitose,ttkeodhvrmog,106,99,False
-千代田甲,chiyoda,agybvcshxbpm,107,100,False
+千歳甲,chitose kou,ttkeodhvrmog,106,99,False
+千代田甲,chiyoda kou,agybvcshxbpm,107,100,False
 千歳航,chitose cvl,wlvvcpnulyer,108,104,False
 千代田航,chiyoda cvl,rsmzverhwskc,109,105,False
 翔鶴,shoukaku,pdricqoovxfe,110,106,False
@@ -534,3 +534,9 @@ PT小鬼群,PT Imps,ldsiznnfxhsi,640,0,True
 駆逐水鬼,Destroyer Water Demon,ebsfauvzpldv,647,0,True
 駆逐水鬼,Destroyer Water Demon,fhpklciryypc,648,0,True
 駆逐水鬼,Destroyer Water Demon,vbihybmotyce,649,0,True
+タカオ,Arpeggio Takao,,-1,-1,True
+ハルナ,Arpeggio Haruna,,-1,-1,True
+コンゴウ,Arpeggio Kongou,,-1,-1,True
+マヤ,Arpeggio Maya,,-1,-1,True
+キリシマ,Arpeggio Kirishima,,-1,-1,True
+イオナ,Arpeggio Iona,,-1,-1,True

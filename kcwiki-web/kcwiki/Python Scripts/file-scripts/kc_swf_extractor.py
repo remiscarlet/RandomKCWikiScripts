@@ -62,6 +62,28 @@ extractedShipImageDict = {
 	"Image 7 at frame 13.jpg": "7 Library Page Text.png",
 }
 
+extractedMapImageDict = {
+	"Image 1 alpha channel at frame 1.png":None,
+	"Image 1 at frame 1.jpg":"1 Map.png",
+	"Image 2 at frame 1.png":"",
+	"Image 3 at frame 1.png":"",
+	"Image 4 at frame 1.png":"",
+	"Image 5 at frame 1.png":"",
+	"Image 6 at frame 1.png":"",
+	"Image 7 at frame 1.png":"",
+	"Image 8 at frame 1.png":"",
+	"Image 9 at frame 1.png":"",
+	"Image 10 at frame 1.png":"",
+	"Image 11 at frame 1.png":"",
+	"Image 12 at frame 1.png":"",
+	"Image 13 at frame 1.png":"",
+	"Image 14 alpha channel at frame 1.png":None,
+	"Image 14 at frame 1.jpg":"",
+	"Image 15 at frame 1.png":"",
+	"Image 16 alpha channel at frame 1.png":None,
+	"Image 16 at frame 1.jpg":""
+}
+
 filesToRenameDict = {
 	"Image 1 at frame 1.jpg": "1 In-Fleet Profile.jpg",
 	"Image 2 at frame 2.jpg": "2 In-Fleet Profile Damaged.jpg",
@@ -71,8 +93,11 @@ filesToRenameDict = {
 	"Image 2 at frame 4.jpg": "2 Game Card Damaged.png",
 }
 
-baseDir = os.path.join("/Users","YutoTakamoto","Desktop","Kancolle Scrape Data","Flash-Unused")
-#baseDir = os.path.join("/Users","YutoTakamoto","Desktop","KC SPRING POST-EVENT UPDATE","Flash")
+
+
+
+
+
 def escSpace(string):
 	return "\""+string+"\""
 
@@ -166,10 +191,16 @@ def pngEverything(baseDir):
 						basePath = os.path.join(foldPath,base)
 						maskPath = os.path.join(foldPath,mask)
 						name = ""
+
 						if base in extractedShipImageDict and isShipImages:
 							name = extractedShipImageDict[base]
 						else:
 							name = "UNKNOWN "+imageNum+".png"
+						# else:
+						# 	if base in extractedMapImageDict and isShipImages:
+						# 		name = extractedMapImageDict[base]
+						# 	else:
+						# 		name = "UNKNOWN "+imageNum+".png"
 						outputFilePath = os.path.join(foldPath,prependFileName+name)
 
 						if not os.path.isfile(outputFilePath):
@@ -184,11 +215,13 @@ def pngEverything(baseDir):
 							newPath = os.path.join(foldPath,prependFileName + newName)
 							os.rename(originPath,newPath)
 
+baseDir = os.path.join("/Users","YutoTakamoto","Desktop","Kancolle Scrape Data","Flash-Unused")
+def unSWFFiles(baseDir):
+	unpackEverything(baseDir)
+	pngEverything(baseDir)
 
+#unSWFFiles(baseDir,isShip=False)
 
-unpackEverything(baseDir)
-
-pngEverything(baseDir)
 
 
 

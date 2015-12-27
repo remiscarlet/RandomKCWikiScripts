@@ -21,7 +21,7 @@ baseURL = "http://www51.atpages.jp/kancollev/kcvdownload.php?kcvd=kc"
 shipIdList = [i+1 for i in xrange(539,600)]+[i+1 for i in xrange(9566,9647)]
 voiceIdList = [i+1 for i in xrange(12)]
 
-baseDir = os.path.join("/","Users","YutoTakamoto","Desktop","KC Voices")
+baseDir = paths.abyssalSoundDir
 if not os.path.isdir(baseDir):
 	os.mkdir(baseDir)
 title = None
@@ -35,12 +35,15 @@ for shipId in shipIdList:
 	pageResponse = response.text
 	title = re.search(r'<title>.*</title>',pageResponse).group()[14:-10]
 	title = title.replace("???",str(shipId))
+	title = title.replace(u"＊","")
+	title = title.replace(u"*","")
 	print pageUrl
 	print title
 	name = title.split(" ")[1]
 	if name == "----":
 		continue
-	enName = mapping[name.encode("utf-8")]["en"]
+	enName = mapping[name.encode("utf-8").lower()]["en"] if name.encode("utf-8").lower() in mapping else ""
+
 	shipNum = str(shipId)
 	title = "No."+str(shipId)+" "+enName
 	folder = os.path.join(baseDir,title)

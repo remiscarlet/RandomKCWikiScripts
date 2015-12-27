@@ -371,107 +371,24 @@ unusedSWFObfIdMapping = {
   "yfcyhhkhwigb":"Halloween 2015 Libeccio",
 }
 
-unusedSoundObfIdMapping = {
-  "mhqqhhvvpzxg":"",
-  "rzgndzraoddu":"",
-  "hbhkiyykheeq":"",
-  "boxlrnnmjkhb":"",
-  "jqvoyyolpqgv":"",
-  "igezlfrivcar":"",
-  "fwywlrdttcoc":"",
-  "fuzvvipztlod":"",
-  "nyveugfueqrn":"",
-  "ospkpclnhxkj":"",
-  "yotuoourymyr":"",
-  "utbekttrwkug":"",
-  "tmodouudtfbl":"",
-  "zzjoppqteksh":"",
-  "rybmohpldpuq":"",
-  "uhbkffblgplp":"",
-  "uscckqoguchc":"",
-  "qtuuhjmqmvfh":"",
-  "wmebertagnxm":"",
-  "lnltescodihe":"",
-  "tgknyzwyexxt":"",
-  "beymvxmvhoct":"",
-  "spmuptretooz":"",
-  "zbwwxnwyxhps":"",
-  "xxnlcxflgfji":"",
-  "dvcslbfkmdsy":"",
-  "tvieoobotato":"",
-  "grmdtyheocuc":"",
-  "mqlroxfnufpz":"",
-  "lrjshshjmuym":"",
-  "nklodnkbtplk":"",
-  "tyrymrwgeovs":"",
-  "qixlkacosirp":"",
-  "bickiyziobgh":"",
-  "gbccmymngqwj":"",
-  "rrbdyhfiywqg":"",
-  "nkxhelerqbjl":"",
-  "rnofsrlqiegx":"",
-  "qzsmwrrbnefu":"",
-  "khvcelmbxlsq":"",
-  "jsmytovrrxyx":"",
-  "hfqetnvodyhm":"",
-  "xfvfvoryqbyi":"",
-  "krnmyizepihr":"",
-  "dvxetgdwyopk":"",
-  "wodfmwagpixg":"",
-  "klargseqljrb":"",
-  "qwbicuxeliqj":"",
-  "vptgugtdxqec":"",
-  "pgazsjgtftrv":"",
-  "ggxbxoylnlkv":"",
-  "jfpblepvbqlv":"",
-  "vdtwxormhevo":"",
-  "scronrcptbfd":"",
-  "uhmnbrdfrxjx":"",
-  "cdsgfutghqlr":"",
-  "rqxbjmdizgzp":"",
-  "yfrcebhkfeme":"",
-  "wlvqxbzvynds":"",
-  "ojdsvkgrgyun":"",
-  "ftowpnpiekhh":"",
-  "ecwcfrvdtktj":"",
-  "iakggseprkmv":"",
-  "syrrbygrimvl":"",
-  "kjftklsgiiqw":"",
-  "khkhnfcvzhlh":"",
-  "jkvjvdnyjvkg":"",
-  "xgsjrrdbdkep":"",
-  "pmqlugofbygx":"",
-  "drnqclocqniv":"",
-  "khzhuwdqwlfd":"",
-  "oppmayouoaon":"",
-  "kkvtzegqjmkf":"",
-  "wmwkglylqfhc":"",
-  "eqboowhrhakv":"",
-  "kwduknmgsaex":"",
-  "ptdxmthckjut":"",
-  "obicookwhnpj":"",
-  "nrlysgpguqtd":"",
-  "mcfmpizxyhiu":"",
-  "fizjatjjphkx":"",
-  "jywjvjcnbzsi":"",
-  "svtoekyvdpju":"",
-  "bmcvmonqyxoi":"",
-  "pggrpfnrqfhg":"",
-  "nexgeqpuskju":"",
-  "euyqyxkfxnke":"",
-  "nnfnhrslnjub":"",
-  "htxwmiwimiwl":"",
-  "ttbyunrlgtlx":"",
-  "oofsntihjfmn":"",
-  "sbhjkklpufcq":"",
-  "cnhbdryxidwq":"",
-  "yfcyhhkhwigb":"",
+#Key is world number
+#Value is how many maps there are
+#Presumably, if we have a x-6, there is also an x-1 through x-5.
+#
+#Most old maps are inaccessible. (As in they don't exist on the server)
+sortieMapMapping = {
+  1:6,
+  2:5,
+  3:5,
+  4:5,
+  5:5,
+  6:3,
+  30:6,
+  31:7,
+  32:5,
 }
 
-abyssalLineMapping = {
-  
 
-}
 
 
 # Returns a dictionary with every japanese name,
@@ -490,8 +407,8 @@ def returnFullAssocShipIdentDict():
     # bosses have multiple entries with the same jp/en name,
     # this checks if a name already exists, in which add a number to the end
     # until that name does not exist in the dictionary.
-    temp = line[0]
-    temp2 = line[1]
+    temp = line[0].encode("utf-8")
+    temp2 = line[1].encode("utf-8")
     i = 2
     while temp in mapping or temp2 in mapping:
       temp = line[0]+str(i)
@@ -503,10 +420,16 @@ def returnFullAssocShipIdentDict():
     mapping[temp2.lower()] = data
     mapping[line[2]] = data
     mapping[line[3]] = data
+    if "PT" in temp:
+      for k,v in data.items():
+        print k,v
   return mapping
 #returnFullAssocShipIdentDict()
 # for k,v in returnFullAssocShipIdentDict().items():
-#   print k,v
+#   if "PT" in v["jp"]:
+#     print k
+#     for k1,v1 in v.items():
+#       print "-", k1,repr(v1)
 
 # Will return a dict containing all the obfuscated id's mapped to 
 # their api_id's regardless of whether they're used or not by api_mst_ship

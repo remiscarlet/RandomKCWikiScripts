@@ -21,6 +21,9 @@ if not os.path.isdir(soundDir):
 abyssalSoundDir = os.path.join(scrapeDir,"AbyssalSounds")
 if not os.path.isdir(abyssalSoundDir):
   os.mkdir(abyssalSoundDir)
+mapDir = os.path.join(scrapeDir,"Maps")
+if not os.path.isdir(mapDir):
+  os.mkdir(mapDir)
 musicDir = os.path.join(scrapeDir,"Music")
 if not os.path.isdir(musicDir):
   os.mkdir(musicDir)

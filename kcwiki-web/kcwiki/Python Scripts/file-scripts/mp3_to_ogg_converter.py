@@ -12,14 +12,14 @@ import threading
 command = [u"ffmpeg",u"-i",u"INPUT",u"-c:a",u"libvorbis",u"-qscale:a",u"9",u"OUTPUT"]
 __ACCEPTEDFILETYPE__ = ["mp3","ogg"]
 
-def convert(baseDir,sourceFileName,outputFileName,fileType):
+def convert(baseDir, destDir, sourceFileName,outputFileName,fileType):
 	#print fileType
 	if fileType == "mp3":
-		sourceFileName = unicode(os.path.join(baseDir,sourceFileName))
-		outputFileName = unicode(os.path.join(baseDir,outputFileName))
+		sourceFilePath = unicode(os.path.join(baseDir,sourceFileName))
+		outputFilePath = unicode(os.path.join(baseDir,outputFileName))
 		commandline = command
-		commandline[2] = sourceFileName
-		commandline[7] = outputFileName
+		commandline[2] = sourceFilePath
+		commandline[7] = outputFilePath
 		for i in xrange(len(commandline)):
 			item = commandline[i]
 			item = item.strip()
@@ -59,7 +59,7 @@ def recurseDir(baseDir,destDir):
 					fileNameBase.append(u".ogg")
 					output = u"".join(fileNameBase)
 					if split[-1] in fileType:
-						t = threading.Thread(target=convert, args=(baseDir, thing, output,split[-1]))
+						t = threading.Thread(target=convert, args=(baseDir, destDir, thing, output,split[-1]))
 						t.start()
 
 _baseDir = unicode(os.path.join("/","Users","YutoTakamoto","Desktop","Kancolle Scrape Data", "temp"))
@@ -71,6 +71,7 @@ _destDir = unicode(os.path.join("/","Users","YutoTakamoto","Desktop","Kancolle S
 def encodeAndMove(baseDir,destDir):
 	recurseDir(baseDir,destDir)
 
+encodeAndMove(_baseDir,_destDir)
 
 
 

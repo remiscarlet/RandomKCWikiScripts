@@ -19,3 +19,4 @@ def runInfoUpdatePipeline(REDOWNLOAD_JSON = False):
   import api_dump_parser
   import kanmusu_data_mapper
   import music_id_finder
+runInfoUpdatePipeline(REDOWNLOAD_JSON=True)

@@ -1,8 +1,21 @@
+# -*- coding: UTF-8 -*-
+#
+# Description:
+# Downloads all equipment
+#
+
+
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+import os
+import re
+import cfscrape
+from kcinit import *
 
 
 
-
-def scrapeEquipment(dest):
+def scrapeEquipment(customPath = None, overwrite = False):
   logger.log("NEW EQUIPMENTS")
   noNewEquipment = True
 
@@ -14,7 +27,7 @@ def scrapeEquipment(dest):
     "ItemAlphaNoFairy":"http://125.6.187.253/kcs/resources/image/slotitem/item_up/",
     "ItemAlphaWithFairy":"http://125.6.187.253/kcs/resources/image/slotitem/item_on/"
   }
-  # equipmentDir => baseDir
+  equipmentDir = customPath if customPath != None else paths.equipmentDir
   for equipId in equipIds:
     for cardName,baseURL in baseURLDict.items():
       fileDir = os.path.join(equipmentDir,str(equipId))
@@ -22,7 +35,7 @@ def scrapeEquipment(dest):
         os.mkdir(fileDir)
       fileName = ("%03d"%equipId)+" - "+cardName+".png"
       fileDir = os.path.join(fileDir,fileName)
-      if not os.path.isfile(fileDir):
+      if not os.path.isfile(fileDir) or overwrite:
         url = baseURL+"%03d"%equipId+".png"
         resp = requests.get(url)
         if resp.status_code != 404:

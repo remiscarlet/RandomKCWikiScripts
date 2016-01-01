@@ -12,6 +12,15 @@ functionList = [
   "ajaxDescriptionGenerator",
 ]
 
+def bar(request):
+  return django.shortcuts.redirect("http://google.com")
+
+def shortener(request):
+  template = django.template.loader.get_template("shortener.html")
+  context = RequestContext(request,{})
+  html = template.render(context)
+  return HttpResponse(html)
+
 def index(request):
   template = django.template.loader.get_template("index.html")
   context = RequestContext(request, {"functionList":functionList})

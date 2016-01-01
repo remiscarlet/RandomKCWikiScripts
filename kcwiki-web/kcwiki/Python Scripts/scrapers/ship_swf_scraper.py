@@ -70,16 +70,16 @@ def scrapeShipSWF(toScrape=None,
     logger.log("=No new SWF's downloaded")
 
 
-inp = """
-Kashima, Agano, Noshiro, Sakawa, Yahagi, Yura, Maya, Yuudachi, Asashimo
-"""
-toCheck = inp.strip().replace(",","").split(" ")
+# inp = """
+# Kashima, Agano, Noshiro, Sakawa, Yahagi, Yura, Maya, Yuudachi, Asashimo
+# """
+# toCheck = inp.strip().replace(",","").split(" ")
 
 #toDownload = os.path.join("/Users","YutoTakamoto","Desktop","Kancolle Scrape Data","temp")
 
-scrapeShipSWF(toScrape = kclib.returnAllShipNames(side="all"), 
-              overwrite = False,
-              customPath = None,
-              namesInEn = True)
+# scrapeShipSWF(toScrape = kclib.returnAllShipNames(side="all"), 
+#               overwrite = False,
+#               customPath = None,
+#               namesInEn = True)
 
 

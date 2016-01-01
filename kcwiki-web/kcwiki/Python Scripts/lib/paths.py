@@ -30,6 +30,9 @@ if not os.path.isdir(musicDir):
 equipmentDir = os.path.join(scrapeDir,"Equipment")
 if not os.path.isdir(equipmentDir):
   os.mkdir(equipmentDir)
+furnitureDir = os.path.join(scrapeDir,"Furniture")
+if not os.path.isdir(furnitureDir):
+  os.mkdir(furnitureDir)
 
 
 api_decoding = os.path.join(BASEDIR,"api decoding")

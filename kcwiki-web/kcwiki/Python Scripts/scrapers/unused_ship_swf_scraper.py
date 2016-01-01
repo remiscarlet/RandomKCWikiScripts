@@ -52,7 +52,7 @@ def scrapeUnusedShipSWF(overwrite=False,
       logger.log("=No new Unused SWF's downloaded")
 
 
-scrapeUnusedShipSWF(overwrite = False,
-                    customPath = None)
+# scrapeUnusedShipSWF(overwrite = False,
+#                     customPath = None)
 
 

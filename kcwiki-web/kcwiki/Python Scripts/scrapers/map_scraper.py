@@ -55,5 +55,3 @@ def scrapeMap(customPath=None,overwrite = False):
   kc_swf_extractor.unpackEverything(path)
 
 
-
-scrapeMap()

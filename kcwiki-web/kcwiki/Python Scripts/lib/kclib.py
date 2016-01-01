@@ -420,9 +420,6 @@ def returnFullAssocShipIdentDict():
     mapping[temp2.lower()] = data
     mapping[line[2]] = data
     mapping[line[3]] = data
-    if "PT" in temp:
-      for k,v in data.items():
-        print k,v
   return mapping
 #returnFullAssocShipIdentDict()
 # for k,v in returnFullAssocShipIdentDict().items():

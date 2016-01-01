@@ -149,7 +149,7 @@ def unpackSWF(swfLoc):
     item = command[i]
     item = item.strip()
   os.system(u" ".join(command))
-  time.wait(0.25)
+  time.sleep(0.25)
 
 # Will extract the mp3 from the swf and rename
 # There are two renaming schemes
@@ -196,9 +196,6 @@ def extractAndRename(path,humanReadable=False,humanReadableEn=True):
       shutil.move(mp3FileLoc,renamedFileLoc)
 
 #scrapeMusic(humanReadable=True)
-
-
-extractAndRename("/Users/YutoTakamoto/Desktop/Kancolle Scrape Data/Music/sortieBGM/")
 
 
 

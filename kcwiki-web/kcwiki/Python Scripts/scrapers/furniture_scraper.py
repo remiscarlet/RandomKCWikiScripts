@@ -9,10 +9,9 @@ sys.setdefaultencoding('utf8')
 from kcinit import *
 
 
-fileDir = os.path.join("/Users","YutoTakamoto","Desktop","Kancolle Scrape Data")
 
-def scrape(fileDir):
-  furnitureDir = os.path.join(fileDir,"Furniture")
+def scrapeFurniture(customPath=None,overwrite=False):
+  furnitureDir = customPath if customPath != None else paths.furnitureDir
   if not os.path.isdir(furnitureDir):
     os.mkdir(furnitureDir)
 
@@ -97,4 +96,3 @@ def scrape(fileDir):
     logger.log("= No new furnitures downloaded!")
   logger.log("\n")
 
-scrape(fileDir)

@@ -13,6 +13,8 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 from kcinit import *
 import threading
+import time
+import copy
 
 workerPool = threading.Semaphore(20)
 
@@ -81,9 +83,10 @@ def scrapeShiplines(toScrape=None,
       
 
 
-      def getAudio(audioFilepath, audioURL,overwrite):
+      def getAudio(audioFilepath, audioURL,overwrite, i, data, fileName):
         global workerPool
         workerPool.acquire()
+        #print audioFilepath, audioURL, overwrite
         voiceResponse = None 
         isDifferentFilesize = None
         # If overwrite is set, then will download and check
@@ -95,10 +98,6 @@ def scrapeShiplines(toScrape=None,
             curFileSize = os.path.getsize(audioFilepath)
             if "content-length" in voiceResponse.headers:
               isDifferentFilesize = (int(curFileSize) != int(voiceResponse.headers["content-length"]))
-              if isDifferentFilesize:
-                newAudio.add(ship)
-                print "NEW AUDIO LINE"
-                logger.verboseLog("NEW AUDIO LINE")
           else:
             lineName = kclib.voiceIdMapping[i] if i in kclib.voiceIdMapping else "UNKNOWN"
             print "File exists and not checking fileDiffs! "+" ".join([k+": "+str(v) for k,v in data.items()])+"\n===="+lineName
@@ -112,6 +111,7 @@ def scrapeShiplines(toScrape=None,
             voiceResponse = requests.get("".join(audioURL))
           if "content-type" in voiceResponse.headers and voiceResponse.headers["content-type"] == "audio/mpeg":
             with open(audioFilepath,"wb") as f:
+              print audioFilepath, i, audioURL
               for block in voiceResponse.iter_content(1024):
                 f.write(block)
               f.close()
@@ -145,10 +145,11 @@ def scrapeShiplines(toScrape=None,
       # helper function def end #
       ###########################
 
-
-      t = threading.Thread(target=getAudio, args=(audioFilepath, audioURL,overwrite))
+      print audioFilepath, audioURL,overwrite
+      #getAudio(audioFilepath, audioURL,overwrite, i, data)
+      t = threading.Thread(target=getAudio, args=(audioFilepath, copy.deepcopy(audioURL),overwrite, i, data, fileName))
       while threading.active_count() >20:
-        pass
+       pass
       t.start()
   time.sleep(20)
   kclib.remEmptyFolders(baseDir)
@@ -158,16 +159,16 @@ def scrapeShiplines(toScrape=None,
 
 
 
-inp = """
-Kashima, Agano, Noshiro, Sakawa, Yahagi, Yura, Maya, Yuudachi, Asashimo
-"""
-toCheck = inp.strip().replace(",","").split(" ")
+# inp = """
+# Kashima, Agano, Noshiro, Sakawa, Yahagi, Yura, Maya, Yuudachi, Asashimo
+# """
+# toCheck = inp.strip().replace(",","").split(" ")
 
-#toDownload = os.path.join("/Users","YutoTakamoto","Desktop","Kancolle Scrape Data","temp")
+# #toDownload = os.path.join("/Users","YutoTakamoto","Desktop","Kancolle Scrape Data","temp")
 
-scrapeShiplines(toScrape = None, 
-                overwrite = False,
-                linesToCheck = None,
-                namesInEn = True)
+# scrapeShiplines(toScrape = None, 
+#                 overwrite = False,
+#                 linesToCheck = None,
+#                 namesInEn = True)
 
 

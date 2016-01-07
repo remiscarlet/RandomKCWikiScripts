@@ -599,6 +599,15 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 
 		#
 		#
+		if firstWord in ["!choose", "!choice", "!pick"]:
+			if len(xChatMessageSplit) >2:
+				words = list(xChatMessageSplit[1:])
+				chosen = random.choice(words)
+				say(destination,"Okay! I've picked this one: \00304"+chosen)
+			else:
+				say(destination,"You only gave me one option! Separate options with spaces.")
+		#
+		#
 		if firstWord in ["!define","!definition","!d","!def","!dict","!dictionary"]:
 
 			secondWord = xChatMessageSplit[1].lower()
@@ -966,7 +975,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 		#
 		#
 		if firstWord in ["!commands", "!command"]:
-			commands = ["ver", "joke", "settopic\0037 or \0034!topic","!define\0037 or \0034!d","flip","compass","calc\0037 (or just \0034!c\0037)","help","info","dice","weather", "herald","quotes","todo","ping","wolfram\0037 (or \0034!wa\0037)"]
+			commands = ["ver", "choice\0037 or \0034!choose \0037 or \003!pick", "joke", "settopic\0037 or \0034!topic","!define\0037 or \0034!d","flip","compass","calc\0037 (or just \0034!c\0037)","help","info","dice","weather", "herald","quotes","todo","ping","wolfram\0037 (or \0034!wa\0037)"]
 			if isCaptions: commands.extend(["mecab", "quack"])
 			commands.sort()
 			fullString = ""

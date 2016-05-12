@@ -35,7 +35,7 @@ import Amatsubot_Settings as settings
 __module_name__ = "Amatsukaze" 
 __module_version__ = "v0.1.8.3 You mean Remi's not dead?"
 __module_description__ = "The Amatsukaze Bot" 
-__latest_addition__ = "This wasn't even supposed to be used outside my company's IRC services \ o /"
+__latest_addition__ = "What is good decision."
 __full_info__ = '''
 This is the first iteration of the AmatsukazeBot. Random new features will be added on at random 
 intervals. Feel free to suggest strange functionalities to Remi/w0lf/Yuto and he'll probably 
@@ -990,7 +990,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 	#
 	#	
 	if xChatMessage[0] == "%":
-		if channel not in ["#kancollewiki", "#kancolle","#kcad"]:
+		if channel not in settings.chatBlacklist:
 			def thinker (destination, sessionToUse, xChatMessage):
 				message = sessionToUse["session"].think(xChatMessage[1:])
 				say(destination,sessionToUse["name"]+": "+message)
@@ -1040,14 +1040,13 @@ def on_trigger(word,word_eol,userdata):
 	global HOOK
 	checkForBotNick()
 	destination = xchat.get_context()
-	activeChannels = ["#captions", "#kancollewiki", "#asdf","#kancolle", "#amatsukaze","#kcad"]
-	activeNetworks = ["Slack", "EsperNet", "EsperNet (Bot)"]
-	blacklistChannels = []
-	activeNicks = ["captionsbot","amatsukaze"]
-	bypass = (xchat.get_info("network") == "Slack")
+	activeChannels = settings.activeChannels
+	activeNetworks = settings.activeNetworks
+	blacklistChannels = settings.blacklistChannels
+	activeNicks = settings.activeNicks
 	channel = destination.get_info("channel").lower()
-	if xchat.get_info("network") in activeNetworks or bypass:
-		if channel in activeChannels or (bypass and channel not in blacklistChannels):
+	if xchat.get_info("network") in activeNetworks:
+		if channel in activeChannels or (channel not in blacklistChannels):
 			if destination.get_info("nick").lower() in activeNicks:
 				if HOOK == None:
 					HOOK = xchat.get_context()
@@ -1076,14 +1075,13 @@ def on_join_content(word, word_eol, userdata, destination):
 def on_nick_join(word, word_eol, userdata):
 	global HOOK
 	destination = xchat.get_context()
-	activeChannels = ["#captions", "#kancollewiki", "#asdf","#kancolle", "#amatsukaze","#kcad"]
-	activeNetworks = ["Slack", "EsperNet", "EsperNet (Bot)"]
+	activeChannels = settings.activeChannels
+	activeNetworks = settings.activeNetworks
 	blacklistChannels = []
-	activeNicks = ["captionsbot","amatsukaze"]
-	bypass = (xchat.get_info("network") == "Slack")
+	activeNicks = settings.activeNicks
 	channel = destination.get_info("channel").lower()
-	if xchat.get_info("network") in activeNetworks or bypass:
-		if channel in activeChannels or (bypass and channel not in blacklistChannels):
+	if xchat.get_info("network") in activeNetworks:
+		if channel in activeChannels or (channel not in blacklistChannels):
 			if destination.get_info("nick").lower() in activeNicks:
 				if HOOK == None:
 					HOOK = xchat.get_context()
@@ -1131,7 +1129,7 @@ def checkForReminders(userdata):
 		c.execute("SELECT * FROM Reminders ORDER BY ReminderDate ASC")
 		results = c.fetchall()
 		currTime = time.time()
-		activeNicks = ["amatsukaze","amatsukaze|bot"]
+		activeNicks = settings.activeNicks
 		destination.command("")
 		if destination.get_info("nick").lower() in activeNicks:
 			for data in results:

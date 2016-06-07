@@ -109,9 +109,8 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
         opped = False
         for user in userList:
             if user.nick.split("|")[0].lower() == xChatNick.lower():
-                if "@" in user.prefix:
-                    opped = True
-        ########################
+                opped = reduce(lambda x,y: x or y, 
+                               map(lambda x: x in user.prefix,["@","%"]))
         ### OP ACCESS REQUIRED COMMANDS
         ########################
         if firstWord == "!op":
@@ -1003,6 +1002,11 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
                 isFirst = False
             say(destination,"The following are our commands: "+fullString)
             say(destination,"You can also prepend % to a message to talk to Amatsukaze! A conversation will last for 60 seconds from the last message before a new one is started. Try it out! Type \"%Hi!\"")
+    #
+    #
+    if firstWord in ["!event", "!eventtime"]:
+        curr = time.time()
+        
     #
     #
     if firstWord in ["!source", "!sourcecode"]:

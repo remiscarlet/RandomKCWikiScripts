@@ -787,7 +787,9 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
                 elif secondWord in ["herald","heralds"]:
                     say(destination,"Herald will have the bot greet you every time you join the channel with a custom message. Usage: \00304!herald <add|remove> <nick> [message]")
                 elif secondWord in ["quotes","quote"]:
-                    say(destination,"Usage: \00307!quotes <add|list|search|show> [message/searchterms/quote id]")
+                    say(destination,"Usage: \00304!quotes <add|list|search|show> [message/searchterms/quote id]")
+                elif secondWord in ["learn", "unlearn"]:
+                    say(destination, "Usage: \00304!learn <Command Name> <Message> \00307or \00304!unlearn <Command Name>")
                 else:
                     say(destination,"Remi's a lazy bum so he hasn't added a help to that yet :( Or it wasn't a valid command. You can get a commandlist with \00304!commands")
         #
@@ -990,8 +992,9 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
         #
         #
         elif firstWord in ["!commands", "!command", "!list"]:
-            commands = ["ver", "choice\0037 or \0034!choose \0037 or \003!pick", "joke", "settopic\0037 or \0034!topic","!define\0037 \
-            or \0034!d","flip","compass","calc\0037 (or just \0034!c\0037)","help","info","dice","weather", "herald","quotes","todo","ping","wolfram\0037 (or \0034!wa\0037)"]
+            commands = ["ver", "choice\0037 or \0034!choose \0037or \00304!pick", "joke", "settopic\0037 or \0034!topic",
+                       "define\0037 or \0034!d","flip","compass","calc\0037 (or just \0034!c\0037)","help","info","dice",
+                       "weather", "herald","quotes","todo","ping","wolfram\0037 (or \0034!wa\0037)", "learn", "unlearn"]
             commands.sort()
             fullString = ""
             isFirst = True

@@ -33,7 +33,7 @@ from chatterbotapi import ChatterBotFactory, ChatterBotType
 import Amatsubot_Settings as settings
 
 __module_name__ = "Amatsukaze" 
-__module_version__ = "v0.1.8.3 You mean Remi's not dead?"
+__module_version__ = "v0.1.8.6 I've skipped like 10 minor version updates"
 __module_description__ = "The Amatsukaze Bot" 
 __latest_addition__ = "What is good decision."
 __full_info__ = '''
@@ -123,7 +123,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
                 say(destination,"You need to be opped to use that!")
         #
         #
-        if firstWord == "!deop":
+        elif firstWord == "!deop":
             if opped:
                 toDeop = xChatMessageSplit[1]
                 channel = xchat.get_info("channel")
@@ -133,7 +133,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
                 say(destination,"You need to be opped to use that!")
         #
         #
-        if firstWord == "!voice":
+        elif firstWord == "!voice":
             if opped:
                 chanUsers = xchat.get_list(users)
                 print chanUsers
@@ -146,7 +146,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
                 say(destination,"You need to be opped to use that!")
         #
         #
-        if firstWord == "!devoice":
+        elif firstWord == "!devoice":
             if opped:
                 chanUsers = xchat.get_list(users)
                 print chanUsers
@@ -158,7 +158,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
                 say(destination,"You need to be opped to use that!")
         #
         #
-        if firstWord == "!topic" or firstWord == "!settopic":
+        elif firstWord == "!topic" or firstWord == "!settopic":
             if opped:
                 xChatMessageSplitUnsanitized.pop(0)
                 string = ""
@@ -173,7 +173,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
                 say(destination,"You need to be opped to use that!")
         #
         #
-        if firstWord in ["!herald","!heralds"]:
+        elif firstWord in ["!herald","!heralds"]:
             if len(xChatMessage.split(" "))>1:
                 secondWord = xChatMessage.split(" ")[1]
                 if secondWord == "help":
@@ -213,21 +213,21 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
         ########################
         # OP ACCESS NOT REQUIRED
         ########################
-        if firstWord == "!ver":
+        elif firstWord == "!ver":
             say(destination,"Amatsukaze is currently on version \00304"+__module_version__)
             say(destination,"The Version summary is: \00304"+__latest_addition__)
             say(destination,"Type \00304!info\00307 to get the full version info.")
         #
         #
-        if firstWord == "!info":
+        elif firstWord == "!info":
             say(destination,__full_info__.replace("\n",""))
         #
         #
-        if firstWord == "!ping":
+        elif firstWord == "!ping":
             say(destination,"Pong!")
-        if firstWord == "!pong":
+        elif firstWord == "!pong":
             say(destination,"Ping!")
-        if firstWord in ["!quote", "!quotes"]:
+        elif firstWord in ["!quote", "!quotes"]:
             if len(xChatMessage.split(" "))>2:
                 secondWord = xChatMessage.split(" ")[1]
                 #
@@ -331,7 +331,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
                 say(destination,"!quotes <add|list|search|show> [message/searchterms/quote id]")
         #
         #
-        if firstWord == "!dice":
+        elif firstWord == "!dice":
             if len(xChatMessageSplit) > 1:
                 numSides = xChatMessageSplit[1]
                 if numSides == "2":
@@ -350,7 +350,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
                     say(destination,"Sorry, the argument wasn't an integer.")
             else:
                 say(destination,"Randomly rolling a 6-sided dice: \00304"+str(random.randint(1,6)))
-        if firstWord == "!flip" or firstWord == "!coin":
+        elif firstWord == "!flip" or firstWord == "!coin":
             flippingWhat = xChatMessage.split(" ")
             if len(flippingWhat) == 1:
                 flippingWhat = "coin"
@@ -360,7 +360,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
             say(destination,"Randomly flipping a "+flippingWhat+": \00304"+face )
         #
         #
-        if firstWord in ["!wolfram", "!wa", "!wolframalpha", "!alpha"]:
+        elif firstWord in ["!wolfram", "!wa", "!wolframalpha", "!alpha"]:
             def getWolframAndSend(destination,url):
                 r = requests.get(url)
                 p = re.compile("<pod title=[\'\"](?!Input).*?[\'\"].*?<plaintext>(.*?)<\/plaintext>", re.DOTALL)
@@ -378,7 +378,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
             t = threading.Thread(target=getWolframAndSend,args=(destination,url))
             t.start()
         #
-        if firstWord == "!g":
+        elif firstWord == "!g":
             url = "http://www.google.com/search?q="
             if xChatMessage.find(" ")>-1:
                 words = xChatMessage.split(" ")[1:]
@@ -392,7 +392,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
                 print resp
         #
         #
-        if firstWord in ["!c", "!calc", "!calculator"]:
+        elif firstWord in ["!c", "!calc", "!calculator"]:
             class customFuncParse(object):
                 def __init__(self, expr, variables):
                     self.expr = expr
@@ -574,7 +574,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 
         #
         #
-        if firstWord == "!weather":
+        elif firstWord == "!weather":
             xChatMessageSplit.pop(0)
             info = dict()
             if len(xChatMessageSplit) == 0:
@@ -606,7 +606,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 
         #
         #
-        if firstWord in ["!choose", "!choice", "!pick"]:
+        elif firstWord in ["!choose", "!choice", "!pick"]:
             if len(xChatMessageSplit) >2:
                 words = list(xChatMessageSplit[1:])
                 chosen = random.choice(words)
@@ -615,7 +615,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
                 say(destination,"You only gave me one option! Separate options with spaces.")
         #
         #
-        if firstWord in ["!define","!definition","!d","!def","!dict","!dictionary"]:
+        elif firstWord in ["!define","!definition","!d","!def","!dict","!dictionary"]:
 
             secondWord = xChatMessageSplit[1].lower()
             if secondWord == "amatsukaze":
@@ -744,7 +744,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 
         #
         #
-        if firstWord == "!compass":
+        elif firstWord == "!compass":
             listOfDirs = ["North", "South", "East", "West", 
                             "NE", "NW", "SE", "SW", 
                             "NEE", "NNE", "NNW", "NWW",
@@ -769,7 +769,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
                 say(destination,string)
         #
         #
-        if firstWord == "!help":
+        elif firstWord == "!help":
             if len(xChatMessage.split(" ")) == 1:
                 say(destination, "Just add the name of the command after \00304!help\00307 to get more info")
             if len(xChatMessage.split(" ")) >1:
@@ -793,7 +793,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
         #
         #
 
-        if firstWord == "!lsc":
+        elif firstWord == "!lsc":
             secondWord = xChatMessage.split(" ")[1]
             delimiters = ["|","/",".","-"]
             for delimiter in delimiters: 
@@ -814,7 +814,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
                             pass#say(destination,"You can't make a recipe without all four resources!")
                     else:
                         pass#say(destination,"One of the arguments wasn't even a number :(")
-        if firstWord == "!todo":
+        elif firstWord == "!todo":
             def showTodos(destination,nick,page):
                 if type(page) == int or page.isdigit():
                     page = int(page)
@@ -883,7 +883,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 
         #
         #
-        if firstWord in ["!tell","!later"]:
+        elif firstWord in ["!tell","!later"]:
             if len(xChatMessage.split(" "))>2:
 
                 fromNick = xChatNickFull
@@ -899,7 +899,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
             else:
                 say(destination,"You didn't provide enough arguments! \00304!<later|tell> <destination nick> <message>")
 
-        if firstWord in ["!joke"]:
+        elif firstWord in ["!joke"]:
             global global_jokes
             global jokeIndex
             #random.shuffle(global_jokes)
@@ -914,7 +914,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
                 
         #   
         #
-        if firstWord in ["!remind","!reminder"]:
+        elif firstWord in ["!remind","!reminder"]:
             network = destination.get_info("network") 
             #Overwriting var because case sensitive
             # due to needing to search for network context which IS case sensitive
@@ -989,7 +989,7 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
 
         #
         #
-        if firstWord in ["!commands", "!command", "!list"]:
+        elif firstWord in ["!commands", "!command", "!list"]:
             commands = ["ver", "choice\0037 or \0034!choose \0037 or \003!pick", "joke", "settopic\0037 or \0034!topic","!define\0037 \
             or \0034!d","flip","compass","calc\0037 (or just \0034!c\0037)","help","info","dice","weather", "herald","quotes","todo","ping","wolfram\0037 (or \0034!wa\0037)"]
             commands.sort()
@@ -1002,17 +1002,46 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
                 isFirst = False
             say(destination,"The following are our commands: "+fullString)
             say(destination,"You can also prepend % to a message to talk to Amatsukaze! A conversation will last for 60 seconds from the last message before a new one is started. Try it out! Type \"%Hi!\"")
-    #
-    #
-    if firstWord in ["!event", "!eventtime"]:
-        curr = time.time()
-        
-    #
-    #
-    if firstWord in ["!source", "!sourcecode"]:
-        say(destination, "You can view my source code at http://amat.su/o8JyY5. Consider using http://amat.su for your url shortening needs! (I have browser extensions, too!)")
-    #
-    #   
+        #
+        #
+        elif firstWord in ["!event", "!eventtime"]:
+            curr = time.time()
+            
+        #
+        #
+        elif firstWord in ["!source", "!sourcecode"]:
+            say(destination, "You can view my source code at http://amat.su/o8JyY5. Consider using http://amat.su for your url shortening needs! (I have browser extensions, too!)")
+        #
+        #   
+
+        elif firstWord in ["!learn", "!new"]:
+            if len(xChatMessageSplit) < 3:
+                say(destination, "You need to give me the name of the command and what it means!")
+            else:
+                cmd = xChatMessageSplit[1]
+                msg = " ".join(xChatMessageSplitUnsanitized[2:])
+                c.execute('INSERT INTO CustomCommands VALUES (?,?)', (cmd,msg))
+                conn.commit()
+                say(destination, "Okay! I've learned about \00304!"+ cmd + "\00307!")
+        elif firstWord in ["!unlearn", "!delete"]:
+            if opped:
+                if len(xChatMessageSplit) < 2:
+                    say(destination, "You need to give me the name of the command!")
+                else:
+                    cmd = xChatMessageSplit[1]
+                    c.execute('DELETE FROM CustomCommands WHERE CommandName = ?', (cmd,))
+                    conn.commit()
+                    say(destination, "Okay! I've unlearned about \00304"+ cmd + "\00307!")
+            else:
+                say(destination, "Please ask an op to unlearn a command!")
+        elif firstWord not in ["!reload", "!load", "!unload"]:
+            c.execute('SELECT * FROM CustomCommands WHERE CommandName = ?', (firstWord[1:],))
+            result = c.fetchall()
+            result = random.choice(result)
+            if len(result) > 0:
+                say(destination, result[1])
+
+
     if xChatMessage[0] == "%":
         if channel in settings.getChatWhitelist(network):
             def thinker (destination, sessionToUse, xChatMessage):
@@ -1045,8 +1074,6 @@ def on_trigger_content(word, word_eol, userdata, destination) : #when triggered
                 t.start()
         else:
             say(destination,"If you want to talk to me, you'll have to come over to \00304#amatsukaze\00307! Just remember that I'm married to Remi.")
-
-
 
 
                 
